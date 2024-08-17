@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=4 uid="uid://8lmxyruh3yjy"]
+[gd_scene load_steps=5 format=4 uid="uid://8lmxyruh3yjy"]
 
 [ext_resource type="TileSet" uid="uid://ccdwy6d4c43ax" path="res://Resources/TileSets/Kitchen.tres" id="1_j1dxg"]
 [ext_resource type="PackedScene" uid="uid://bbndvkgy5htbg" path="res://Nodes/LevelPieces/Ai/Androids/AIBotBase.tscn" id="2_ldng6"]
 [ext_resource type="Resource" uid="uid://7m3qr4qc3sk4" path="res://Resources/Androids/BasicBody.tres" id="3_v44gh"]
+[ext_resource type="PackedScene" uid="uid://wvropxmqy6py" path="res://Nodes/LevelPieces/Block.tscn" id="4_4xmu7"]
 
 [node name="TestLevel" type="Node2D"]
 texture_filter = 1
@@ -15,3 +16,6 @@ tile_set = ExtResource("1_j1dxg")
 [node name="AIBot" parent="." instance=ExtResource("2_ldng6")]
 position = Vector2(27, -32)
 AndroidBase = ExtResource("3_v44gh")
+
+[node name="Block" parent="." instance=ExtResource("4_4xmu7")]
+position = Vector2(-26, -59)

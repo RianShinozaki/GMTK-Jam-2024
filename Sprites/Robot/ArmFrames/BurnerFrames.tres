@@ -1,0 +1,91 @@
+[gd_resource type="SpriteFrames" load_steps=12 format=3 uid="uid://12y1qe0vp56r"]
+
+[ext_resource type="Texture2D" uid="uid://cc4avs32825j5" path="res://Sprites/Robot/Arm-Burner.png" id="1_xe05g"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6wkik"]
+atlas = ExtResource("1_xe05g")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_htap8"]
+atlas = ExtResource("1_xe05g")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6apvq"]
+atlas = ExtResource("1_xe05g")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mufpp"]
+atlas = ExtResource("1_xe05g")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xvuya"]
+atlas = ExtResource("1_xe05g")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jdk5u"]
+atlas = ExtResource("1_xe05g")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4cvm7"]
+atlas = ExtResource("1_xe05g")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5cq35"]
+atlas = ExtResource("1_xe05g")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uwnsg"]
+atlas = ExtResource("1_xe05g")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_76h8n"]
+atlas = ExtResource("1_xe05g")
+region = Rect2(0, 0, 32, 32)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6wkik")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_htap8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6apvq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mufpp")
+}],
+"loop": true,
+"name": &"Fire-Loop",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xvuya")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jdk5u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4cvm7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5cq35")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uwnsg")
+}],
+"loop": false,
+"name": &"Fire-Start",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_76h8n")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]

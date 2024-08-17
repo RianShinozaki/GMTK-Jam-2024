@@ -18,6 +18,9 @@ public partial class QuickButtonContextMenu : Node {
     [Signal]
     public delegate void OnHideEventHandler();
 
+    [Signal]
+    public delegate void OnOptionClickedEventHandler();
+
 
     public void AddOption(Texture icon, string optionName, Callable function) {
         dataCache.Add(new Array(){
@@ -75,5 +78,6 @@ public partial class QuickButtonContextMenu : Node {
 
     void OnChildClicked(Node context) {
         HideOptions();
+        EmitSignal(SignalName.OnOptionClicked);
     }
 }

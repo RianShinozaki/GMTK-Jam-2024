@@ -1,24 +1,58 @@
-[gd_scene load_steps=9 format=3 uid="uid://bbndvkgy5htbg"]
+[gd_scene load_steps=15 format=3 uid="uid://bbndvkgy5htbg"]
 
 [ext_resource type="Script" path="res://Scripts/Androids/AiBotBase.cs" id="1_3rpdd"]
-[ext_resource type="Texture2D" uid="uid://btbsajpole632" path="res://Robot.png" id="1_46g5q"]
 [ext_resource type="Script" path="res://Scripts/System/QuickButtonContextMenu.cs" id="2_mk51w"]
+[ext_resource type="Texture2D" uid="uid://bsporryywr2b3" path="res://Sprites/Robot/Head-Normal.png" id="3_7omf5"]
+[ext_resource type="Texture2D" uid="uid://dlv7xixg23mlk" path="res://Sprites/Robot/RoboBody.png" id="4_5ah70"]
 [ext_resource type="Script" path="res://Scripts/System/Clickables/ClickableContextMenu.cs" id="4_xeveg"]
+[ext_resource type="Texture2D" uid="uid://dksqc2tum5j1g" path="res://Sprites/Robot/Legs-Wheel.png" id="5_nmjge"]
+[ext_resource type="SpriteFrames" uid="uid://b7ofti5c5wjit" path="res://Sprites/Robot/ArmFrames/GrabberFrames.tres" id="6_m5n3w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_511m8"]
 size = Vector2(10, 18)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_gxdd7"]
+atlas = ExtResource("5_nmjge")
+region = Rect2(0, 0, 8, 7)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l4xad"]
+atlas = ExtResource("5_nmjge")
+region = Rect2(8, 0, 8, 7)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_28cmf"]
+atlas = ExtResource("5_nmjge")
+region = Rect2(16, 0, 8, 7)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_riunl"]
+atlas = ExtResource("5_nmjge")
+region = Rect2(24, 0, 8, 7)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t5u2s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gxdd7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l4xad")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_28cmf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_riunl")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jae1j"]
-size = Vector2(16, 7)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_yj2rn"]
-size = Vector2(20, 9)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_r8vrv"]
-size = Vector2(16, 7)
+size = Vector2(16, 22)
 
 [node name="AIBot" type="CharacterBody2D" node_paths=PackedStringArray("HeadContextMenu", "TorsoContextMenu", "LegsContextMenu", "Sprite")]
 texture_filter = 1
+collision_layer = 0
 script = ExtResource("1_3rpdd")
 HeadContextMenu = NodePath("ButtonHandlers/HeadButtonHandler")
 TorsoContextMenu = NodePath("ButtonHandlers/TorsoButtonHandler")
@@ -46,9 +80,26 @@ ButtonPivot = NodePath("../../Buttons/HeadButtons")
 position = Vector2(0, -9)
 shape = SubResource("RectangleShape2D_511m8")
 
-[node name="Robot" type="Sprite2D" parent="."]
-position = Vector2(0, -13)
-texture = ExtResource("1_46g5q")
+[node name="Robot" type="Node2D" parent="."]
+position = Vector2(1, -13)
+
+[node name="HeadSprite" type="Sprite2D" parent="Robot"]
+position = Vector2(-1.5, -5.5)
+texture = ExtResource("3_7omf5")
+
+[node name="TorsoSprite" type="Sprite2D" parent="Robot"]
+position = Vector2(-1, 4)
+texture = ExtResource("4_5ah70")
+
+[node name="LegsSprite" type="AnimatedSprite2D" parent="Robot"]
+position = Vector2(-1, 9)
+sprite_frames = SubResource("SpriteFrames_t5u2s")
+autoplay = "default"
+
+[node name="ArmSprite" type="AnimatedSprite2D" parent="Robot"]
+position = Vector2(15, 4)
+sprite_frames = ExtResource("6_m5n3w")
+autoplay = "default"
 
 [node name="Buttons" type="Node2D" parent="."]
 position = Vector2(0, -4)
@@ -62,28 +113,10 @@ position = Vector2(0, -5)
 [node name="HeadButtons" type="Node2D" parent="Buttons"]
 position = Vector2(0, -16)
 
-[node name="ClickZones" type="Node2D" parent="."]
-
-[node name="LegsClickZone" type="Area2D" parent="ClickZones" node_paths=PackedStringArray("ContextMenu")]
+[node name="ClickZone" type="Area2D" parent="." node_paths=PackedStringArray("ContextMenus")]
 script = ExtResource("4_xeveg")
-ContextMenu = NodePath("../../ButtonHandlers/LegsButtonHandler")
+ContextMenus = [NodePath("../ButtonHandlers/LegsButtonHandler"), NodePath("../ButtonHandlers/TorsoButtonHandler"), NodePath("../ButtonHandlers/HeadButtonHandler")]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ClickZones/LegsClickZone"]
-position = Vector2(0, -0.5)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ClickZone"]
+position = Vector2(0, -11)
 shape = SubResource("RectangleShape2D_jae1j")
-
-[node name="TorsoClickZone" type="Area2D" parent="ClickZones" node_paths=PackedStringArray("ContextMenu")]
-script = ExtResource("4_xeveg")
-ContextMenu = NodePath("../../ButtonHandlers/TorsoButtonHandler")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ClickZones/TorsoClickZone"]
-position = Vector2(0, -8.5)
-shape = SubResource("RectangleShape2D_yj2rn")
-
-[node name="HeadClickZone" type="Area2D" parent="ClickZones" node_paths=PackedStringArray("ContextMenu")]
-script = ExtResource("4_xeveg")
-ContextMenu = NodePath("../../ButtonHandlers/HeadButtonHandler")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ClickZones/HeadClickZone"]
-position = Vector2(0, -16.5)
-shape = SubResource("RectangleShape2D_r8vrv")

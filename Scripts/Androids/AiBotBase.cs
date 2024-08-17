@@ -5,6 +5,7 @@ public partial class AiBotBase : CharacterBody2D {
 	[Export]
 	public Android AndroidBase;
 
+	public float InputSpeed = 1f;
 	public float InputDirection = -1f;
 
 	[ExportGroup("Pieces")]
@@ -17,7 +18,7 @@ public partial class AiBotBase : CharacterBody2D {
 
 	[ExportGroup("Art")]
 	[Export]
-	Sprite2D Sprite;
+	Node2D Sprite;
 
 	double systemTime;
 	double lastTurnAround;
@@ -40,6 +41,10 @@ public partial class AiBotBase : CharacterBody2D {
 		for (int i = 0; i < legsData.Count; i++) {
 			LegsContextMenu.AddOption(legsData[i][0].As<Texture2D>(), "HeadOption"+i, legsData[i][1].As<Callable>());
 		}
+
+		HeadContextMenu.OnOptionClicked += OnContextOptionClicked;
+		TorsoContextMenu.OnOptionClicked += OnContextOptionClicked;
+		LegsContextMenu.OnOptionClicked += OnContextOptionClicked;
     }
 
     public override void _Process(double delta) {
@@ -59,7 +64,7 @@ public partial class AiBotBase : CharacterBody2D {
 			velocity += GetGravity() * (float)delta;
 		}
 
-		float desiredDirection = Mathf.Clamp(InputDirection, -1f, 1f);
+		float desiredDirection = Mathf.Clamp(InputSpeed, 0f, 1f) * Mathf.Sign(InputDirection);
 		desiredDirection *= AndroidBase.BaseMovementSpeed;
 		desiredDirection *= AndroidBase.GetWeightSpeedReduction();
 
@@ -72,5 +77,11 @@ public partial class AiBotBase : CharacterBody2D {
 
 		Velocity = velocity;
 		MoveAndSlide();
+	}
+
+	void OnContextOptionClicked() {
+		HeadContextMenu.HideOptions();
+		TorsoContextMenu.HideOptions();
+		LegsContextMenu.HideOptions();
 	}
 }

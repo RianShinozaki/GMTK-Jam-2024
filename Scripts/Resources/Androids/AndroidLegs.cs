@@ -27,13 +27,13 @@ public partial class AndroidLegs : AndroidPiece {
     
     void Stop(Node context) {
         if (context is AiBotBase character && character.IsOnFloor()) {
-            if (character.InputDirection != 0f) {
-                inputCache = character.InputDirection;
-                character.InputDirection = 0f;
+            if (character.InputSpeed != 0f) {
+                inputCache = character.InputSpeed;
+                character.InputSpeed = 0f;
                 return;
             }
 
-            character.InputDirection = inputCache;
+            character.InputSpeed = inputCache;
         } 
     }
 }
