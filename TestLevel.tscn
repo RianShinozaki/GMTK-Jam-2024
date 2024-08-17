@@ -1,12 +1,8 @@
-[gd_scene load_steps=11 format=4 uid="uid://8lmxyruh3yjy"]
+[gd_scene load_steps=4 format=4 uid="uid://8lmxyruh3yjy"]
 
 [ext_resource type="TileSet" uid="uid://ccdwy6d4c43ax" path="res://Resources/TileSets/Kitchen.tres" id="1_j1dxg"]
-[ext_resource type="Texture2D" uid="uid://btbsajpole632" path="res://Robot.png" id="2_6lory"]
-[ext_resource type="Texture2D" uid="uid://dwi38s76ius08" path="res://Chef.png" id="2_pe482"]
-[ext_resource type="Script" path="res://Scripts/System/Chef.gd" id="3_n6c80"]
-[ext_resource type="Script" path="res://Scripts/System/TestChefLocation.gd" id="3_yc5pl"]
-[ext_resource type="Script" path="res://Scripts/System/Hitbox/HitBox.cs" id="4_t337c"]
-[ext_resource type="Script" path="res://Scripts/System/Hitbox/HurtBox.cs" id="6_p3m0j"]
+[ext_resource type="PackedScene" uid="uid://bbndvkgy5htbg" path="res://Nodes/LevelPieces/Ai/Androids/AIBotBase.tscn" id="2_ldng6"]
+[ext_resource type="Resource" uid="uid://7m3qr4qc3sk4" path="res://Resources/Androids/BasicBody.tres" id="3_v44gh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jbj2e"]
 
@@ -18,6 +14,7 @@ size = Vector2(20, 74)
 
 [node name="TestLevel" type="Node2D"]
 texture_filter = 1
+position = Vector2(141, 175)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
@@ -25,70 +22,6 @@ texture_filter = 1
 tile_map_data = PackedByteArray("AAD4/wAAAAAAAAAAAAD4/wEAAAAAAAEAAAD5/wAAAAABAAAAAAD5/wEAAAABAAEAAAAOAAAAAAAGAAAAAAAOAAEAAAAGAAEAAAAPAAAAAAAHAAAAAAAPAAEAAAAHAAEAAAD6/wAAAAACAAAAAAD6/wEAAAACAAEAAAD7/wAAAAADAAAAAAD7/wEAAAADAAEAAAD8/wAAAAAEAAAAAAD8/wEAAAAEAAEAAAD9/wAAAAAFAAAAAAD9/wEAAAAFAAEAAAD+/wAAAAACAAAAAAD+/wEAAAACAAEAAAD//wAAAAADAAAAAAD//wEAAAADAAEAAAAAAAAAAAAEAAAAAAAAAAEAAAAEAAEAAAABAAAAAAAFAAAAAAABAAEAAAAFAAEAAAACAAAAAAACAAAAAAACAAEAAAACAAEAAAADAAAAAAADAAAAAAADAAEAAAADAAEAAAAEAAAAAAAEAAAAAAAEAAEAAAAEAAEAAAAFAAAAAAAFAAAAAAAFAAEAAAAFAAEAAAAGAAAAAAACAAAAAAAGAAEAAAACAAEAAAAHAAAAAAADAAAAAAAHAAEAAAADAAEAAAAIAAAAAAAEAAAAAAAIAAEAAAAEAAEAAAAJAAAAAAAFAAAAAAAJAAEAAAAFAAEAAAAKAAAAAAACAAAAAAAKAAEAAAACAAEAAAALAAAAAAADAAAAAAALAAEAAAADAAEAAAAMAAAAAAAEAAAAAAAMAAEAAAAEAAEAAAANAAAAAAAFAAAAAAANAAEAAAAFAAEAAAAIAP7/AAAIAAAAAAAIAP//AAAIAAEAAAAJAP7/AAAJAAAAAAAJAP//AAAJAAEAAAAQAAAAAAAIAAAAAAAQAAEAAAAIAAEAAAARAAAAAAAJAAAAAAARAAEAAAAJAAEAAAAQAP7/AAAIAAAAAAAQAP//AAAIAAEAAAARAP7/AAAJAAAAAAARAP//AAAJAAEAAAAQAPz/AAAIAAAAAAAQAP3/AAAIAAEAAAARAPz/AAAJAAAAAAARAP3/AAAJAAEAAAAQAPr/AAAIAAAAAAAQAPv/AAAIAAEAAAARAPr/AAAJAAAAAAARAPv/AAAJAAEAAAAQAPj/AAAIAAAAAAAQAPn/AAAIAAEAAAARAPj/AAAJAAAAAAARAPn/AAAJAAEAAAAQAPb/AAAIAAAAAAAQAPf/AAAIAAEAAAARAPb/AAAJAAAAAAARAPf/AAAJAAEAAAAOAP7/AAAIAAAAAAAOAP//AAAIAAEAAAAPAP7/AAAJAAAAAAAPAP//AAAJAAEAAAD4//7/AAAIAAAAAAD4////AAAIAAEAAAD5//7/AAAJAAAAAAD5////AAAJAAEAAAD4//z/AAAIAAAAAAD4//3/AAAIAAEAAAD5//z/AAAJAAAAAAD5//3/AAAJAAEAAAD4//r/AAAIAAAAAAD4//v/AAAIAAEAAAD5//r/AAAJAAAAAAD5//v/AAAJAAEAAAD4//j/AAAIAAAAAAD4//n/AAAIAAEAAAD5//j/AAAJAAAAAAD5//n/AAAJAAEAAAAGAP//AAAKAAAAAAAHAP7/AAAKAAAAAAAHAP//AAAKAAAAAAD6//7/AAAKAAAAAAD6////AAAKAAAAAAD7////AAAKAAAAAAAKAP7/AAAKAAAAAAAKAP//AAAKAAAAAAALAP//AAAKAAAAAAAOAP3/AAAKAAAAAAAPAP3/AAAKAAAAAAA=")
 tile_set = ExtResource("1_j1dxg")
 
-[node name="TestPot" type="Sprite2D" parent="."]
-position = Vector2(-54, -53)
-texture = ExtResource("2_6lory")
-script = ExtResource("3_yc5pl")
-testState = 1
-
-[node name="Label" type="Label" parent="TestPot"]
-offset_right = 40.0
-offset_bottom = 23.0
-text = "Pot"
-
-[node name="HitBox" type="Area2D" parent="TestPot"]
-script = ExtResource("4_t337c")
-StatusEffects = {
-"Pot": 0
-}
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TestPot/HitBox"]
-shape = SubResource("RectangleShape2D_jbj2e")
-
-[node name="TestVegetable" type="Sprite2D" parent="."]
-position = Vector2(184, -70)
-texture = ExtResource("2_6lory")
-script = ExtResource("3_yc5pl")
-testState = 3
-
-[node name="Label" type="Label" parent="TestVegetable"]
-offset_right = 40.0
-offset_bottom = 23.0
-text = "Vege"
-
-[node name="HitBox" type="Area2D" parent="TestVegetable"]
-script = ExtResource("4_t337c")
-StatusEffects = {
-"Vegetable": 0
-}
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TestVegetable/HitBox"]
-shape = SubResource("RectangleShape2D_jbj2e")
-
-[node name="Chef" type="CharacterBody2D" parent="."]
-position = Vector2(62, -88)
-script = ExtResource("3_n6c80")
-chefTasks = Array[int]([1, 0, 3])
-
-[node name="ChefCollision" type="CollisionShape2D" parent="Chef"]
-position = Vector2(-0.125, 7.1283)
-shape = SubResource("RectangleShape2D_68ak1")
-
-[node name="CharacterSprite" type="Sprite2D" parent="Chef"]
-texture = ExtResource("2_pe482")
-
-[node name="WantedAction" type="Sprite2D" parent="Chef"]
-
-[node name="HurtBox" type="Area2D" parent="Chef"]
-script = ExtResource("6_p3m0j")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Chef/HurtBox"]
-position = Vector2(0, 1.6283)
-shape = SubResource("RectangleShape2D_5tqmc")
-
-[node name="Label" type="Label" parent="Chef"]
-offset_right = 40.0
-offset_bottom = 23.0
-text = "I want "
-
-[connection signal="OnDamageRecieved" from="Chef/HurtBox" to="Chef" method="_on_hurt_box_on_damage_recieved"]
+[node name="AIBot" parent="." instance=ExtResource("2_ldng6")]
+position = Vector2(27, -32)
+AndroidBase = ExtResource("3_v44gh")

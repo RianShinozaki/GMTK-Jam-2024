@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://ifmp6m75arhl"]
+
+[ext_resource type="Texture2D" uid="uid://btbsajpole632" path="res://Robot.png" id="1_ghbqv"]
+[ext_resource type="Script" path="res://Scripts/System/TestChefLocation.gd" id="2_ge6xr"]
+[ext_resource type="Script" path="res://Scripts/System/Hitbox/HitBox.cs" id="3_u2p7a"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jbj2e"]
+
+[node name="TestPot" type="Sprite2D"]
+position = Vector2(-54, -53)
+texture = ExtResource("1_ghbqv")
+script = ExtResource("2_ge6xr")
+testState = 1
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Pot"
+
+[node name="HitBox" type="Area2D" parent="."]
+script = ExtResource("3_u2p7a")
+StatusEffects = {
+"Pot": 0
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+shape = SubResource("RectangleShape2D_jbj2e")

@@ -2,8 +2,8 @@ using Godot;
 using Godot.Collections;
 
 [GlobalClass]
-public partial class HitBox : Area2D {
-	[Export]
+public partial class TriggerShape : Area2D {
+    [Export]
 	public Dictionary StatusEffects;
 
 	public override void _Ready() {

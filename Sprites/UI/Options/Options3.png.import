@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://btbsajpole632"
-path="res://.godot/imported/Robot.png-685d1e6b888cc221e7ad9e5fe93fb92e.ctex"
+uid="uid://d2d226x8nh80h"
+path="res://.godot/imported/Options3.png-316d221e3a6e34ddf6cc8ece5dcdac93.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Robot.png"
-dest_files=["res://.godot/imported/Robot.png-685d1e6b888cc221e7ad9e5fe93fb92e.ctex"]
+source_file="res://Sprites/UI/Options/Options3.png"
+dest_files=["res://.godot/imported/Options3.png-316d221e3a6e34ddf6cc8ece5dcdac93.ctex"]
 
 [params]
 
@@ -31,4 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1

@@ -1,3 +1,89 @@
-[gd_scene format=3 uid="uid://bbndvkgy5htbg"]
+[gd_scene load_steps=9 format=3 uid="uid://bbndvkgy5htbg"]
 
-[node name="AIBot" type="CharacterBody2D"]
+[ext_resource type="Script" path="res://Scripts/Androids/AiBotBase.cs" id="1_3rpdd"]
+[ext_resource type="Texture2D" uid="uid://btbsajpole632" path="res://Robot.png" id="1_46g5q"]
+[ext_resource type="Script" path="res://Scripts/System/QuickButtonContextMenu.cs" id="2_mk51w"]
+[ext_resource type="Script" path="res://Scripts/System/Clickables/ClickableContextMenu.cs" id="4_xeveg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_511m8"]
+size = Vector2(10, 18)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jae1j"]
+size = Vector2(16, 7)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yj2rn"]
+size = Vector2(20, 9)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r8vrv"]
+size = Vector2(16, 7)
+
+[node name="AIBot" type="CharacterBody2D" node_paths=PackedStringArray("HeadContextMenu", "TorsoContextMenu", "LegsContextMenu", "Sprite")]
+texture_filter = 1
+script = ExtResource("1_3rpdd")
+HeadContextMenu = NodePath("ButtonHandlers/HeadButtonHandler")
+TorsoContextMenu = NodePath("ButtonHandlers/TorsoButtonHandler")
+LegsContextMenu = NodePath("ButtonHandlers/LegsButtonHandler")
+Sprite = NodePath("Robot")
+
+[node name="ButtonHandlers" type="Node" parent="."]
+
+[node name="LegsButtonHandler" type="Node" parent="ButtonHandlers" node_paths=PackedStringArray("ContextNode", "ButtonPivot")]
+script = ExtResource("2_mk51w")
+ContextNode = NodePath("../..")
+ButtonPivot = NodePath("../../Buttons/LegButtons")
+
+[node name="TorsoButtonHandler" type="Node" parent="ButtonHandlers" node_paths=PackedStringArray("ContextNode", "ButtonPivot")]
+script = ExtResource("2_mk51w")
+ContextNode = NodePath("../..")
+ButtonPivot = NodePath("../../Buttons/TorsoButtons")
+
+[node name="HeadButtonHandler" type="Node" parent="ButtonHandlers" node_paths=PackedStringArray("ContextNode", "ButtonPivot")]
+script = ExtResource("2_mk51w")
+ContextNode = NodePath("../..")
+ButtonPivot = NodePath("../../Buttons/HeadButtons")
+
+[node name="TerrainShape" type="CollisionShape2D" parent="."]
+position = Vector2(0, -9)
+shape = SubResource("RectangleShape2D_511m8")
+
+[node name="Robot" type="Sprite2D" parent="."]
+position = Vector2(0, -13)
+texture = ExtResource("1_46g5q")
+
+[node name="Buttons" type="Node2D" parent="."]
+position = Vector2(0, -4)
+
+[node name="LegButtons" type="Node2D" parent="Buttons"]
+position = Vector2(0, 4)
+
+[node name="TorsoButtons" type="Node2D" parent="Buttons"]
+position = Vector2(0, -5)
+
+[node name="HeadButtons" type="Node2D" parent="Buttons"]
+position = Vector2(0, -16)
+
+[node name="ClickZones" type="Node2D" parent="."]
+
+[node name="LegsClickZone" type="Area2D" parent="ClickZones" node_paths=PackedStringArray("ContextMenu")]
+script = ExtResource("4_xeveg")
+ContextMenu = NodePath("../../ButtonHandlers/LegsButtonHandler")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ClickZones/LegsClickZone"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_jae1j")
+
+[node name="TorsoClickZone" type="Area2D" parent="ClickZones" node_paths=PackedStringArray("ContextMenu")]
+script = ExtResource("4_xeveg")
+ContextMenu = NodePath("../../ButtonHandlers/TorsoButtonHandler")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ClickZones/TorsoClickZone"]
+position = Vector2(0, -8.5)
+shape = SubResource("RectangleShape2D_yj2rn")
+
+[node name="HeadClickZone" type="Area2D" parent="ClickZones" node_paths=PackedStringArray("ContextMenu")]
+script = ExtResource("4_xeveg")
+ContextMenu = NodePath("../../ButtonHandlers/HeadButtonHandler")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ClickZones/HeadClickZone"]
+position = Vector2(0, -16.5)
+shape = SubResource("RectangleShape2D_r8vrv")
