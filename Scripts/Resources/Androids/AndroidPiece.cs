@@ -1,11 +1,13 @@
 using Godot;
-using System;
+using Godot.Collections;
 
 [GlobalClass]
 public abstract partial class AndroidPiece : Resource {
-    [Export]
-    public float Weight;
+    [Export(PropertyHint.Range, "0,1")]
+    public float WeightSpeedReductionAmount = 1f;
 
-    [Export]
-    public float Strength;
+    [Export(PropertyHint.Range, "0,1")]
+    public float Strength = 0.5f;
+
+    public virtual Array<Array> GetOptions => new Array<Array>();
 }

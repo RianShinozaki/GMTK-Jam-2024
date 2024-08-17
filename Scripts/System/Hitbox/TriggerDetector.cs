@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 [GlobalClass]
-public partial class HurtBox : Area2D
+public partial class TriggerDetector : Area2D
 {
 	const Variant.Type AddableVariants = Variant.Type.Float | Variant.Type.Int;
 
@@ -31,11 +31,11 @@ public partial class HurtBox : Area2D
     }
 
     void Entered(Area2D other) {
-		if (other is not HitBox) {
+		if (other is not TriggerShape) {
 			return;
 		}
 
-		HitBox hitBox = (HitBox)other;
+		TriggerShape hitBox = (TriggerShape)other;
 
 		foreach(KeyValuePair<Variant, Variant> key in hitBox.StatusEffects) {
 			if (key.Value.VariantType == Variant.Type.Nil) {

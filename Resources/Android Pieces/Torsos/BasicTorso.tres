@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="AndroidTorso" load_steps=2 format=3 uid="uid://cea30nh8dwaj0"]
+
+[ext_resource type="Script" path="res://Scripts/Resources/Androids/AndroidTorso.cs" id="1_xapa4"]
+
+[resource]
+script = ExtResource("1_xapa4")
+Weight = 1.0
+Strength = 0.5
