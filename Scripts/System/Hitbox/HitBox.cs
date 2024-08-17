@@ -3,11 +3,11 @@ using Godot.Collections;
 
 [GlobalClass]
 public partial class HitBox : Area2D {
-    [Export]
+	[Export]
 	public Dictionary StatusEffects;
 
-    public override void _Ready() {
-        base._Ready();
-        StatusEffects ??= new Dictionary();
-    }
+	public override void _Ready() {
+		base._Ready();
+		StatusEffects ??= new Dictionary();
+	}
 }

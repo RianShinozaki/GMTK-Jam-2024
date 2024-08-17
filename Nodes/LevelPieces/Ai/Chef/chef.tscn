@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://coy3cod54bme0"]
+
+[ext_resource type="Script" path="res://Scripts/System/Chef.gd" id="1_3egjm"]
+[ext_resource type="Texture2D" uid="uid://dwi38s76ius08" path="res://Chef.png" id="2_cw4r2"]
+[ext_resource type="Script" path="res://Scripts/System/Hitbox/HurtBox.cs" id="3_bn30o"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_68ak1"]
+size = Vector2(9, 63)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5tqmc"]
+size = Vector2(20, 74)
+
+[node name="Chef" type="CharacterBody2D"]
+position = Vector2(62, -88)
+script = ExtResource("1_3egjm")
+chefTasks = Array[int]([1, 0, 3])
+
+[node name="ChefCollision" type="CollisionShape2D" parent="."]
+position = Vector2(-0.125, 7.1283)
+shape = SubResource("RectangleShape2D_68ak1")
+
+[node name="CharacterSprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_cw4r2")
+
+[node name="WantedAction" type="Sprite2D" parent="."]
+
+[node name="HurtBox" type="Area2D" parent="."]
+script = ExtResource("3_bn30o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(0, 1.6283)
+shape = SubResource("RectangleShape2D_5tqmc")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "I want "
+
+[connection signal="OnDamageRecieved" from="HurtBox" to="." method="_on_hurt_box_on_damage_recieved"]
