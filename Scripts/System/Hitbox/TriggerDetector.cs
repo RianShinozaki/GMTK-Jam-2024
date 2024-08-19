@@ -30,7 +30,7 @@ public partial class TriggerDetector : Area2D
 		EmitSignal(SignalName.OnDamageRecieved, statCache.Duplicate());
 	}
 
-    void Entered(Area2D other) {
+	void Entered(Area2D other) {
 		if (other is not TriggerShape) {
 			return;
 		}

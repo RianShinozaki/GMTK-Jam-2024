@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://coy3cod54bme0"]
+[gd_scene load_steps=16 format=3 uid="uid://coy3cod54bme0"]
 
 [ext_resource type="Script" path="res://Scripts/System/ChefScripts/Chef.gd" id="1_ytnf7"]
 [ext_resource type="Texture2D" uid="uid://dwi38s76ius08" path="res://Sprites/Chef.png" id="2_cw4r2"]
@@ -40,6 +40,57 @@ tracks/0/keys = {
 "values": [5, 6]
 }
 
+[sub_resource type="Animation" id="Animation_wcg62"]
+resource_name = "hold_idle"
+length = 0.0833417
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [7]
+}
+
+[sub_resource type="Animation" id="Animation_u1jyx"]
+resource_name = "hurt"
+length = 0.833341
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0833333, 0.25, 0.416667, 0.583333, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [12, 13, 12, 13, 14]
+}
+
+[sub_resource type="Animation" id="Animation_y5h4i"]
+resource_name = "hurt_ground"
+length = 0.666675
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.583333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [14, 15, 0]
+}
+
 [sub_resource type="Animation" id="Animation_m2o0m"]
 resource_name = "idle"
 length = 0.0333367
@@ -74,16 +125,41 @@ tracks/0/keys = {
 "values": [1, 2, 3, 4]
 }
 
+[sub_resource type="Animation" id="Animation_wqf6a"]
+resource_name = "walk_hold"
+length = 0.666675
+loop_mode = 1
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0833333, 0.25, 0.416667, 0.583333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [8, 9, 10, 11]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_v71c7"]
 _data = {
 "RESET": SubResource("Animation_ffr8u"),
 "climb": SubResource("Animation_5jx4r"),
+"hold_idle": SubResource("Animation_wcg62"),
+"hurt": SubResource("Animation_u1jyx"),
+"hurt_get_up": SubResource("Animation_y5h4i"),
 "idle": SubResource("Animation_m2o0m"),
-"walk": SubResource("Animation_8mpk0")
+"walk": SubResource("Animation_8mpk0"),
+"walk_hold": SubResource("Animation_wqf6a")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5tqmc"]
 size = Vector2(20, 74)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s635a"]
+size = Vector2(14, 20)
 
 [node name="Chef" type="CharacterBody2D"]
 position = Vector2(62, -88)
@@ -105,6 +181,7 @@ shape = SubResource("RectangleShape2D_68ak1")
 texture_filter = 1
 texture = ExtResource("2_cw4r2")
 hframes = 9
+vframes = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CharacterSprite"]
 libraries = {
@@ -121,11 +198,24 @@ position = Vector2(0, 1.6283)
 shape = SubResource("RectangleShape2D_5tqmc")
 
 [node name="Label" type="Label" parent="."]
+visible = false
+texture_filter = 1
 offset_right = 40.0
 offset_bottom = 23.0
 text = "I want "
 
-[node name="HeldItem" type="Sprite2D" parent="."]
+[node name="Displace" type="Node2D" parent="."]
+
+[node name="HeldItem" type="Sprite2D" parent="Displace"]
 z_index = 1
+texture_filter = 1
+position = Vector2(20, -10)
+
+[node name="Ground" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
+position = Vector2(0, 39)
+shape = SubResource("RectangleShape2D_s635a")
 
 [connection signal="OnDamageRecieved" from="HurtBox" to="." method="_on_hurt_box_on_damage_recieved"]
+[connection signal="body_entered" from="Ground" to="." method="_on_ground_body_entered"]
