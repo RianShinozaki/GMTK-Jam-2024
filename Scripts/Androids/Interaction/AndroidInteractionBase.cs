@@ -18,7 +18,7 @@ public partial class AndroidInteractionBase : TriggerDetector {
 	Variant[] highlightCache;
 
 	[Signal]
-	public delegate void OnOptionClickedEventHandler(Node context);
+	public delegate void OnOptionClickedEventHandler(Node context, bool success);
 
     public virtual void InteractExitRange(Area2D area) {
         if (area is AndroidInteractableArea interactable) {
@@ -76,7 +76,20 @@ public partial class AndroidInteractionBase : TriggerDetector {
 		}
 
 		EndHighlight();
-		EmitSignal(SignalName.OnOptionClicked, context);
+		EmitSignal(SignalName.OnOptionClicked, context, true);
 	}
+
+	//Right click to cancel menu
+    public override void _Input(InputEvent @event)
+    {
+        if(@event is InputEventMouseButton mouseEv) {
+            if (mouseEv.ButtonIndex == MouseButton.Right) {
+                EndHighlight();
+				EmitSignal(SignalName.OnOptionClicked, -1, false);
+
+            }
+        }
+        base._Input(@event);
+    }
 
 }

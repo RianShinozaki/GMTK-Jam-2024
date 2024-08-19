@@ -10,6 +10,7 @@ public partial class QuickButtonContextMenu : Node {
 
     public bool Showing;
 
+    //This cache holds the option functions
     Array dataCache = new Array();
 
     [Signal]
@@ -43,6 +44,8 @@ public partial class QuickButtonContextMenu : Node {
             };
             float pos = i * buttonSprite.Texture.GetWidth()+1f;
             ClickDetector detector = new ClickDetector();
+
+            //Add the function from the button to a signal
             detector.Connect(ClickDetector.SignalName.OnClick, dataCache[i].As<Array>()[2].As<Callable>());
             detector.OnClick += OnChildClicked;
             detector.ContextNode = ContextNode;

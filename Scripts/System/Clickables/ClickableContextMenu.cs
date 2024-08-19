@@ -1,3 +1,4 @@
+using System.Reflection.Metadata;
 using Godot;
 using Godot.Collections;
 
@@ -24,6 +25,20 @@ public partial class ClickableContextMenu : ClickDetector {
         for(int i = 0; i < ContextMenus.Count; i++) {
             ContextMenus[i].ShowOptions();  
         }
+    }
+
+    //Right click to cancel menu
+    public override void _Input(InputEvent @event)
+    {
+        if(@event is InputEventMouseButton mouseEv) {
+            if (ContextMenus[0].Showing && mouseEv.ButtonIndex == MouseButton.Right) {
+                for(int i = 0; i < ContextMenus.Count; i++) {
+                    ContextMenus[i].HideOptions();  
+                }
+
+            }
+        }
+        base._Input(@event);
     }
 
     void OnHide() => InputPickable = true;

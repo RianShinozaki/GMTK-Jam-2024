@@ -1,3 +1,4 @@
+using System.Text.Json.Serialization;
 using Godot;
 using Godot.Collections;
 
@@ -59,18 +60,21 @@ public partial class GrabberArm : AndroidTorso {
         }
     }
 
-    void OnInteractDone(Node context) {
-        BasicPhysicsObject pickup = (BasicPhysicsObject)context.GetParent();
-        AiBotBase bot = (AiBotBase)interactionBase.GetParent();
 
-        if (pickup.PickUpable) {
-            pickup.GetParent().RemoveChild(pickup);
-            bot.AddChild(pickup);
-            pickup.Position = new Vector2(PickupLocation.X * bot.InputDirection, PickupLocation.Y);
-            heldObject = pickup;
-            pickup.Velocity = Vector2.Zero;
-            pickup.UseGravity = false;
-            pickup.GetNode<CollisionShape2D>("CollisionShape2D").Disabled = true;
+    void OnInteractDone(Node context, bool success) {
+         AiBotBase bot = (AiBotBase)interactionBase.GetParent();
+
+        if(success) {
+            BasicPhysicsObject pickup = (BasicPhysicsObject)context.GetParent();
+            if (pickup.PickUpable) {
+                pickup.GetParent().RemoveChild(pickup);
+                bot.AddChild(pickup);
+                pickup.Position = new Vector2(PickupLocation.X * bot.InputDirection, PickupLocation.Y);
+                heldObject = pickup;
+                pickup.Velocity = Vector2.Zero;
+                pickup.UseGravity = false;
+                pickup.GetNode<CollisionShape2D>("CollisionShape2D").Disabled = true;
+            }
         }
 
         bot.InputSpeed = speedCache;
