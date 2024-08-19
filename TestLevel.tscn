@@ -48,7 +48,6 @@ unique_name_in_owner = true
 [node name="Chef" parent="." node_paths=PackedStringArray("ui") instance=ExtResource("2_awlc6")]
 position = Vector2(597, -211)
 chefTasks = Array[ExtResource("3_ju2h2")]([ExtResource("4_qqey4"), ExtResource("5_d8esa"), ExtResource("6_48kib")])
-currentLadderLevel = 0
 ui = NodePath("../ChefUI")
 
 [node name="AIBot" parent="." instance=ExtResource("2_ldng6")]

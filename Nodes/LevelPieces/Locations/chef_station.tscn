@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://Scripts/System/Hitbox/TriggerShape.cs" id="3_regns"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jbj2e"]
-size = Vector2(20, 92)
+size = Vector2(10, 92)
 
 [node name="ChefStation" type="Sprite2D"]
 position = Vector2(-54, -53)
