@@ -12,5 +12,8 @@
 script = ExtResource("1_5627w")
 phaseName = "First Phase"
 phaseDescription = "Sauté Vegetables"
+trackType = 0
+trackPart = 0
+trackVolume = 0.8
 phaseLength = 10.0
 taskList = Array[ExtResource("2_yrpih")]([ExtResource("3_boqxo"), ExtResource("4_alflr"), ExtResource("5_cvg0w"), ExtResource("6_pgc4t"), ExtResource("7_8jlmw"), ExtResource("5_cvg0w")])

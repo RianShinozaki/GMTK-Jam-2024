@@ -58,6 +58,7 @@ var goalObject : String
 
 @export var currentChefSpeed : float
 
+@onready var music = %MusicManager
 @export var ui : ChefUI
 
 var moveTween : Tween
@@ -66,6 +67,7 @@ var potInventory : Array[String]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	music.Resume()
 	pass 
 
 func _physics_process(delta):
@@ -155,7 +157,14 @@ func _start_first_task():
 	canClimb = true
 	phaseActive = false
 	startTask = false
+	
 	ui._new_phase(chefTasks[phase].phaseName, chefTasks[phase].phaseDescription)
+	
+	music.PlayTrack(chefTasks[phase].trackType)
+	music.SetTrack(chefTasks[phase].trackType, chefTasks[phase].trackPart)
+	music.SetVolume(chefTasks[phase].trackType, chefTasks[phase].trackVolume)
+	
+	
 	chefProgress = 0
 	_get_target()
 	currentChefStatus = ChefStatus.Idle
