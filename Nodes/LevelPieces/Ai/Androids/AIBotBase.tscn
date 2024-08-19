@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://bbndvkgy5htbg"]
 
 [ext_resource type="Script" path="res://Scripts/Androids/AiBotBase.cs" id="1_3rpdd"]
-[ext_resource type="Texture2D" uid="uid://btbsajpole632" path="res://Robot.png" id="1_46g5q"]
+[ext_resource type="Texture2D" uid="uid://btbsajpole632" path="res://Sprites/Robot.png" id="1_46g5q"]
 [ext_resource type="Script" path="res://Scripts/System/QuickButtonContextMenu.cs" id="2_mk51w"]
 [ext_resource type="Script" path="res://Scripts/System/Clickables/ClickableContextMenu.cs" id="4_xeveg"]
 

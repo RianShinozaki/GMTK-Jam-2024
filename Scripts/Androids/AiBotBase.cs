@@ -22,8 +22,8 @@ public partial class AiBotBase : CharacterBody2D {
 	double systemTime;
 	double lastTurnAround;
 
-    public override void _Ready() {
-        base._Ready();
+	public override void _Ready() {
+		base._Ready();
 
 		Array<Array> headData = AndroidBase.Head.GetOptions;
 		Array<Array> torsoData = AndroidBase.Torso.GetOptions;
@@ -40,19 +40,19 @@ public partial class AiBotBase : CharacterBody2D {
 		for (int i = 0; i < legsData.Count; i++) {
 			LegsContextMenu.AddOption(legsData[i][0].As<Texture2D>(), "HeadOption"+i, legsData[i][1].As<Callable>());
 		}
-    }
+	}
 
-    public override void _Process(double delta) {
-        base._Process(delta);
+	public override void _Process(double delta) {
+		base._Process(delta);
 		systemTime += delta;
 
 		if (InputDirection != 0f) {
 			Sprite.Scale = new Vector2(Mathf.Sign(InputDirection), 1f);
 		}
-    }
+	}
 
 
-    public override void _PhysicsProcess(double delta) {
+	public override void _PhysicsProcess(double delta) {
 		Vector2 velocity = Velocity;
 
 		if (!IsOnFloor()) {

@@ -1,27 +1,177 @@
-[gd_scene load_steps=4 format=4 uid="uid://8lmxyruh3yjy"]
+[gd_scene load_steps=20 format=4 uid="uid://b0awh3x2ks73o"]
 
 [ext_resource type="TileSet" uid="uid://ccdwy6d4c43ax" path="res://Resources/TileSets/Kitchen.tres" id="1_j1dxg"]
+[ext_resource type="PackedScene" uid="uid://coy3cod54bme0" path="res://Nodes/LevelPieces/Ai/Chef/chef.tscn" id="2_awlc6"]
 [ext_resource type="PackedScene" uid="uid://bbndvkgy5htbg" path="res://Nodes/LevelPieces/Ai/Androids/AIBotBase.tscn" id="2_ldng6"]
+[ext_resource type="Script" path="res://Scripts/Resources/Chef/ChefTasks.gd" id="3_8db3s"]
 [ext_resource type="Resource" uid="uid://7m3qr4qc3sk4" path="res://Resources/Androids/BasicBody.tres" id="3_v44gh"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_jbj2e"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_68ak1"]
-size = Vector2(9, 63)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5tqmc"]
-size = Vector2(20, 74)
+[ext_resource type="Resource" uid="uid://clybjbnuwu00l" path="res://Resources/ChefTasks/GetCarrot.tres" id="4_of737"]
+[ext_resource type="Resource" uid="uid://df8ya3rjipaxu" path="res://Resources/ChefTasks/ChopCarrot.tres" id="5_nwtrb"]
+[ext_resource type="PackedScene" uid="uid://ifmp6m75arhl" path="res://Nodes/LevelPieces/Locations/chef_station.tscn" id="5_yak5b"]
+[ext_resource type="Resource" uid="uid://bnyfwl7ga77yd" path="res://Resources/ChefTasks/GetOnion.tres" id="6_ura8y"]
+[ext_resource type="Texture2D" uid="uid://c8prpm85c8qf6" path="res://Sprites/MeatFridge.png" id="7_2i6km"]
+[ext_resource type="Resource" uid="uid://cgd63kem8vsg7" path="res://Resources/ChefTasks/ChopOnion.tres" id="7_5hxm4"]
+[ext_resource type="Script" path="res://Scripts/Resources/Chef/ChefStationActions.gd" id="7_gebwm"]
+[ext_resource type="Resource" uid="uid://bsh1iwwdp2xwj" path="res://Resources/ChefStationActions/ChopStationCarrot.tres" id="8_3ga3q"]
+[ext_resource type="Texture2D" uid="uid://dumpqcc7o2v5o" path="res://Sprites/CuttingBoard.png" id="9_58whs"]
+[ext_resource type="Resource" uid="uid://bgj6kc1njh4q0" path="res://Resources/ChefStationActions/ChopStationOnion.tres" id="9_s0mr8"]
+[ext_resource type="Resource" uid="uid://bvyq6vb1vcnsj" path="res://Resources/ChefStationActions/VegetableStationCarrot.tres" id="13_k32pv"]
+[ext_resource type="Resource" uid="uid://bgwuu5kw6dvlo" path="res://Resources/ChefStationActions/VegetableStationOnion.tres" id="14_s41as"]
+[ext_resource type="Texture2D" uid="uid://pjxsgodyiqqi" path="res://Sprites/StoveTop.png" id="18_nfeac"]
+[ext_resource type="PackedScene" uid="uid://dli4xnwutswyt" path="res://Nodes/LevelPieces/Locations/ladder.tscn" id="19_hxdcd"]
 
 [node name="TestLevel" type="Node2D"]
 texture_filter = 1
 position = Vector2(141, 175)
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(273, -210)
+zoom = Vector2(0.5, 0.5)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAD4/wAAAAAAAAAAAAD4/wEAAAAAAAEAAAD5/wAAAAABAAAAAAD5/wEAAAABAAEAAAAOAAAAAAAGAAAAAAAOAAEAAAAGAAEAAAAPAAAAAAAHAAAAAAAPAAEAAAAHAAEAAAD6/wAAAAACAAAAAAD6/wEAAAACAAEAAAD7/wAAAAADAAAAAAD7/wEAAAADAAEAAAD8/wAAAAAEAAAAAAD8/wEAAAAEAAEAAAD9/wAAAAAFAAAAAAD9/wEAAAAFAAEAAAD+/wAAAAACAAAAAAD+/wEAAAACAAEAAAD//wAAAAADAAAAAAD//wEAAAADAAEAAAAAAAAAAAAEAAAAAAAAAAEAAAAEAAEAAAABAAAAAAAFAAAAAAABAAEAAAAFAAEAAAACAAAAAAACAAAAAAACAAEAAAACAAEAAAADAAAAAAADAAAAAAADAAEAAAADAAEAAAAEAAAAAAAEAAAAAAAEAAEAAAAEAAEAAAAFAAAAAAAFAAAAAAAFAAEAAAAFAAEAAAAGAAAAAAACAAAAAAAGAAEAAAACAAEAAAAHAAAAAAADAAAAAAAHAAEAAAADAAEAAAAIAAAAAAAEAAAAAAAIAAEAAAAEAAEAAAAJAAAAAAAFAAAAAAAJAAEAAAAFAAEAAAAKAAAAAAACAAAAAAAKAAEAAAACAAEAAAALAAAAAAADAAAAAAALAAEAAAADAAEAAAAMAAAAAAAEAAAAAAAMAAEAAAAEAAEAAAANAAAAAAAFAAAAAAANAAEAAAAFAAEAAAAIAP7/AAAIAAAAAAAIAP//AAAIAAEAAAAJAP7/AAAJAAAAAAAJAP//AAAJAAEAAAAQAAAAAAAIAAAAAAAQAAEAAAAIAAEAAAARAAAAAAAJAAAAAAARAAEAAAAJAAEAAAAQAP7/AAAIAAAAAAAQAP//AAAIAAEAAAARAP7/AAAJAAAAAAARAP//AAAJAAEAAAAQAPz/AAAIAAAAAAAQAP3/AAAIAAEAAAARAPz/AAAJAAAAAAARAP3/AAAJAAEAAAAQAPr/AAAIAAAAAAAQAPv/AAAIAAEAAAARAPr/AAAJAAAAAAARAPv/AAAJAAEAAAAQAPj/AAAIAAAAAAAQAPn/AAAIAAEAAAARAPj/AAAJAAAAAAARAPn/AAAJAAEAAAAQAPb/AAAIAAAAAAAQAPf/AAAIAAEAAAARAPb/AAAJAAAAAAARAPf/AAAJAAEAAAAOAP7/AAAIAAAAAAAOAP//AAAIAAEAAAAPAP7/AAAJAAAAAAAPAP//AAAJAAEAAAD4//7/AAAIAAAAAAD4////AAAIAAEAAAD5//7/AAAJAAAAAAD5////AAAJAAEAAAD4//z/AAAIAAAAAAD4//3/AAAIAAEAAAD5//z/AAAJAAAAAAD5//3/AAAJAAEAAAD4//r/AAAIAAAAAAD4//v/AAAIAAEAAAD5//r/AAAJAAAAAAD5//v/AAAJAAEAAAD4//j/AAAIAAAAAAD4//n/AAAIAAEAAAD5//j/AAAJAAAAAAD5//n/AAAJAAEAAAAGAP//AAAKAAAAAAAHAP7/AAAKAAAAAAAHAP//AAAKAAAAAAD6//7/AAAKAAAAAAD6////AAAKAAAAAAD7////AAAKAAAAAAAKAP7/AAAKAAAAAAAKAP//AAAKAAAAAAALAP//AAAKAAAAAAAOAP3/AAAKAAAAAAAPAP3/AAAKAAAAAAA=")
+tile_map_data = PackedByteArray("AAD4/wEAAAAAAAEAAAD5/wEAAAABAAEAAAD6/wAAAAAAAAAAAAD6/wEAAAACAAEAAAD7/wAAAAABAAAAAAD7/wEAAAADAAEAAAD8/wAAAAAAAAAAAAD8/wEAAAAEAAEAAAD9/wAAAAABAAAAAAD9/wEAAAAFAAEAAAD+/wAAAAAAAAAAAAD+/wEAAAAGAAEAAAD//wAAAAABAAAAAAD//wEAAAAHAAEAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAEAAAABAAAAAAABAAAAAAABAAEAAAABAAEAAAACAAAAAAAAAAAAAAACAAEAAAACAAEAAAADAAAAAAABAAAAAAADAAEAAAADAAEAAAAEAAAAAAAAAAAAAAAEAAEAAAAEAAEAAAAFAAAAAAABAAAAAAAFAAEAAAAFAAEAAAD6/wIAAAACAAAAAAD7/wIAAAACAAAAAAD9/wIAAAACAAAAAAD+/wIAAAACAAAAAAD//wIAAAACAAAAAAAAAAIAAAACAAAAAAABAAIAAAACAAAAAAACAAIAAAACAAAAAAADAAIAAAACAAAAAAD4/wAAAAAAAAAAAAD5/wAAAAABAAAAAAAGAAAAAAAAAAAAAAAGAAEAAAAGAAEAAAAHAAAAAAABAAAAAAAHAAEAAAAHAAEAAAAIAAAAAAAAAAAAAAAIAAEAAAAAAAEAAAAJAAAAAAABAAAAAAAJAAEAAAABAAEAAAAOAAAAAAAAAAAAAAAOAAEAAAAGAAEAAAAPAAAAAAABAAAAAAAPAAEAAAAHAAEAAAAQAP//AAAEAAQAAAAQAAAAAAAGAAQAAAAQAAEAAAAEAAYAAAARAP//AAAFAAQAAAARAAAAAAAFAAUAAAARAAEAAAAFAAYAAAASAP7/AAAGAAMAAAASAP//AAAGAAQAAAASAAAAAAAGAAUAAAASAAEAAAAGAAYAAAATAP7/AAAHAAMAAAATAP//AAAHAAQAAAATAAAAAAAHAAUAAAATAAEAAAAGAAYAAAAUAP7/AAAAAAAAAAAUAP//AAAAAAEAAAAVAP7/AAABAAAAAAAVAP//AAABAAEAAAAaAP7/AAAAAAAAAAAaAP//AAAGAAEAAAAbAP7/AAABAAAAAAAbAP//AAAHAAEAAAAcAP7/AAAIAAMAAAAcAP//AAAIAAQAAAAcAAAAAAAIAAUAAAAcAAEAAAAJAAYA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AAD///b/AAABAAAAAAD///f/AAAFAAEAAAAAAPb/AAAAAAAAAAAAAPf/AAAGAAEAAAABAPb/AAABAAAAAAABAPf/AAAHAAEAAAACAPb/AAAAAAAAAAACAPf/AAAAAAEAAAADAPb/AAABAAAAAAADAPf/AAABAAEAAAAEAPb/AAAAAAAAAAAEAPf/AAACAAEAAAAFAPb/AAABAAAAAAAFAPf/AAADAAEAAAAGAPb/AAAAAAAAAAAGAPf/AAAEAAEAAAAHAPb/AAABAAAAAAAHAPf/AAAFAAEAAAAIAPb/AAAAAAAAAAAIAPf/AAAGAAEAAAAJAPb/AAABAAAAAAAJAPf/AAAHAAEAAAD2//T/AAAIAAMAAAD2//X/AAAIAAQAAAD2//b/AAAIAAUAAAD2//f/AAAJAAYAAAD3//T/AAAJAAMAAAD3//X/AAAJAAQAAAD3//b/AAAJAAUAAAD3//f/AAAJAAYAAAD4//X/AAAKAAQAAAD4//b/AAAKAAUAAAD4//f/AAAKAAYAAAD5//X/AAAJAAMAAAD5//b/AAALAAUAAAD5//f/AAALAAYAAAD0//T/AAAAAAAAAAD0//X/AAAGAAEAAAD1//T/AAABAAAAAAD1//X/AAAHAAEAAAD2/wAAAAAAAAAAAAD2/wEAAAAGAAEAAAD3/wAAAAABAAAAAAD3/wEAAAAHAAEAAAD0/wAAAAAAAAAAAAD0/wEAAAAEAAEAAAD1/wAAAAABAAAAAAD1/wEAAAAFAAEAAADy/wAAAAAAAAAAAADy/wEAAAACAAEAAADz/wAAAAABAAAAAADz/wEAAAADAAEAAADw//T/AAAAAAAAAADw//X/AAACAAEAAADx//T/AAABAAAAAADx//X/AAADAAEAAADy//T/AAAAAAAAAADy//X/AAAEAAEAAADz//T/AAABAAAAAADz//X/AAAFAAEAAADu//T/AAAAAAAAAADu//X/AAAAAAEAAADv//T/AAABAAAAAADv//X/AAABAAEAAADw/wAAAAAAAAAAAADw/wEAAAAAAAEAAADx/wAAAAABAAAAAADx/wEAAAABAAEAAAA=")
 tile_set = ExtResource("1_j1dxg")
+
+[node name="Chef" parent="." instance=ExtResource("2_awlc6")]
+position = Vector2(597, -211)
+chefTasks = Array[ExtResource("3_8db3s")]([ExtResource("4_of737"), ExtResource("5_nwtrb"), ExtResource("6_ura8y"), ExtResource("7_5hxm4")])
 
 [node name="AIBot" parent="." instance=ExtResource("2_ldng6")]
 position = Vector2(27, -32)
 AndroidBase = ExtResource("3_v44gh")
+
+[node name="VegetableStation" parent="." instance=ExtResource("5_yak5b")]
+z_index = -5
+texture_filter = 1
+position = Vector2(-32, -208)
+texture = ExtResource("7_2i6km")
+actions = Array[ExtResource("7_gebwm")]([ExtResource("13_k32pv"), ExtResource("14_s41as")])
+chefState = 4
+ladderLevel = 1
+
+[node name="Label" parent="VegetableStation" index="0"]
+text = "Vege
+"
+
+[node name="HitBox" parent="VegetableStation" index="1"]
+StatusEffects = {
+"Vegetable": 0.2
+}
+
+[node name="SeasoningStation" parent="." instance=ExtResource("5_yak5b")]
+z_index = -5
+texture_filter = 1
+position = Vector2(528, -208)
+texture = ExtResource("7_2i6km")
+actions = Array[ExtResource("7_gebwm")]([ExtResource("13_k32pv"), ExtResource("14_s41as")])
+chefState = 3
+ladderLevel = 2
+
+[node name="Label" parent="SeasoningStation" index="0"]
+text = "Seas
+"
+
+[node name="HitBox" parent="SeasoningStation" index="1"]
+StatusEffects = {
+"Seasoning": 0.2
+}
+
+[node name="MeatStation" parent="." instance=ExtResource("5_yak5b")]
+z_index = -5
+texture_filter = 1
+position = Vector2(-32, -48)
+texture = ExtResource("7_2i6km")
+actions = Array[ExtResource("7_gebwm")]([ExtResource("13_k32pv"), ExtResource("14_s41as")])
+chefState = 5
+
+[node name="Label" parent="MeatStation" index="0"]
+text = "Meat
+"
+
+[node name="HitBox" parent="MeatStation" index="1"]
+StatusEffects = {
+"Meat": ".2"
+}
+
+[node name="AlcoholStation" parent="." instance=ExtResource("5_yak5b")]
+z_index = -5
+texture_filter = 1
+position = Vector2(672, -16)
+texture = ExtResource("7_2i6km")
+actions = Array[ExtResource("7_gebwm")]([ExtResource("13_k32pv"), ExtResource("14_s41as")])
+chefState = 2
+
+[node name="Label" parent="AlcoholStation" index="0"]
+text = "Alcohol"
+
+[node name="HitBox" parent="AlcoholStation" index="1"]
+StatusEffects = {
+"Alcohol": 0.2
+}
+
+[node name="ChopStation" parent="." instance=ExtResource("5_yak5b")]
+z_index = -5
+position = Vector2(192, -32)
+texture = ExtResource("9_58whs")
+stationType = 3
+actions = Array[ExtResource("7_gebwm")]([ExtResource("8_3ga3q"), ExtResource("9_s0mr8")])
+chefState = 6
+
+[node name="Label" parent="ChopStation" index="0"]
+text = "Chop
+"
+
+[node name="HitBox" parent="ChopStation" index="1"]
+StatusEffects = {
+"Chop": 0.2
+}
+
+[node name="StoveStation" parent="." instance=ExtResource("5_yak5b")]
+z_index = -5
+position = Vector2(384, -88)
+texture = ExtResource("18_nfeac")
+stationType = 3
+actions = Array[ExtResource("7_gebwm")]([ExtResource("8_3ga3q"), ExtResource("9_s0mr8")])
+chefState = 7
+ladderLevel = 1
+
+[node name="Label" parent="StoveStation" index="0"]
+text = "Stove
+
+"
+
+[node name="HitBox" parent="StoveStation" index="1"]
+StatusEffects = {
+"Stove": 0.2
+}
+
+[node name="Ladder1" parent="." instance=ExtResource("19_hxdcd")]
+travelTime = 6.0
+
+[node name="Ladder2" parent="." instance=ExtResource("19_hxdcd")]
+position = Vector2(448, -11)
+ladderLevel = 2
+travelTime = 5.0
+
+[node name="BottomTrigger" parent="Ladder2" index="1"]
+position = Vector2(0, -69)
+StatusEffects = {
+"Ladder": 2,
+"Level": 2
+}
+
+[node name="TopTrigger" parent="Ladder2" index="2"]
+StatusEffects = {
+"Ladder": 2,
+"Level": 0
+}
+
+[editable path="Chef"]
+[editable path="VegetableStation"]
+[editable path="SeasoningStation"]
+[editable path="MeatStation"]
+[editable path="AlcoholStation"]
+[editable path="ChopStation"]
+[editable path="StoveStation"]
+[editable path="Ladder1"]
+[editable path="Ladder2"]

@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=3 uid="uid://dli4xnwutswyt"]
+
+[ext_resource type="Script" path="res://Scripts/System/Ladder.gd" id="1_ac6ks"]
+[ext_resource type="Texture2D" uid="uid://cfgdbyrftpx5e" path="res://Sprites/TempStairs.png" id="2_osrfk"]
+[ext_resource type="Script" path="res://Scripts/System/Hitbox/TriggerShape.cs" id="3_gscsd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7ustt"]
+
+[node name="Ladder" type="Node2D"]
+position = Vector2(80, -11)
+script = ExtResource("1_ac6ks")
+ladderLevel = 1
+travelTime = 3.0
+
+[node name="Sprite" type="Sprite2D" parent="."]
+z_index = -5
+position = Vector2(0, -50)
+scale = Vector2(1, 15)
+texture = ExtResource("2_osrfk")
+
+[node name="BottomTrigger" type="Area2D" parent="."]
+position = Vector2(0, -37)
+script = ExtResource("3_gscsd")
+StatusEffects = {
+"Ladder": 1,
+"Level": 1
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomTrigger"]
+position = Vector2(0, 36)
+scale = Vector2(0.2, 1)
+shape = SubResource("RectangleShape2D_7ustt")
+
+[node name="TopTrigger" type="Area2D" parent="."]
+position = Vector2(0, -202)
+script = ExtResource("3_gscsd")
+StatusEffects = {
+"Ladder": 1,
+"Level": 0
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TopTrigger"]
+position = Vector2(0, 36)
+scale = Vector2(0.2, 1)
+shape = SubResource("RectangleShape2D_7ustt")

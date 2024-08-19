@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dwi38s76ius08"
-path="res://.godot/imported/Chef.png-999f810c2640264bb00b95b82a4cf711.ctex"
+uid="uid://dgpjg2k3bv777"
+path="res://.godot/imported/Carrot.png-21af8d4c021aec569d86848f30db4d3d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Chef.png"
-dest_files=["res://.godot/imported/Chef.png-999f810c2640264bb00b95b82a4cf711.ctex"]
+source_file="res://Sprites/Food/Carrot.png"
+dest_files=["res://.godot/imported/Carrot.png-21af8d4c021aec569d86848f30db4d3d.ctex"]
 
 [params]
 

@@ -3,37 +3,37 @@ using Godot.Collections;
 
 [GlobalClass]
 public partial class AndroidLegs : AndroidPiece {
-    [Export]
-    public Texture2D TurnIcon, StopIcon;
-    
-    float inputCache = -1f;
+	[Export]
+	public Texture2D TurnIcon, StopIcon;
+	
+	float inputCache = -1f;
 
-    public override Array<Array> GetOptions => new Array<Array> {
-        new Array {
-            TurnIcon,
-            Callable.From<Node>(Turn)
-        },
-        new Array {
-            StopIcon,
-            Callable.From<Node>(Stop)
-        }
-    };
+	public override Array<Array> GetOptions => new Array<Array> {
+		new Array {
+			TurnIcon,
+			Callable.From<Node>(Turn)
+		},
+		new Array {
+			StopIcon,
+			Callable.From<Node>(Stop)
+		}
+	};
 
-    void Turn(Node context) {
-        if (context is AiBotBase character && character.IsOnFloor()) {
-            character.InputDirection *= -1f;
-        }
-    }
-    
-    void Stop(Node context) {
-        if (context is AiBotBase character && character.IsOnFloor()) {
-            if (character.InputDirection != 0f) {
-                inputCache = character.InputDirection;
-                character.InputDirection = 0f;
-                return;
-            }
+	void Turn(Node context) {
+		if (context is AiBotBase character && character.IsOnFloor()) {
+			character.InputDirection *= -1f;
+		}
+	}
+	
+	void Stop(Node context) {
+		if (context is AiBotBase character && character.IsOnFloor()) {
+			if (character.InputDirection != 0f) {
+				inputCache = character.InputDirection;
+				character.InputDirection = 0f;
+				return;
+			}
 
-            character.InputDirection = inputCache;
-        } 
-    }
+			character.InputDirection = inputCache;
+		} 
+	}
 }
