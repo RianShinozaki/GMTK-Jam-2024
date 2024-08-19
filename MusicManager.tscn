@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://bhcs8kumsn1ob"]
+
+[ext_resource type="AudioStream" uid="uid://s120rtjo3fnd" path="res://Resources/AudioStreams/Int_Base.tres" id="1_4lfwh"]
+[ext_resource type="Script" path="res://MusicController.cs" id="2_00meb"]
+[ext_resource type="AudioStream" uid="uid://bb2h75l6cq3ll" path="res://Resources/AudioStreams/Int_Melodies.tres" id="3_coatq"]
+[ext_resource type="AudioStream" uid="uid://dojkenrspero" path="res://Resources/AudioStreams/Int_Percussion.tres" id="4_ddqkl"]
+
+[node name="Base Audio" type="AudioStreamPlayer" node_paths=PackedStringArray("Players")]
+stream = ExtResource("1_4lfwh")
+bus = &"Music (Base)"
+playback_type = 1
+script = ExtResource("2_00meb")
+Players = [NodePath("."), NodePath("Melodies"), NodePath("Percussion")]
+MinVolume = -80.0
+MaxVolume = 6.0
+
+[node name="Melodies" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_coatq")
+autoplay = true
+bus = &"Music (Melody)"
+
+[node name="Percussion" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_ddqkl")
+bus = &"Music (Percussion)"

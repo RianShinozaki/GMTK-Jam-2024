@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://buxhcmsv8tfee"
+path="res://.godot/imported/Intro (Base).wav-552a02a1a7abafcc0f83a31ffe8ff48a.sample"
+
+[deps]
+
+source_file="res://Audio/Music/Intro/Intro (Base).wav"
+dest_files=["res://.godot/imported/Intro (Base).wav-552a02a1a7abafcc0f83a31ffe8ff48a.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=true
+edit/loop_mode=2
+edit/loop_begin=429317
+edit/loop_end=858634
+compress/mode=0

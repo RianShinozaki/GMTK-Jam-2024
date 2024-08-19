@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://lpnwjaavepop"
+path="res://.godot/imported/Intro (Melody).wav-009bd84af2f7d8e64292fea12383f63b.sample"
+
+[deps]
+
+source_file="res://Audio/Music/Intro/Intro (Melody).wav"
+dest_files=["res://.godot/imported/Intro (Melody).wav-009bd84af2f7d8e64292fea12383f63b.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=true
+edit/loop_mode=2
+edit/loop_begin=429317
+edit/loop_end=858634
+compress/mode=0
