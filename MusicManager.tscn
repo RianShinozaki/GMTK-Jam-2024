@@ -5,12 +5,11 @@
 [ext_resource type="AudioStream" uid="uid://bb2h75l6cq3ll" path="res://Resources/AudioStreams/Int_Melodies.tres" id="3_coatq"]
 [ext_resource type="AudioStream" uid="uid://dojkenrspero" path="res://Resources/AudioStreams/Int_Percussion.tres" id="4_ddqkl"]
 
-[node name="Base Audio" type="AudioStreamPlayer" node_paths=PackedStringArray("Players")]
+[node name="Base Audio" type="AudioStreamPlayer"]
 stream = ExtResource("1_4lfwh")
 bus = &"Music (Base)"
 playback_type = 1
 script = ExtResource("2_00meb")
-Players = [NodePath("."), NodePath("Melodies"), NodePath("Percussion")]
 MinVolume = -80.0
 MaxVolume = 6.0
 

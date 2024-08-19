@@ -9,8 +9,7 @@
 clip_count = 6
 clip_0/name = &"Intro (perc)"
 clip_0/stream = ExtResource("1_c1aly")
-clip_0/auto_advance = 1
-clip_0/next_clip = 1
+clip_0/auto_advance = 0
 clip_1/name = &"Loop A (perc)"
 clip_1/stream = ExtResource("2_xbpi3")
 clip_1/auto_advance = 0
