@@ -1,0 +1,88 @@
+[gd_resource type="AudioStreamInteractive" load_steps=7 format=3 uid="uid://bb2h75l6cq3ll"]
+
+[ext_resource type="AudioStream" uid="uid://lpnwjaavepop" path="res://Audio/Music/Intro/Intro (Melody).wav" id="1_cbqc7"]
+[ext_resource type="AudioStream" uid="uid://dvfmuegbqp6o5" path="res://Audio/Music/Loop (A)/Loop_A (Melody).wav" id="2_det6e"]
+[ext_resource type="AudioStream" uid="uid://f5krltsipuv" path="res://Audio/Music/Loop (B)/Loop_B (Melody).wav" id="3_rref2"]
+[ext_resource type="AudioStream" uid="uid://bgnaeteaf3rw5" path="res://Audio/Music/Chorus/Chorus (Melody).wav" id="4_jif3l"]
+[ext_resource type="AudioStream" uid="uid://bimsua4vxipll" path="res://Audio/Music/Workshop/Workshop (Melody).wav" id="5_nbp0t"]
+[ext_resource type="AudioStream" uid="uid://b5b51yvuuirm6" path="res://Audio/Music/Loop (B-2)/Loop_B2 (Melody).wav" id="6_erkab"]
+
+[resource]
+clip_count = 6
+clip_0/name = &"Intro (melody)"
+clip_0/stream = ExtResource("1_cbqc7")
+clip_0/auto_advance = 1
+clip_0/next_clip = 1
+clip_1/name = &"Loop A (melody)"
+clip_1/stream = ExtResource("2_det6e")
+clip_1/auto_advance = 0
+clip_2/name = &"Loop B (melody)"
+clip_2/stream = ExtResource("3_rref2")
+clip_2/auto_advance = 0
+clip_3/name = &"Chorus (melody)"
+clip_3/stream = ExtResource("4_jif3l")
+clip_3/auto_advance = 0
+clip_4/name = &"Workshop (melody)"
+clip_4/stream = ExtResource("5_nbp0t")
+clip_4/auto_advance = 0
+clip_5/name = &"Loop B 2 (melody)"
+clip_5/stream = ExtResource("6_erkab")
+clip_5/auto_advance = 0
+_transitions = {
+Vector2i(-1, -1): {
+"fade_beats": 1,
+"fade_mode": 3,
+"from_time": 2,
+"hold_previous": true,
+"to_time": 0
+},
+Vector2i(-1, 0): {
+"fade_beats": 1,
+"fade_mode": 3,
+"from_time": 2,
+"hold_previous": true,
+"to_time": 0
+},
+Vector2i(-1, 1): {
+"fade_beats": 1,
+"fade_mode": 3,
+"from_time": 2,
+"hold_previous": true,
+"to_time": 0
+},
+Vector2i(-1, 2): {
+"fade_beats": 1,
+"fade_mode": 3,
+"from_time": 2,
+"hold_previous": true,
+"to_time": 0
+},
+Vector2i(-1, 3): {
+"fade_beats": 1,
+"fade_mode": 3,
+"from_time": 2,
+"hold_previous": true,
+"to_time": 0
+},
+Vector2i(-1, 4): {
+"fade_beats": 1,
+"fade_mode": 3,
+"from_time": 2,
+"hold_previous": true,
+"to_time": 0
+},
+Vector2i(-1, 5): {
+"fade_beats": 1,
+"fade_mode": 3,
+"from_time": 2,
+"hold_previous": true,
+"to_time": 0
+},
+Vector2i(0, 1): {
+"fade_beats": 1,
+"fade_mode": 4,
+"from_time": 3,
+"hold_previous": true,
+"to_time": 1
+}
+}
