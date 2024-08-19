@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://j3ljw73w7nfr"
+path="res://.godot/imported/Workshop (Base).wav-283c5df85c3b3adab0028fdbaec0d631.sample"
+
+[deps]
+
+source_file="res://Audio/Music/Workshop/Workshop (Base).wav"
+dest_files=["res://.godot/imported/Workshop (Base).wav-283c5df85c3b3adab0028fdbaec0d631.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=true
+edit/loop_mode=2
+edit/loop_begin=429317
+edit/loop_end=858634
+compress/mode=0

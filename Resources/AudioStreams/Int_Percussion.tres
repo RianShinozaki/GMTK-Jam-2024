@@ -1,0 +1,79 @@
+[gd_resource type="AudioStreamInteractive" load_steps=5 format=3 uid="uid://dojkenrspero"]
+
+[ext_resource type="AudioStream" uid="uid://dsajjprkplq7i" path="res://Audio/Music/Intro/Intro (Perc).wav" id="1_c1aly"]
+[ext_resource type="AudioStream" uid="uid://dnvvnfhwsvqed" path="res://Audio/Music/Loop (A)/Loop_A (Perc).wav" id="2_xbpi3"]
+[ext_resource type="AudioStream" uid="uid://13nu8g7iny8s" path="res://Audio/Music/Workshop/Workshop (Perc).wav" id="3_tdngb"]
+[ext_resource type="AudioStream" uid="uid://djawxoftiy7sq" path="res://Audio/Silence.wav" id="3_u84ql"]
+
+[resource]
+clip_count = 6
+clip_0/name = &"Intro (perc)"
+clip_0/stream = ExtResource("1_c1aly")
+clip_0/auto_advance = 1
+clip_0/next_clip = 1
+clip_1/name = &"Loop A (perc)"
+clip_1/stream = ExtResource("2_xbpi3")
+clip_1/auto_advance = 0
+clip_2/name = &"Loop B (perc)"
+clip_2/stream = ExtResource("3_u84ql")
+clip_2/auto_advance = 0
+clip_3/name = &"Chorus (perc)"
+clip_3/stream = ExtResource("3_u84ql")
+clip_3/auto_advance = 0
+clip_4/name = &"Workshop (perc)"
+clip_4/stream = ExtResource("3_tdngb")
+clip_4/auto_advance = 0
+clip_5/name = &"Loop B2 (perc)"
+clip_5/stream = ExtResource("3_u84ql")
+clip_5/auto_advance = 0
+_transitions = {
+Vector2i(-1, -1): {
+"fade_beats": 1,
+"fade_mode": 3,
+"from_time": 2,
+"hold_previous": true,
+"to_time": 0
+},
+Vector2i(-1, 0): {
+"fade_beats": 1,
+"fade_mode": 3,
+"from_time": 2,
+"hold_previous": true,
+"to_time": 0
+},
+Vector2i(-1, 1): {
+"fade_beats": 1,
+"fade_mode": 3,
+"from_time": 2,
+"hold_previous": true,
+"to_time": 0
+},
+Vector2i(-1, 2): {
+"fade_beats": 1,
+"fade_mode": 3,
+"from_time": 2,
+"hold_previous": true,
+"to_time": 0
+},
+Vector2i(-1, 3): {
+"fade_beats": 1,
+"fade_mode": 3,
+"from_time": 2,
+"hold_previous": true,
+"to_time": 0
+},
+Vector2i(-1, 4): {
+"fade_beats": 1,
+"fade_mode": 3,
+"from_time": 2,
+"hold_previous": true,
+"to_time": 0
+},
+Vector2i(-1, 5): {
+"fade_beats": 1,
+"fade_mode": 3,
+"from_time": 2,
+"hold_previous": true,
+"to_time": 0
+}
+}

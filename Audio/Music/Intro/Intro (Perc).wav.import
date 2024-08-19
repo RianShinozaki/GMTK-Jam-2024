@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dsajjprkplq7i"
+path="res://.godot/imported/Intro (Perc).wav-008e944374293b57c5dee634b4cd41cd.sample"
+
+[deps]
+
+source_file="res://Audio/Music/Intro/Intro (Perc).wav"
+dest_files=["res://.godot/imported/Intro (Perc).wav-008e944374293b57c5dee634b4cd41cd.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=true
+edit/loop_mode=2
+edit/loop_begin=429317
+edit/loop_end=858634
+compress/mode=0
