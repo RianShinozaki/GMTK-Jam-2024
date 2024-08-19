@@ -1,26 +1,29 @@
-[gd_scene load_steps=22 format=4 uid="uid://b0awh3x2ks73o"]
+[gd_scene load_steps=25 format=4 uid="uid://b0awh3x2ks73o"]
 
 [ext_resource type="TileSet" uid="uid://ccdwy6d4c43ax" path="res://Resources/TileSets/Kitchen.tres" id="1_j1dxg"]
 [ext_resource type="PackedScene" uid="uid://coy3cod54bme0" path="res://Nodes/LevelPieces/Ai/Chef/chef.tscn" id="2_awlc6"]
 [ext_resource type="PackedScene" uid="uid://bbndvkgy5htbg" path="res://Nodes/LevelPieces/Ai/Androids/AIBotBase.tscn" id="2_ldng6"]
-[ext_resource type="Script" path="res://Scripts/Resources/Chef/ChefTasks.gd" id="3_8db3s"]
+[ext_resource type="Script" path="res://Scripts/Resources/Chef/ChefPhase.gd" id="3_ju2h2"]
 [ext_resource type="Resource" uid="uid://7m3qr4qc3sk4" path="res://Resources/Androids/BasicBody.tres" id="3_v44gh"]
-[ext_resource type="Resource" uid="uid://clybjbnuwu00l" path="res://Resources/ChefTasks/GetCarrot.tres" id="4_of737"]
-[ext_resource type="Resource" uid="uid://df8ya3rjipaxu" path="res://Resources/ChefTasks/ChopCarrot.tres" id="5_nwtrb"]
+[ext_resource type="Resource" uid="uid://d1cpy461v4qye" path="res://Resources/Chef/ChefPhases/FirstPhase.tres" id="4_qqey4"]
+[ext_resource type="Resource" uid="uid://bge5gkab2tcp1" path="res://Resources/Chef/ChefPhases/MiddlePhase.tres" id="5_d8esa"]
 [ext_resource type="PackedScene" uid="uid://ifmp6m75arhl" path="res://Nodes/LevelPieces/Locations/chef_station.tscn" id="5_yak5b"]
-[ext_resource type="Resource" uid="uid://bhlp3gm6g8nwc" path="res://Resources/ChefTasks/AddStove.tres" id="6_hyl1e"]
-[ext_resource type="Resource" uid="uid://bnyfwl7ga77yd" path="res://Resources/ChefTasks/GetOnion.tres" id="6_ura8y"]
+[ext_resource type="Resource" uid="uid://b8srsoc2wetgl" path="res://Resources/Chef/ChefPhases/FinalPhase.tres" id="6_48kib"]
 [ext_resource type="Texture2D" uid="uid://c8prpm85c8qf6" path="res://Sprites/MeatFridge.png" id="7_2i6km"]
-[ext_resource type="Resource" uid="uid://cgd63kem8vsg7" path="res://Resources/ChefTasks/ChopOnion.tres" id="7_5hxm4"]
 [ext_resource type="Script" path="res://Scripts/Resources/Chef/ChefStationActions.gd" id="7_gebwm"]
-[ext_resource type="Resource" uid="uid://bsh1iwwdp2xwj" path="res://Resources/ChefStationActions/ChopStationCarrot.tres" id="8_3ga3q"]
+[ext_resource type="Resource" uid="uid://bsh1iwwdp2xwj" path="res://Resources/Chef/ChefStationActions/ChopStationCarrot.tres" id="8_3ga3q"]
 [ext_resource type="Texture2D" uid="uid://dumpqcc7o2v5o" path="res://Sprites/CuttingBoard.png" id="9_58whs"]
-[ext_resource type="Resource" uid="uid://bgj6kc1njh4q0" path="res://Resources/ChefStationActions/ChopStationOnion.tres" id="9_s0mr8"]
-[ext_resource type="Resource" uid="uid://bvyq6vb1vcnsj" path="res://Resources/ChefStationActions/VegetableStationCarrot.tres" id="13_k32pv"]
-[ext_resource type="Resource" uid="uid://bgwuu5kw6dvlo" path="res://Resources/ChefStationActions/VegetableStationOnion.tres" id="14_s41as"]
+[ext_resource type="Resource" uid="uid://bgj6kc1njh4q0" path="res://Resources/Chef/ChefStationActions/ChopStationOnion.tres" id="9_s0mr8"]
+[ext_resource type="Resource" uid="uid://bvyq6vb1vcnsj" path="res://Resources/Chef/ChefStationActions/VegetableStationCarrot.tres" id="13_k32pv"]
+[ext_resource type="Resource" uid="uid://bgwuu5kw6dvlo" path="res://Resources/Chef/ChefStationActions/VegetableStationOnion.tres" id="14_s41as"]
+[ext_resource type="Resource" uid="uid://67rm2wqctag1" path="res://Resources/Chef/ChefStationActions/SeasoningStation.tres" id="16_1jq2f"]
+[ext_resource type="Resource" uid="uid://c3wsst57sdgl5" path="res://Resources/Chef/ChefStationActions/MeatStationMeat.tres" id="17_qyiwc"]
+[ext_resource type="Resource" uid="uid://brienpqw0pnps" path="res://Resources/Chef/ChefStationActions/MeatStationDumplings.tres" id="18_a4qtl"]
 [ext_resource type="Texture2D" uid="uid://pjxsgodyiqqi" path="res://Sprites/StoveTop.png" id="18_nfeac"]
-[ext_resource type="Resource" uid="uid://do8vupgeftv2s" path="res://Resources/ChefStationActions/StoveStationAddIngrediant.tres" id="19_g3ldx"]
+[ext_resource type="Resource" uid="uid://do8vupgeftv2s" path="res://Resources/Chef/ChefStationActions/StoveStationAddIngrediant.tres" id="19_g3ldx"]
 [ext_resource type="PackedScene" uid="uid://dli4xnwutswyt" path="res://Nodes/LevelPieces/Locations/ladder.tscn" id="19_hxdcd"]
+[ext_resource type="Resource" uid="uid://xwph84hdtcjb" path="res://Resources/Chef/ChefStationActions/AlcoholStation.tres" id="19_lm4y6"]
+[ext_resource type="Script" path="res://Scripts/System/ChefScripts/ChefUI.gd" id="24_drcbe"]
 
 [node name="TestLevel" type="Node2D"]
 texture_filter = 1
@@ -34,10 +37,11 @@ zoom = Vector2(0.5, 0.5)
 tile_map_data = PackedByteArray("AAD4/wEAAAAAAAEAAAD5/wEAAAABAAEAAAD6/wAAAAAAAAAAAAD6/wEAAAACAAEAAAD7/wAAAAABAAAAAAD7/wEAAAADAAEAAAD8/wAAAAAAAAAAAAD8/wEAAAAEAAEAAAD9/wAAAAABAAAAAAD9/wEAAAAFAAEAAAD+/wAAAAAAAAAAAAD+/wEAAAAGAAEAAAD//wAAAAABAAAAAAD//wEAAAAHAAEAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAEAAAABAAAAAAABAAAAAAABAAEAAAABAAEAAAACAAAAAAAAAAAAAAACAAEAAAACAAEAAAADAAAAAAABAAAAAAADAAEAAAADAAEAAAAEAAAAAAAAAAAAAAAEAAEAAAAEAAEAAAAFAAAAAAABAAAAAAAFAAEAAAAFAAEAAAD6/wIAAAACAAAAAAD7/wIAAAACAAAAAAD9/wIAAAACAAAAAAD+/wIAAAACAAAAAAD//wIAAAACAAAAAAAAAAIAAAACAAAAAAABAAIAAAACAAAAAAACAAIAAAACAAAAAAADAAIAAAACAAAAAAD4/wAAAAAAAAAAAAD5/wAAAAABAAAAAAAGAAAAAAAAAAAAAAAGAAEAAAAGAAEAAAAHAAAAAAABAAAAAAAHAAEAAAAHAAEAAAAIAAAAAAAAAAAAAAAIAAEAAAAAAAEAAAAJAAAAAAABAAAAAAAJAAEAAAABAAEAAAAOAAAAAAAAAAAAAAAOAAEAAAAGAAEAAAAPAAAAAAABAAAAAAAPAAEAAAAHAAEAAAAQAP//AAAEAAQAAAAQAAAAAAAGAAQAAAAQAAEAAAAEAAYAAAARAP//AAAFAAQAAAARAAAAAAAFAAUAAAARAAEAAAAFAAYAAAASAP7/AAAGAAMAAAASAP//AAAGAAQAAAASAAAAAAAGAAUAAAASAAEAAAAGAAYAAAATAP7/AAAHAAMAAAATAP//AAAHAAQAAAATAAAAAAAHAAUAAAATAAEAAAAGAAYAAAAUAP7/AAAAAAAAAAAUAP//AAAAAAEAAAAVAP7/AAABAAAAAAAVAP//AAABAAEAAAAaAP7/AAAAAAAAAAAaAP//AAAGAAEAAAAbAP7/AAABAAAAAAAbAP//AAAHAAEAAAAcAP7/AAAIAAMAAAAcAP//AAAIAAQAAAAcAAAAAAAIAAUAAAAcAAEAAAAJAAYA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AAD///b/AAABAAAAAAD///f/AAAFAAEAAAAAAPb/AAAAAAAAAAAAAPf/AAAGAAEAAAABAPb/AAABAAAAAAABAPf/AAAHAAEAAAACAPb/AAAAAAAAAAACAPf/AAAAAAEAAAADAPb/AAABAAAAAAADAPf/AAABAAEAAAAEAPb/AAAAAAAAAAAEAPf/AAACAAEAAAAFAPb/AAABAAAAAAAFAPf/AAADAAEAAAAGAPb/AAAAAAAAAAAGAPf/AAAEAAEAAAAHAPb/AAABAAAAAAAHAPf/AAAFAAEAAAAIAPb/AAAAAAAAAAAIAPf/AAAGAAEAAAAJAPb/AAABAAAAAAAJAPf/AAAHAAEAAAD2//T/AAAIAAMAAAD2//X/AAAIAAQAAAD2//b/AAAIAAUAAAD2//f/AAAJAAYAAAD3//T/AAAJAAMAAAD3//X/AAAJAAQAAAD3//b/AAAJAAUAAAD3//f/AAAJAAYAAAD4//X/AAAKAAQAAAD4//b/AAAKAAUAAAD4//f/AAAKAAYAAAD5//X/AAAJAAMAAAD5//b/AAALAAUAAAD5//f/AAALAAYAAAD0//T/AAAAAAAAAAD0//X/AAAGAAEAAAD1//T/AAABAAAAAAD1//X/AAAHAAEAAAD2/wAAAAAAAAAAAAD2/wEAAAAGAAEAAAD3/wAAAAABAAAAAAD3/wEAAAAHAAEAAAD0/wAAAAAAAAAAAAD0/wEAAAAEAAEAAAD1/wAAAAABAAAAAAD1/wEAAAAFAAEAAADy/wAAAAAAAAAAAADy/wEAAAACAAEAAADz/wAAAAABAAAAAADz/wEAAAADAAEAAADw//T/AAAAAAAAAADw//X/AAACAAEAAADx//T/AAABAAAAAADx//X/AAADAAEAAADy//T/AAAAAAAAAADy//X/AAAEAAEAAADz//T/AAABAAAAAADz//X/AAAFAAEAAADu//T/AAAAAAAAAADu//X/AAAAAAEAAADv//T/AAABAAAAAADv//X/AAABAAEAAADw/wAAAAAAAAAAAADw/wEAAAAAAAEAAADx/wAAAAABAAAAAADx/wEAAAABAAEAAAA=")
 tile_set = ExtResource("1_j1dxg")
 
-[node name="Chef" parent="." instance=ExtResource("2_awlc6")]
+[node name="Chef" parent="." node_paths=PackedStringArray("ui") instance=ExtResource("2_awlc6")]
 position = Vector2(597, -211)
-chefTasks = Array[ExtResource("3_8db3s")]([ExtResource("4_of737"), ExtResource("5_nwtrb"), ExtResource("6_hyl1e"), ExtResource("6_ura8y"), ExtResource("7_5hxm4"), ExtResource("6_hyl1e")])
-phaseLengths = Array[float]([180.0, 240.0, 240.0])
+chefTasks = Array[ExtResource("3_ju2h2")]([ExtResource("4_qqey4"), ExtResource("5_d8esa"), ExtResource("6_48kib")])
+currentChefSpeed = 500.0
+ui = NodePath("../ChefUI")
 
 [node name="AIBot" parent="." instance=ExtResource("2_ldng6")]
 position = Vector2(27, -32)
@@ -66,7 +70,7 @@ z_index = -5
 texture_filter = 1
 position = Vector2(528, -208)
 texture = ExtResource("7_2i6km")
-actions = Array[ExtResource("7_gebwm")]([ExtResource("13_k32pv"), ExtResource("14_s41as")])
+actions = Array[ExtResource("7_gebwm")]([ExtResource("16_1jq2f")])
 chefState = 3
 ladderLevel = 2
 
@@ -84,7 +88,7 @@ z_index = -5
 texture_filter = 1
 position = Vector2(-32, -48)
 texture = ExtResource("7_2i6km")
-actions = Array[ExtResource("7_gebwm")]([ExtResource("13_k32pv"), ExtResource("14_s41as")])
+actions = Array[ExtResource("7_gebwm")]([ExtResource("17_qyiwc"), ExtResource("18_a4qtl")])
 chefState = 5
 
 [node name="Label" parent="MeatStation" index="0"]
@@ -93,7 +97,7 @@ text = "Meat
 
 [node name="HitBox" parent="MeatStation" index="1"]
 StatusEffects = {
-"Meat": ".2"
+"Meat": 0.2
 }
 
 [node name="AlcoholStation" parent="." instance=ExtResource("5_yak5b")]
@@ -101,7 +105,7 @@ z_index = -5
 texture_filter = 1
 position = Vector2(672, -16)
 texture = ExtResource("7_2i6km")
-actions = Array[ExtResource("7_gebwm")]([ExtResource("13_k32pv"), ExtResource("14_s41as")])
+actions = Array[ExtResource("7_gebwm")]([ExtResource("19_lm4y6")])
 chefState = 2
 
 [node name="Label" parent="AlcoholStation" index="0"]
@@ -167,6 +171,58 @@ StatusEffects = {
 "Ladder": 2,
 "Level": 0
 }
+
+[node name="ChefUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("24_drcbe")
+
+[node name="NormalLabel" type="Control" parent="ChefUI"]
+anchors_preset = 0
+offset_left = 131.0
+offset_top = -360.0
+offset_right = 171.0
+offset_bottom = -320.0
+
+[node name="PhaseLabel" type="Label" parent="ChefUI/NormalLabel"]
+offset_right = 60.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "Phase 1"
+
+[node name="PhaseDescriptionLabel" type="Label" parent="ChefUI/NormalLabel"]
+offset_top = 20.0
+offset_right = 133.0
+offset_bottom = 43.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "Sauté Vegetables
+"
+
+[node name="BigLabel" type="Control" parent="ChefUI"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 0
+offset_left = 72.0
+offset_top = -334.0
+offset_right = 112.0
+offset_bottom = -294.0
+
+[node name="PhaseLabel" type="Label" parent="ChefUI/BigLabel"]
+offset_right = 60.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 40
+text = "Phase 1"
+
+[node name="PhaseDescriptionLabel" type="Label" parent="ChefUI/BigLabel"]
+offset_top = 40.0
+offset_right = 331.0
+offset_bottom = 95.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 40
+text = "Sauté Vegetables
+"
 
 [editable path="Chef"]
 [editable path="VegetableStation"]
