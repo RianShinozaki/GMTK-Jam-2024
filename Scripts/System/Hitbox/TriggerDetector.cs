@@ -37,7 +37,7 @@ public partial class TriggerDetector : Area2D
 
 		TriggerShape hitBox = (TriggerShape)other;
 
-		foreach(KeyValuePair<Variant, Variant> key in hitBox.Data) {
+		foreach(KeyValuePair<Variant, Variant> key in hitBox.StatusEffects) {
 			if (key.Value.VariantType == Variant.Type.Nil) {
 				continue;
 			}
@@ -57,8 +57,8 @@ public partial class TriggerDetector : Area2D
 		}
 
 		//Makes the source default to the one with the most knockback
-		if (hitBox.Data.ContainsKey("Knockback")) {
-			float knockBack = hitBox.Data["Knockback"].As<float>();
+		if (hitBox.StatusEffects.ContainsKey("Knockback")) {
+			float knockBack = hitBox.StatusEffects["Knockback"].As<float>();
 			float cache = statCache["Knockback"].As<float>();
 
 			if (knockBack > cache) {

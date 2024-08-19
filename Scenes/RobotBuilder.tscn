@@ -1,6 +1,5 @@
-[gd_scene load_steps=27 format=4 uid="uid://dqmcaoa65hvgp"]
+[gd_scene load_steps=26 format=4 uid="uid://dqmcaoa65hvgp"]
 
-[ext_resource type="Texture2D" uid="uid://c6ib03q4xvs1b" path="res://Tileset.png" id="1_bhade"]
 [ext_resource type="Texture2D" uid="uid://blmil85c7icbn" path="res://Sprites/UI/Builder/Blueprint.png" id="1_i1xwo"]
 [ext_resource type="Script" path="res://Scripts/UI/RobotBuilder.cs" id="1_x4wbw"]
 [ext_resource type="Script" path="res://Scripts/UI/PartsGroup.cs" id="2_rqam0"]
@@ -26,7 +25,6 @@
 [ext_resource type="Resource" uid="uid://u3o7gwa0ekdq" path="res://Resources/Android Pieces/Legs/PropellerLegs.tres" id="15_utwm5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y02id"]
-texture = ExtResource("1_bhade")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:0/0 = 0
