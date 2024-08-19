@@ -11,8 +11,7 @@
 clip_count = 6
 clip_0/name = &"Intro (melody)"
 clip_0/stream = ExtResource("1_cbqc7")
-clip_0/auto_advance = 1
-clip_0/next_clip = 1
+clip_0/auto_advance = 0
 clip_1/name = &"Loop A (melody)"
 clip_1/stream = ExtResource("2_det6e")
 clip_1/auto_advance = 0
