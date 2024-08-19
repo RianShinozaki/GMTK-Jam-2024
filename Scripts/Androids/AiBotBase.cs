@@ -12,13 +12,19 @@ public partial class AiBotBase : CharacterBody2D {
 	[Export]
 	QuickButtonContextMenu HeadContextMenu;
 	[Export]
-	QuickButtonContextMenu TorsoContextMenu;
+	QuickButtonContextMenu ArmsContextMenu;
 	[Export]
 	QuickButtonContextMenu LegsContextMenu;
 
 	[ExportGroup("Art")]
 	[Export]
 	Node2D Sprite;
+	[Export]
+	AnimatedSprite2D HeadSprite;
+	[Export]
+	AnimatedSprite2D LegsSprite;
+	[Export]
+	AnimatedSprite2D ArmsSprite;
 
 	double systemTime;
 	double lastTurnAround;
@@ -27,7 +33,7 @@ public partial class AiBotBase : CharacterBody2D {
         base._Ready();
 
 		Array<Array> headData = AndroidBase.Head.GetOptions;
-		Array<Array> torsoData = AndroidBase.Torso.GetOptions;
+		Array<Array> armsData = AndroidBase.Arms.GetOptions;
 		Array<Array> legsData = AndroidBase.Legs.GetOptions;
 
 		//Push all limb options to the menus on the limbs
@@ -35,8 +41,8 @@ public partial class AiBotBase : CharacterBody2D {
 			HeadContextMenu.AddOption(headData[i][0].As<Texture2D>(), "HeadOption"+i, headData[i][1].As<Callable>());
 		}
 
-		for (int i = 0; i < torsoData.Count; i++) {
-			TorsoContextMenu.AddOption(torsoData[i][0].As<Texture2D>(), "TorsoOption"+i, torsoData[i][1].As<Callable>());
+		for (int i = 0; i < armsData.Count; i++) {
+			ArmsContextMenu.AddOption(armsData[i][0].As<Texture2D>(), "ArmsOption"+i, armsData[i][1].As<Callable>());
 		}
 
 		for (int i = 0; i < legsData.Count; i++) {
@@ -44,8 +50,12 @@ public partial class AiBotBase : CharacterBody2D {
 		}
 
 		HeadContextMenu.OnOptionClicked += OnContextOptionClicked;
-		TorsoContextMenu.OnOptionClicked += OnContextOptionClicked;
+		ArmsContextMenu.OnOptionClicked += OnContextOptionClicked;
 		LegsContextMenu.OnOptionClicked += OnContextOptionClicked;
+
+		HeadSprite.SpriteFrames = AndroidBase.Head.SpriteTexture;
+		ArmsSprite.SpriteFrames = AndroidBase.Arms.SpriteTexture;
+		LegsSprite.SpriteFrames = AndroidBase.Legs.SpriteTexture;
     }
 
     public override void _Process(double delta) {
@@ -89,7 +99,7 @@ public partial class AiBotBase : CharacterBody2D {
 	//Hide menu options when clicked
 	void OnContextOptionClicked() {
 		HeadContextMenu.HideOptions();
-		TorsoContextMenu.HideOptions();
+		ArmsContextMenu.HideOptions();
 		LegsContextMenu.HideOptions();
 	}
 }

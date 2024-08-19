@@ -8,7 +8,7 @@ public partial class Android : Resource {
 
     public float GetStrength() {
         //Get Average of strengths
-        float str = Head.Strength + Torso.Strength + Legs.Strength;
+        float str = Head.Strength + Arms.Strength + Legs.Strength;
         str /= 3f;
 
         //Do magic math I figured out
@@ -18,13 +18,13 @@ public partial class Android : Resource {
         return str;
     }
 
-    public float GetWeightSpeedReduction() => Head.WeightSpeedReductionAmount * Torso.WeightSpeedReductionAmount * Legs.WeightSpeedReductionAmount;
+    public float GetWeightSpeedReduction() => Head.WeightSpeedReductionAmount * Arms.WeightSpeedReductionAmount * Legs.WeightSpeedReductionAmount;
 
     [Export]
     public AndroidHead Head;
 
     [Export]
-    public AndroidTorso Torso;
+    public AndroidTorso Arms;
 
     [Export]
     public AndroidLegs Legs;

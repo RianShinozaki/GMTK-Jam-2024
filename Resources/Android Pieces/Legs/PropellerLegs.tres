@@ -1,0 +1,43 @@
+[gd_resource type="Resource" script_class="AndroidLegs" load_steps=9 format=3 uid="uid://u3o7gwa0ekdq"]
+
+[ext_resource type="Texture2D" uid="uid://bgg17gnjgtwrw" path="res://Sprites/Robot/Legs-Propeller.png" id="1_w8h43"]
+[ext_resource type="Texture2D" uid="uid://6ne7k37eapvy" path="res://Sprites/UI/Options/Options2.png" id="2_5gjjb"]
+[ext_resource type="Texture2D" uid="uid://d2d226x8nh80h" path="res://Sprites/UI/Options/Options3.png" id="3_0xdyy"]
+[ext_resource type="Script" path="res://Scripts/Resources/Androids/Legs/AndroidLegs.cs" id="4_js6sq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k4rf8"]
+atlas = ExtResource("1_w8h43")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_keikc"]
+atlas = ExtResource("1_w8h43")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_60vhd"]
+atlas = ExtResource("1_w8h43")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_p3hvt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k4rf8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_keikc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_60vhd")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("4_js6sq")
+TurnIcon = ExtResource("3_0xdyy")
+StopIcon = ExtResource("2_5gjjb")
+SpriteTexture = SubResource("SpriteFrames_p3hvt")
+WeightSpeedReductionAmount = 1.0
+Strength = 0.5

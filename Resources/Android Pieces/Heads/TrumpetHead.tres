@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="AndroidHead" load_steps=5 format=3 uid="uid://bmeq0p3ejf3q6"]
+
+[ext_resource type="Texture2D" uid="uid://swgjw7ld35vg" path="res://Sprites/Robot/Head-Trumpet.png" id="1_72i24"]
+[ext_resource type="Script" path="res://Scripts/Resources/Androids/Heads/AndroidHead.cs" id="2_xl3oq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jl51m"]
+atlas = ExtResource("1_72i24")
+region = Rect2(0, 0, 26, 15)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ei0qj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jl51m")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("2_xl3oq")
+SpriteTexture = SubResource("SpriteFrames_ei0qj")
+WeightSpeedReductionAmount = 1.0
+Strength = 0.5

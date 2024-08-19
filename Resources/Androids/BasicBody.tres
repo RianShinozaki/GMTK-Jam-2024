@@ -9,5 +9,5 @@
 script = ExtResource("1_oymob")
 BaseMovementSpeed = 16.0
 Head = ExtResource("1_jrx6o")
-Torso = ExtResource("3_vtgcq")
+Arms = ExtResource("3_vtgcq")
 Legs = ExtResource("2_4qcft")
