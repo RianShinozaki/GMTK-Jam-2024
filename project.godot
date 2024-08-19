@@ -19,6 +19,8 @@ config/icon="res://icon.svg"
 
 MouseTracker="*res://Nodes/LevelPieces/AutoLoad/MouseTracker.tscn"
 RobotStorage="*res://Nodes/System/RobotStorage.tscn"
+ChefManager="*res://Scripts/System/ChefScripts/ChefManager.gd"
+CameraEffects="*res://Scripts/System/CameraEffects.gd"
 
 [display]
 

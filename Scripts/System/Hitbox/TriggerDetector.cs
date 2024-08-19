@@ -19,8 +19,8 @@ public partial class TriggerDetector : Area2D
 		OnDamageRecieved += OnDamage;
 	}
 
-    public override void _Process(double delta) {
-        base._Process(delta);
+	public override void _Process(double delta) {
+		base._Process(delta);
 
 		if (statCache.Count <= 0) {
 			return;
@@ -28,7 +28,7 @@ public partial class TriggerDetector : Area2D
 
 		//Calling deferred because collisions may happen both before and after this
 		EmitSignal(SignalName.OnDamageRecieved, statCache.Duplicate());
-    }
+	}
 
     void Entered(Area2D other) {
 		if (other is not TriggerShape) {

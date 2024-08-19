@@ -29,8 +29,8 @@ public partial class AiBotBase : CharacterBody2D {
 	double systemTime;
 	double lastTurnAround;
 
-    public override void _Ready() {
-        base._Ready();
+	public override void _Ready() {
+		base._Ready();
 
 		Array<Array> headData = AndroidBase.Head.GetOptions;
 		Array<Array> armsData = AndroidBase.Arms.GetOptions;
@@ -58,15 +58,15 @@ public partial class AiBotBase : CharacterBody2D {
 		LegsSprite.SpriteFrames = AndroidBase.Legs.SpriteTexture;
     }
 
-    public override void _Process(double delta) {
-        base._Process(delta);
+	public override void _Process(double delta) {
+		base._Process(delta);
 		systemTime += delta;
 
 		//Sure why not
 		if (InputDirection != 0f) {
 			Sprite.Scale = new Vector2(Mathf.Sign(InputDirection), 1f);
 		}
-    }
+	}
 
 
 	//Movement and Physics

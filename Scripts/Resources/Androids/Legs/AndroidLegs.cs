@@ -3,21 +3,21 @@ using Godot.Collections;
 
 [GlobalClass]
 public partial class AndroidLegs : AndroidPiece {
-    [Export]
-    public Texture2D TurnIcon, StopIcon;
-    
-    float inputCache = -1f;
+	[Export]
+	public Texture2D TurnIcon, StopIcon;
+	
+	float inputCache = -1f;
 
-    public override Array<Array> GetOptions => new Array<Array> {
-        new Array {
-            TurnIcon,
-            Callable.From<Node>(Turn)
-        },
-        new Array {
-            StopIcon,
-            Callable.From<Node>(Stop)
-        }
-    };
+	public override Array<Array> GetOptions => new Array<Array> {
+		new Array {
+			TurnIcon,
+			Callable.From<Node>(Turn)
+		},
+		new Array {
+			StopIcon,
+			Callable.From<Node>(Stop)
+		}
+	};
 
     void Turn(Node context) {
         if (context is AiBotBase character && character.IsOnFloor()) {

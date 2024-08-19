@@ -1,0 +1,131 @@
+[gd_scene load_steps=11 format=3 uid="uid://coy3cod54bme0"]
+
+[ext_resource type="Script" path="res://Scripts/System/ChefScripts/Chef.gd" id="1_ytnf7"]
+[ext_resource type="Texture2D" uid="uid://dwi38s76ius08" path="res://Sprites/Chef.png" id="2_cw4r2"]
+[ext_resource type="Script" path="res://Scripts/System/Hitbox/TriggerDetector.cs" id="3_idned"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_68ak1"]
+size = Vector2(9, 63)
+
+[sub_resource type="Animation" id="Animation_ffr8u"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_5jx4r"]
+resource_name = "climb"
+length = 0.333342
+loop_mode = 1
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.166667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [5, 6]
+}
+
+[sub_resource type="Animation" id="Animation_m2o0m"]
+resource_name = "idle"
+length = 0.0333367
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_8mpk0"]
+resource_name = "walk"
+length = 0.666675
+loop_mode = 1
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0833333, 0.25, 0.416667, 0.583333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [1, 2, 3, 4]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_v71c7"]
+_data = {
+"RESET": SubResource("Animation_ffr8u"),
+"climb": SubResource("Animation_5jx4r"),
+"idle": SubResource("Animation_m2o0m"),
+"walk": SubResource("Animation_8mpk0")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5tqmc"]
+size = Vector2(20, 74)
+
+[node name="Chef" type="CharacterBody2D"]
+position = Vector2(62, -88)
+script = ExtResource("1_ytnf7")
+chefItemSprites = {
+"Carrot": "res://Sprites/Food/Carrot.png",
+"ChopCarrot": "res://Sprites/Food/CarrotSliced.png",
+"ChopOnion": "res://Sprites/Food/OnionSliced.png",
+"Onion": "res://Sprites/Food/Onion.png",
+"Pot": "res://Sprites/Food/Pot.png"
+}
+currentChefSpeed = 50.0
+
+[node name="ChefCollision" type="CollisionShape2D" parent="."]
+position = Vector2(0, 16)
+shape = SubResource("RectangleShape2D_68ak1")
+
+[node name="CharacterSprite" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_cw4r2")
+hframes = 9
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CharacterSprite"]
+libraries = {
+"": SubResource("AnimationLibrary_v71c7")
+}
+
+[node name="WantedAction" type="Sprite2D" parent="."]
+
+[node name="HurtBox" type="Area2D" parent="."]
+script = ExtResource("3_idned")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(0, 1.6283)
+shape = SubResource("RectangleShape2D_5tqmc")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "I want "
+
+[node name="HeldItem" type="Sprite2D" parent="."]
+z_index = 1
+
+[connection signal="OnDamageRecieved" from="HurtBox" to="." method="_on_hurt_box_on_damage_recieved"]

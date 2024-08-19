@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ChefPhase" load_steps=6 format=3 uid="uid://b8srsoc2wetgl"]
+
+[ext_resource type="Script" path="res://Scripts/Resources/Chef/ChefPhase.gd" id="1_xs77f"]
+[ext_resource type="Script" path="res://Scripts/Resources/Chef/ChefTasks.gd" id="2_wfkg8"]
+[ext_resource type="Resource" uid="uid://c3gqb0dqd483n" path="res://Resources/Chef/ChefTasks/GetDumplings.tres" id="3_faa1g"]
+[ext_resource type="Resource" uid="uid://bhlp3gm6g8nwc" path="res://Resources/Chef/ChefTasks/AddStove.tres" id="4_0fuf8"]
+[ext_resource type="Resource" uid="uid://c4hcr3sigda6w" path="res://Resources/Chef/ChefTasks/GetSeasoning.tres" id="5_w35c7"]
+
+[resource]
+script = ExtResource("1_xs77f")
+phaseName = "Final Phase"
+phaseDescription = "Dumplings and Seasoning"
+phaseLength = 10.0
+taskList = Array[ExtResource("2_wfkg8")]([ExtResource("3_faa1g"), ExtResource("4_0fuf8"), ExtResource("5_w35c7"), ExtResource("4_0fuf8")])

@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="ChefTask" load_steps=2 format=3 uid="uid://cgd63kem8vsg7"]
+
+[ext_resource type="Script" path="res://Scripts/Resources/Chef/ChefTasks.gd" id="1_omk3d"]
+
+[resource]
+script = ExtResource("1_omk3d")
+itemName = "Onion"
+station = 6
