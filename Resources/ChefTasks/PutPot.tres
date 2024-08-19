@@ -1,8 +1,0 @@
-[gd_resource type="Resource" script_class="ChefTask" load_steps=2 format=3 uid="uid://bhlp3gm6g8nwc"]
-
-[ext_resource type="Script" path="res://Scripts/Resources/Chef/ChefTasks.gd" id="1_nicd0"]
-
-[resource]
-script = ExtResource("1_nicd0")
-itemName = "AddPot"
-station = 7

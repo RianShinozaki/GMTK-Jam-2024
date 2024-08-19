@@ -12,4 +12,5 @@ func _ready():
 func _request_climb_ladder(chef : Chef, level : int):
 	chef._climb_ladder(level,
 	topTrigger.global_position if level == 0 else bottomTrigger.global_position,
-	bottomTrigger.global_position if level == 0 else topTrigger.global_position, travelTime)
+	bottomTrigger.global_position if level == 0 else topTrigger.global_position, 
+	travelTime * (.5 if level == 0 else 1.))

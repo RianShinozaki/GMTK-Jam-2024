@@ -40,6 +40,7 @@ var isActive : bool
 
 var phase : int
 var phaseTimer : float
+@export var phaseLengths : Array[float]
 
 var chefProgress : int
 var findTaskString : String
@@ -107,10 +108,19 @@ func _chef_status_state_tree():
 				holdingItemSprite.visible = false
 				chefAnimation.play("idle")
 		ChefStatus.ActiveTask:
-			currentHeldItem = goalObject
+			if goalObject == "AddPot":
+				potInventory.append(currentHeldItem)
+				currentHeldItem = ""
+				if phaseTimer <= 0:
+					phaseTimer = phaseLengths[phase]
+			else:
+				currentHeldItem = goalObject
 			
 			holdingItemSprite.visible = true
-			holdingItemSprite.texture = load(chefItemSprites[currentHeldItem])
+			if chefItemSprites.has(currentHeldItem):
+				holdingItemSprite.texture = load(chefItemSprites[currentHeldItem])
+			else:
+				holdingItemSprite.texture = null
 			
 			_next_task()
 			chefAnimation.play("idle")
@@ -177,7 +187,7 @@ func _get_target():
 			findTaskString = "Chop"
 		ChefStates.Stove:
 			targetLocation = ChefManager.stoveLocation
-			findTaskString = "Cook"
+			findTaskString = "Stove"
 		ChefStates.Serve:
 			targetLocation = ChefManager.serveLocation
 			findTaskString = "Serve"
