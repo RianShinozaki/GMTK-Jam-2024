@@ -32,8 +32,6 @@ public partial class MouseTracker : Node2D {
             return;
         }
 
-        GlobalPosition = MousePosition;
-
         Callable.From(() => {
             MouseDelta = Vector2.Zero;
         }).CallDeferred();

@@ -25,7 +25,7 @@ public partial class RobotBuilder : Node2D
 			currentAndroid = (Android)currentAndroid.Duplicate();
 		}
 		Instance = this;
-		HidePartsGroups();
+		//HidePartsGroups();
     }
 
 	public void ChangeParts(AndroidPart part, Resource res) {
@@ -55,5 +55,8 @@ public partial class RobotBuilder : Node2D
 		foreach(Control group in partsGroup) {
 			group.Visible = false;
 		}
+	}
+	private void _on_start_game_pressed() {
+		GetTree().ChangeSceneToFile("res://TestLevel.tscn");
 	}
 }

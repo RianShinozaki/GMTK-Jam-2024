@@ -159,11 +159,12 @@ sources/0 = SubResource("TileSetAtlasSource_y02id")
 [node name="RobotBuilder" type="Node2D" node_paths=PackedStringArray("partsGroup", "PresetList")]
 script = ExtResource("1_x4wbw")
 currentAndroid = ExtResource("3_nf4wt")
-partsGroup = [NodePath("HeadGroup"), NodePath("ArmsGroup"), NodePath("LegsGroup")]
+partsGroup = [NodePath("HeadGroup"), NodePath("ArmsGroup"), NodePath("LegsGroup"), NodePath("Label")]
 PresetList = NodePath("HBoxContainer")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(288, 175)
+zoom = Vector2(2, 2)
 
 [node name="TestRoom" type="Node2D" parent="."]
 texture_filter = 1
@@ -189,6 +190,7 @@ texture = ExtResource("1_i1xwo")
 stretch_mode = 2
 
 [node name="HeadGroup" type="HBoxContainer" parent="."]
+visible = false
 texture_filter = 1
 offset_left = 75.0
 offset_top = 64.0
@@ -208,6 +210,7 @@ stretch_mode = 2
 script = ExtResource("4_myq8t")
 
 [node name="ArmsGroup" type="HBoxContainer" parent="."]
+visible = false
 texture_filter = 1
 offset_left = 75.0
 offset_top = 64.0
@@ -228,6 +231,7 @@ stretch_mode = 2
 script = ExtResource("4_myq8t")
 
 [node name="LegsGroup" type="HBoxContainer" parent="."]
+visible = false
 texture_filter = 1
 offset_left = 75.0
 offset_top = 64.0
@@ -246,6 +250,13 @@ texture = ExtResource("4_qbwq0")
 expand_mode = 2
 stretch_mode = 2
 script = ExtResource("4_myq8t")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 64.0
+offset_top = 64.0
+offset_right = 178.0
+offset_bottom = 87.0
+text = "CLICK TO EDIT!"
 
 [node name="Arrow" type="TextureRect" parent="."]
 texture_filter = 1
@@ -320,11 +331,11 @@ myGroup = NodePath("../../ArmsGroup")
 arrow = NodePath("../../Arrow")
 myY = 136
 
-[node name="Button" type="Button" parent="."]
-offset_left = 408.0
-offset_top = 264.0
-offset_right = 548.0
-offset_bottom = 295.0
+[node name="Start Game" type="Button" parent="."]
+offset_left = 416.0
+offset_top = 272.0
+offset_right = 556.0
+offset_bottom = 303.0
 text = "START THE GAME"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
@@ -627,3 +638,5 @@ pivot_offset = Vector2(0, 14.665)
 texture = ExtResource("6_s0x4v")
 expand_mode = 1
 stretch_mode = 2
+
+[connection signal="pressed" from="Start Game" to="." method="_on_start_game_pressed"]
