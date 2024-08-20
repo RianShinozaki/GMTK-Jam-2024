@@ -8,7 +8,7 @@
 script = ExtResource("1_xieoc")
 InteractColor = Color(1, 0.180392, 0.278431, 1)
 BurnTexture = ExtResource("1_pdegh")
-Layer = 1024
+Layer = 512
 InteractionDetectorPath = "res://Nodes/LevelPieces/Ai/Androids/Pieces/Torso/InteractionBase.tscn"
 SpriteTexture = ExtResource("2_30pqg")
 WeightSpeedReductionAmount = 1.0

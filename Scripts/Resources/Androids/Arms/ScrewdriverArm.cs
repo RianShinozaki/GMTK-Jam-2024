@@ -41,7 +41,6 @@ public partial class ScrewdriverArm : AndroidTorso {
 
     public override void InitPiece(AiBotBase bot) {
         base.InitPiece(bot);
-
         PackedScene scene = ResourceLoader.Load<PackedScene>(InteractionDetectorPath);
         interactionBase = (AndroidInteractionBase)scene.Instantiate();
         interactionBase.OnOptionClicked += OnInteractDone;
@@ -59,20 +58,23 @@ public partial class ScrewdriverArm : AndroidTorso {
     }
 
     void OnInteractDone(Node context, bool success) {
+        bot ??= (AiBotBase)interactionBase.GetParent();
+
         if (!success) {
+            OnTimerDone();
             return;
         }
 
-        bot ??= (AiBotBase)interactionBase.GetParent();
         objCache = (BasicPhysicsObject)context.GetParent();
-
-        
         timer.Start();
     }
 
     void OnTimerDone() {
-        objCache.Set("Screwed", true);
-        objCache = null;
+        if (objCache != null) {
+            objCache.Set("Screwed", true);
+            objCache = null;
+        }
+
         bot.InputSpeed = speedCache;
         timer.Stop();
     }
