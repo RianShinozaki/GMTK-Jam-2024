@@ -1,0 +1,74 @@
+[gd_scene load_steps=12 format=3 uid="uid://cjs71pgp6dnve"]
+
+[ext_resource type="Script" path="res://Scripts/System/BasicPhysicsObject.cs" id="1_h5smj"]
+[ext_resource type="Texture2D" uid="uid://cwgngd6pul78r" path="res://Sprites/Peel.png" id="2_7qlxo"]
+[ext_resource type="Script" path="res://Scripts/Androids/Interaction/AndroidInteractableArea.cs" id="3_d8sgi"]
+[ext_resource type="Script" path="res://Scripts/System/Clickables/ClickDetector.cs" id="4_4yra8"]
+[ext_resource type="Script" path="res://Scripts/System/Hitbox/TriggerShape.cs" id="5_8nlhs"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j0gdc"]
+atlas = ExtResource("2_7qlxo")
+region = Rect2(0, 0, 31, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tivk8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j0gdc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v4gyi"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oqn1f"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_obkde"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gyaoj"]
+size = Vector2(48, 28)
+
+[node name="Banana" type="CharacterBody2D" node_paths=PackedStringArray("InteractionArea")]
+texture_filter = 1
+position = Vector2(-104, -8)
+script = ExtResource("1_h5smj")
+InteractionArea = NodePath("AndroidInteractableArea")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -4)
+sprite_frames = SubResource("SpriteFrames_tivk8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_v4gyi")
+
+[node name="AndroidInteractableArea" type="Area2D" parent="."]
+collision_layer = 256
+collision_mask = 256
+script = ExtResource("3_d8sgi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AndroidInteractableArea"]
+shape = SubResource("RectangleShape2D_oqn1f")
+debug_color = Color(0.0747703, 0.649367, 0, 0.42)
+
+[node name="ClickDetector" type="Area2D" parent="AndroidInteractableArea" node_paths=PackedStringArray("ContextNode")]
+script = ExtResource("4_4yra8")
+ContextNode = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AndroidInteractableArea/ClickDetector"]
+shape = SubResource("RectangleShape2D_obkde")
+
+[node name="TriggerShape" type="Area2D" parent="."]
+script = ExtResource("5_8nlhs")
+StatusEffects = {
+"Hurt": 1.0,
+"Power": Vector2(150, 300)
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TriggerShape"]
+position = Vector2(0, -6)
+shape = SubResource("RectangleShape2D_gyaoj")
