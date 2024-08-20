@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="GrabberArm" load_steps=4 format=3 uid="uid://b2i6lmb8qmmpt"]
+
+[ext_resource type="Texture2D" uid="uid://d2d226x8nh80h" path="res://Sprites/UI/Options/Options3.png" id="1_vosog"]
+[ext_resource type="Script" path="res://Scripts/Resources/Androids/Arms/GrabberArm.cs" id="1_wm5j7"]
+[ext_resource type="SpriteFrames" uid="uid://b7ofti5c5wjit" path="res://Sprites/Robot/ArmFrames/GrabberFrames.tres" id="2_arof0"]
+
+[resource]
+script = ExtResource("1_wm5j7")
+GrabTexture = ExtResource("1_vosog")
+InteractionDetectorPath = "res://Nodes/LevelPieces/Ai/Androids/Pieces/Torso/InteractionBase.tscn"
+PickupLocation = Vector2(13, -11)
+SpriteTexture = ExtResource("2_arof0")
+WeightSpeedReductionAmount = 1.0
+Strength = 0.5

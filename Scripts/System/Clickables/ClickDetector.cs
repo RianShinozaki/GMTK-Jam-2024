@@ -19,7 +19,6 @@ public partial class ClickDetector : Area2D {
         base._Input(@event);
 
         if (@event is InputEventMouseButton button && @event.IsPressed() && button.ButtonIndex == MouseButton.Left) {
-            GD.Print(Name + " clicked!");
             EmitSignal(SignalName.OnClick, ContextNode);
         }
     }

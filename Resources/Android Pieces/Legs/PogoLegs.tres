@@ -1,0 +1,50 @@
+[gd_resource type="Resource" script_class="AndroidLegs" load_steps=10 format=3 uid="uid://b8x6cihaamcen"]
+
+[ext_resource type="Texture2D" uid="uid://c8dyks1iutkld" path="res://Sprites/Robot/Legs-Pogo.png" id="1_fjiyw"]
+[ext_resource type="Texture2D" uid="uid://6ne7k37eapvy" path="res://Sprites/UI/Options/Options2.png" id="2_ll1bu"]
+[ext_resource type="Texture2D" uid="uid://d2d226x8nh80h" path="res://Sprites/UI/Options/Options3.png" id="3_5082u"]
+[ext_resource type="Script" path="res://Scripts/Resources/Androids/Legs/AndroidLegs.cs" id="4_02ugy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8q6vo"]
+atlas = ExtResource("1_fjiyw")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rpaap"]
+atlas = ExtResource("1_fjiyw")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v84jy"]
+atlas = ExtResource("1_fjiyw")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o7pjl"]
+atlas = ExtResource("1_fjiyw")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_p3hvt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8q6vo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rpaap")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v84jy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o7pjl")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("4_02ugy")
+TurnIcon = ExtResource("3_5082u")
+StopIcon = ExtResource("2_ll1bu")
+SpriteTexture = SubResource("SpriteFrames_p3hvt")
+WeightSpeedReductionAmount = 1.0
+Strength = 0.5

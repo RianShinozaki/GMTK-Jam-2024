@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://cm7gj628fa4xk"]
+
+[ext_resource type="Script" path="res://Scripts/System/RobotStorage.cs" id="1_ptnp1"]
+[ext_resource type="Resource" uid="uid://bytct4cj5amek" path="res://Resources/RobotPresets/BasicRobot.tres" id="2_me45h"]
+
+[node name="RobotStorage" type="Node"]
+script = ExtResource("1_ptnp1")
+robots = Array[Object]([ExtResource("2_me45h"), ExtResource("2_me45h"), ExtResource("2_me45h"), ExtResource("2_me45h"), ExtResource("2_me45h")])

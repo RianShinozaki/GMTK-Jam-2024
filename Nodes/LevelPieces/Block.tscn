@@ -1,0 +1,58 @@
+[gd_scene load_steps=10 format=3 uid="uid://wvropxmqy6py"]
+
+[ext_resource type="Script" path="res://Scripts/System/BasicPhysicsObject.cs" id="1_etbgn"]
+[ext_resource type="Texture2D" uid="uid://c6ib03q4xvs1b" path="res://Tileset.png" id="2_783xi"]
+[ext_resource type="Script" path="res://Scripts/Androids/Interaction/AndroidInteractableArea.cs" id="3_gk06a"]
+[ext_resource type="Script" path="res://Scripts/System/Clickables/ClickDetector.cs" id="4_y5w8g"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vcud5"]
+atlas = ExtResource("2_783xi")
+region = Rect2(160, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tivk8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vcud5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v4gyi"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oqn1f"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_obkde"]
+size = Vector2(16, 16)
+
+[node name="Block" type="CharacterBody2D" node_paths=PackedStringArray("InteractionArea")]
+texture_filter = 1
+script = ExtResource("1_etbgn")
+InteractionArea = NodePath("AndroidInteractableArea")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_tivk8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_v4gyi")
+
+[node name="AndroidInteractableArea" type="Area2D" parent="."]
+collision_layer = 256
+collision_mask = 256
+script = ExtResource("3_gk06a")
+Data = {}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AndroidInteractableArea"]
+shape = SubResource("RectangleShape2D_oqn1f")
+debug_color = Color(0.0747703, 0.649367, 0, 0.42)
+
+[node name="ClickDetector" type="Area2D" parent="AndroidInteractableArea" node_paths=PackedStringArray("ContextNode")]
+script = ExtResource("4_y5w8g")
+ContextNode = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AndroidInteractableArea/ClickDetector"]
+shape = SubResource("RectangleShape2D_obkde")

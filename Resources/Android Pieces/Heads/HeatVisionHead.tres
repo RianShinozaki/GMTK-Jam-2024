@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="AndroidHead" load_steps=4 format=3 uid="uid://bkrk6mjcgvtbr"]
+
+[ext_resource type="Texture2D" uid="uid://5ulruq5dxoe8" path="res://Sprites/Robot/Head-Thermo.png" id="1_l1fx5"]
+[ext_resource type="Script" path="res://Scripts/Resources/Androids/Heads/AndroidHead.cs" id="2_ca8q8"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ei0qj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_l1fx5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("2_ca8q8")
+SpriteTexture = SubResource("SpriteFrames_ei0qj")
+WeightSpeedReductionAmount = 1.0
+Strength = 0.5

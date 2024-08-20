@@ -1,18 +1,24 @@
 [gd_scene load_steps=27 format=4 uid="uid://b0awh3x2ks73o"]
 
 [ext_resource type="TileSet" uid="uid://ccdwy6d4c43ax" path="res://Resources/TileSets/Kitchen.tres" id="1_j1dxg"]
-[ext_resource type="PackedScene" uid="uid://bhcs8kumsn1ob" path="res://MusicManager.tscn" id="2_27rp8"]
+[ext_resource type="Texture2D" uid="uid://uu7ql843qy7d" path="res://Sprites/UI/PresetSpot.png" id="1_v3dp5"]
+[ext_resource type="PackedScene" path="res://MusicManager.tscn" id="2_27rp8"]
 [ext_resource type="PackedScene" uid="uid://coy3cod54bme0" path="res://Nodes/LevelPieces/Ai/Chef/chef.tscn" id="2_awlc6"]
-[ext_resource type="PackedScene" uid="uid://bbndvkgy5htbg" path="res://Nodes/LevelPieces/Ai/Androids/AIBotBase.tscn" id="2_ldng6"]
+[ext_resource type="Script" path="res://Scripts/UI/PresetSpot.cs" id="2_e2won"]
+[ext_resource type="Script" path="res://Scenes/RobotViewer.cs" id="3_i75fd"]
 [ext_resource type="Script" path="res://Scripts/Resources/Chef/ChefPhase.gd" id="3_ju2h2"]
-[ext_resource type="Resource" uid="uid://7m3qr4qc3sk4" path="res://Resources/Androids/BasicBody.tres" id="3_v44gh"]
+[ext_resource type="Resource" uid="uid://bytct4cj5amek" path="res://Resources/RobotPresets/BasicRobot.tres" id="4_5hgkg"]
 [ext_resource type="Resource" uid="uid://d1cpy461v4qye" path="res://Resources/Chef/ChefPhases/FirstPhase.tres" id="4_qqey4"]
 [ext_resource type="Resource" uid="uid://bge5gkab2tcp1" path="res://Resources/Chef/ChefPhases/MiddlePhase.tres" id="5_d8esa"]
+[ext_resource type="Texture2D" uid="uid://bsporryywr2b3" path="res://Sprites/Robot/Head-Normal.png" id="5_gqltk"]
 [ext_resource type="PackedScene" uid="uid://ifmp6m75arhl" path="res://Nodes/LevelPieces/Locations/chef_station.tscn" id="5_yak5b"]
 [ext_resource type="Resource" uid="uid://b8srsoc2wetgl" path="res://Resources/Chef/ChefPhases/FinalPhase.tres" id="6_48kib"]
+[ext_resource type="Texture2D" uid="uid://dksqc2tum5j1g" path="res://Sprites/Robot/Legs-Wheel.png" id="6_jbk40"]
 [ext_resource type="Texture2D" uid="uid://c8prpm85c8qf6" path="res://Sprites/MeatFridge.png" id="7_2i6km"]
 [ext_resource type="Script" path="res://Scripts/Resources/Chef/ChefStationActions.gd" id="7_gebwm"]
+[ext_resource type="Texture2D" uid="uid://dlv7xixg23mlk" path="res://Sprites/Robot/RoboBody.png" id="7_ls8lt"]
 [ext_resource type="Resource" uid="uid://bsh1iwwdp2xwj" path="res://Resources/Chef/ChefStationActions/ChopStationCarrot.tres" id="8_3ga3q"]
+[ext_resource type="Texture2D" uid="uid://f64e7gy3uh18" path="res://Sprites/Robot/Arms-Grabber.png" id="8_bxqtu"]
 [ext_resource type="Texture2D" uid="uid://dumpqcc7o2v5o" path="res://Sprites/CuttingBoard.png" id="9_58whs"]
 [ext_resource type="Resource" uid="uid://bgj6kc1njh4q0" path="res://Resources/Chef/ChefStationActions/ChopStationOnion.tres" id="9_s0mr8"]
 [ext_resource type="Resource" uid="uid://bvyq6vb1vcnsj" path="res://Resources/Chef/ChefStationActions/VegetableStationCarrot.tres" id="13_k32pv"]
@@ -35,21 +41,325 @@ position = Vector2(141, 175)
 position = Vector2(273, -210)
 zoom = Vector2(0.5, 0.5)
 
+[node name="UI" type="Control" parent="Camera2D"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Camera2D/UI"]
+offset_left = -560.0
+offset_top = -308.0
+offset_right = -219.0
+offset_bottom = -243.0
+mouse_filter = 2
+
+[node name="PresetSpot" type="TextureRect" parent="Camera2D/UI/HBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("1_v3dp5")
+stretch_mode = 2
+script = ExtResource("2_e2won")
+
+[node name="RobotViewer" type="Control" parent="Camera2D/UI/HBoxContainer/PresetSpot"]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 0
+offset_left = 16.0
+offset_top = 8.0
+offset_right = 56.0
+offset_bottom = 48.0
+scale = Vector2(2, 2)
+mouse_filter = 1
+script = ExtResource("3_i75fd")
+android = ExtResource("4_5hgkg")
+
+[node name="Head" type="TextureRect" parent="Camera2D/UI/HBoxContainer/PresetSpot/RobotViewer"]
+layout_mode = 0
+offset_right = 15.0
+offset_bottom = 13.0
+focus_mode = 1
+texture = ExtResource("5_gqltk")
+stretch_mode = 2
+
+[node name="Legs" type="TextureRect" parent="Camera2D/UI/HBoxContainer/PresetSpot/RobotViewer"]
+layout_mode = 0
+offset_top = 20.0
+offset_right = 9.62
+offset_bottom = 28.66
+texture = ExtResource("6_jbk40")
+expand_mode = 1
+stretch_mode = 2
+
+[node name="Torso" type="TextureRect" parent="Camera2D/UI/HBoxContainer/PresetSpot/RobotViewer"]
+layout_mode = 0
+offset_left = 3.8
+offset_top = 11.8
+offset_right = 11.43
+offset_bottom = 19.435
+texture = ExtResource("7_ls8lt")
+expand_mode = 1
+stretch_mode = 2
+
+[node name="Arms" type="TextureRect" parent="Camera2D/UI/HBoxContainer/PresetSpot/RobotViewer"]
+layout_mode = 0
+offset_left = 12.3333
+offset_top = 10.3333
+offset_right = 24.2333
+offset_bottom = 29.8833
+pivot_offset = Vector2(0, 14.665)
+texture = ExtResource("8_bxqtu")
+expand_mode = 1
+stretch_mode = 2
+
+[node name="PresetSpot2" type="TextureRect" parent="Camera2D/UI/HBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("1_v3dp5")
+stretch_mode = 2
+script = ExtResource("2_e2won")
+myIndex = 1
+
+[node name="RobotViewer" type="Control" parent="Camera2D/UI/HBoxContainer/PresetSpot2"]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 0
+offset_left = 16.0
+offset_top = 8.0
+offset_right = 56.0
+offset_bottom = 48.0
+scale = Vector2(2, 2)
+mouse_filter = 1
+script = ExtResource("3_i75fd")
+android = ExtResource("4_5hgkg")
+
+[node name="Head" type="TextureRect" parent="Camera2D/UI/HBoxContainer/PresetSpot2/RobotViewer"]
+layout_mode = 0
+offset_right = 15.0
+offset_bottom = 13.0
+focus_mode = 1
+texture = ExtResource("5_gqltk")
+stretch_mode = 2
+
+[node name="Legs" type="TextureRect" parent="Camera2D/UI/HBoxContainer/PresetSpot2/RobotViewer"]
+layout_mode = 0
+offset_top = 20.0
+offset_right = 9.62
+offset_bottom = 28.66
+texture = ExtResource("6_jbk40")
+expand_mode = 1
+stretch_mode = 2
+
+[node name="Torso" type="TextureRect" parent="Camera2D/UI/HBoxContainer/PresetSpot2/RobotViewer"]
+layout_mode = 0
+offset_left = 3.8
+offset_top = 11.8
+offset_right = 11.43
+offset_bottom = 19.435
+texture = ExtResource("7_ls8lt")
+expand_mode = 1
+stretch_mode = 2
+
+[node name="Arms" type="TextureRect" parent="Camera2D/UI/HBoxContainer/PresetSpot2/RobotViewer"]
+layout_mode = 0
+offset_left = 12.3333
+offset_top = 10.3333
+offset_right = 24.2333
+offset_bottom = 29.8833
+pivot_offset = Vector2(0, 14.665)
+texture = ExtResource("8_bxqtu")
+expand_mode = 1
+stretch_mode = 2
+
+[node name="PresetSpot3" type="TextureRect" parent="Camera2D/UI/HBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("1_v3dp5")
+stretch_mode = 2
+script = ExtResource("2_e2won")
+myIndex = 2
+
+[node name="RobotViewer" type="Control" parent="Camera2D/UI/HBoxContainer/PresetSpot3"]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 0
+offset_left = 16.0
+offset_top = 8.0
+offset_right = 56.0
+offset_bottom = 48.0
+scale = Vector2(2, 2)
+mouse_filter = 1
+script = ExtResource("3_i75fd")
+android = ExtResource("4_5hgkg")
+
+[node name="Head" type="TextureRect" parent="Camera2D/UI/HBoxContainer/PresetSpot3/RobotViewer"]
+layout_mode = 0
+offset_right = 15.0
+offset_bottom = 13.0
+focus_mode = 1
+texture = ExtResource("5_gqltk")
+stretch_mode = 2
+
+[node name="Legs" type="TextureRect" parent="Camera2D/UI/HBoxContainer/PresetSpot3/RobotViewer"]
+layout_mode = 0
+offset_top = 20.0
+offset_right = 9.62
+offset_bottom = 28.66
+texture = ExtResource("6_jbk40")
+expand_mode = 1
+stretch_mode = 2
+
+[node name="Torso" type="TextureRect" parent="Camera2D/UI/HBoxContainer/PresetSpot3/RobotViewer"]
+layout_mode = 0
+offset_left = 3.8
+offset_top = 11.8
+offset_right = 11.43
+offset_bottom = 19.435
+texture = ExtResource("7_ls8lt")
+expand_mode = 1
+stretch_mode = 2
+
+[node name="Arms" type="TextureRect" parent="Camera2D/UI/HBoxContainer/PresetSpot3/RobotViewer"]
+layout_mode = 0
+offset_left = 12.3333
+offset_top = 10.3333
+offset_right = 24.2333
+offset_bottom = 29.8833
+pivot_offset = Vector2(0, 14.665)
+texture = ExtResource("8_bxqtu")
+expand_mode = 1
+stretch_mode = 2
+
+[node name="PresetSpot4" type="TextureRect" parent="Camera2D/UI/HBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("1_v3dp5")
+stretch_mode = 2
+script = ExtResource("2_e2won")
+myIndex = 3
+
+[node name="RobotViewer" type="Control" parent="Camera2D/UI/HBoxContainer/PresetSpot4"]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 0
+offset_left = 16.0
+offset_top = 8.0
+offset_right = 56.0
+offset_bottom = 48.0
+scale = Vector2(2, 2)
+mouse_filter = 1
+script = ExtResource("3_i75fd")
+android = ExtResource("4_5hgkg")
+
+[node name="Head" type="TextureRect" parent="Camera2D/UI/HBoxContainer/PresetSpot4/RobotViewer"]
+layout_mode = 0
+offset_right = 15.0
+offset_bottom = 13.0
+focus_mode = 1
+texture = ExtResource("5_gqltk")
+stretch_mode = 2
+
+[node name="Legs" type="TextureRect" parent="Camera2D/UI/HBoxContainer/PresetSpot4/RobotViewer"]
+layout_mode = 0
+offset_top = 20.0
+offset_right = 9.62
+offset_bottom = 28.66
+texture = ExtResource("6_jbk40")
+expand_mode = 1
+stretch_mode = 2
+
+[node name="Torso" type="TextureRect" parent="Camera2D/UI/HBoxContainer/PresetSpot4/RobotViewer"]
+layout_mode = 0
+offset_left = 3.8
+offset_top = 11.8
+offset_right = 11.43
+offset_bottom = 19.435
+texture = ExtResource("7_ls8lt")
+expand_mode = 1
+stretch_mode = 2
+
+[node name="Arms" type="TextureRect" parent="Camera2D/UI/HBoxContainer/PresetSpot4/RobotViewer"]
+layout_mode = 0
+offset_left = 12.3333
+offset_top = 10.3333
+offset_right = 24.2333
+offset_bottom = 29.8833
+pivot_offset = Vector2(0, 14.665)
+texture = ExtResource("8_bxqtu")
+expand_mode = 1
+stretch_mode = 2
+
+[node name="PresetSpot5" type="TextureRect" parent="Camera2D/UI/HBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("1_v3dp5")
+stretch_mode = 2
+script = ExtResource("2_e2won")
+myIndex = 4
+
+[node name="RobotViewer" type="Control" parent="Camera2D/UI/HBoxContainer/PresetSpot5"]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 0
+offset_left = 16.0
+offset_top = 8.0
+offset_right = 56.0
+offset_bottom = 48.0
+scale = Vector2(2, 2)
+mouse_filter = 1
+script = ExtResource("3_i75fd")
+android = ExtResource("4_5hgkg")
+
+[node name="Head" type="TextureRect" parent="Camera2D/UI/HBoxContainer/PresetSpot5/RobotViewer"]
+layout_mode = 0
+offset_right = 15.0
+offset_bottom = 13.0
+focus_mode = 1
+texture = ExtResource("5_gqltk")
+stretch_mode = 2
+
+[node name="Legs" type="TextureRect" parent="Camera2D/UI/HBoxContainer/PresetSpot5/RobotViewer"]
+layout_mode = 0
+offset_top = 20.0
+offset_right = 9.62
+offset_bottom = 28.66
+texture = ExtResource("6_jbk40")
+expand_mode = 1
+stretch_mode = 2
+
+[node name="Torso" type="TextureRect" parent="Camera2D/UI/HBoxContainer/PresetSpot5/RobotViewer"]
+layout_mode = 0
+offset_left = 3.8
+offset_top = 11.8
+offset_right = 11.43
+offset_bottom = 19.435
+texture = ExtResource("7_ls8lt")
+expand_mode = 1
+stretch_mode = 2
+
+[node name="Arms" type="TextureRect" parent="Camera2D/UI/HBoxContainer/PresetSpot5/RobotViewer"]
+layout_mode = 0
+offset_left = 12.3333
+offset_top = 10.3333
+offset_right = 24.2333
+offset_bottom = 29.8833
+pivot_offset = Vector2(0, 14.665)
+texture = ExtResource("8_bxqtu")
+expand_mode = 1
+stretch_mode = 2
+
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AAD4/wEAAAAAAAEAAAD5/wEAAAABAAEAAAD6/wAAAAAAAAAAAAD6/wEAAAACAAEAAAD7/wAAAAABAAAAAAD7/wEAAAADAAEAAAD8/wAAAAAAAAAAAAD8/wEAAAAEAAEAAAD9/wAAAAABAAAAAAD9/wEAAAAFAAEAAAD+/wAAAAAAAAAAAAD+/wEAAAAGAAEAAAD//wAAAAABAAAAAAD//wEAAAAHAAEAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAEAAAABAAAAAAABAAAAAAABAAEAAAABAAEAAAACAAAAAAAAAAAAAAACAAEAAAACAAEAAAADAAAAAAABAAAAAAADAAEAAAADAAEAAAAEAAAAAAAAAAAAAAAEAAEAAAAEAAEAAAAFAAAAAAABAAAAAAAFAAEAAAAFAAEAAAD6/wIAAAACAAAAAAD7/wIAAAACAAAAAAD9/wIAAAACAAAAAAD+/wIAAAACAAAAAAD//wIAAAACAAAAAAAAAAIAAAACAAAAAAABAAIAAAACAAAAAAACAAIAAAACAAAAAAADAAIAAAACAAAAAAD4/wAAAAAAAAAAAAD5/wAAAAABAAAAAAAGAAAAAAAAAAAAAAAGAAEAAAAGAAEAAAAHAAAAAAABAAAAAAAHAAEAAAAHAAEAAAAIAAAAAAAAAAAAAAAIAAEAAAAAAAEAAAAJAAAAAAABAAAAAAAJAAEAAAABAAEAAAAOAAAAAAAAAAAAAAAOAAEAAAAGAAEAAAAPAAAAAAABAAAAAAAPAAEAAAAHAAEAAAAQAP//AAAEAAQAAAAQAAAAAAAGAAQAAAAQAAEAAAAEAAYAAAARAP//AAAFAAQAAAARAAAAAAAFAAUAAAARAAEAAAAFAAYAAAASAP7/AAAGAAMAAAASAP//AAAGAAQAAAASAAAAAAAGAAUAAAASAAEAAAAGAAYAAAATAP7/AAAHAAMAAAATAP//AAAHAAQAAAATAAAAAAAHAAUAAAATAAEAAAAGAAYAAAAUAP7/AAAAAAAAAAAUAP//AAAAAAEAAAAVAP7/AAABAAAAAAAVAP//AAABAAEAAAAaAP7/AAAAAAAAAAAaAP//AAAGAAEAAAAbAP7/AAABAAAAAAAbAP//AAAHAAEAAAAcAP7/AAAIAAMAAAAcAP//AAAIAAQAAAAcAAAAAAAIAAUAAAAcAAEAAAAJAAYA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AAD///b/AAABAAAAAAD///f/AAAFAAEAAAAAAPb/AAAAAAAAAAAAAPf/AAAGAAEAAAABAPb/AAABAAAAAAABAPf/AAAHAAEAAAACAPb/AAAAAAAAAAACAPf/AAAAAAEAAAADAPb/AAABAAAAAAADAPf/AAABAAEAAAAEAPb/AAAAAAAAAAAEAPf/AAACAAEAAAAFAPb/AAABAAAAAAAFAPf/AAADAAEAAAAGAPb/AAAAAAAAAAAGAPf/AAAEAAEAAAAHAPb/AAABAAAAAAAHAPf/AAAFAAEAAAAIAPb/AAAAAAAAAAAIAPf/AAAGAAEAAAAJAPb/AAABAAAAAAAJAPf/AAAHAAEAAAD2//T/AAAIAAMAAAD2//X/AAAIAAQAAAD2//b/AAAIAAUAAAD2//f/AAAJAAYAAAD3//T/AAAJAAMAAAD3//X/AAAJAAQAAAD3//b/AAAJAAUAAAD3//f/AAAJAAYAAAD4//X/AAAKAAQAAAD4//b/AAAKAAUAAAD4//f/AAAKAAYAAAD5//X/AAAJAAMAAAD5//b/AAALAAUAAAD5//f/AAALAAYAAAD0//T/AAAAAAAAAAD0//X/AAAGAAEAAAD1//T/AAABAAAAAAD1//X/AAAHAAEAAAD2/wAAAAAAAAAAAAD2/wEAAAAGAAEAAAD3/wAAAAABAAAAAAD3/wEAAAAHAAEAAAD0/wAAAAAAAAAAAAD0/wEAAAAEAAEAAAD1/wAAAAABAAAAAAD1/wEAAAAFAAEAAADy/wAAAAAAAAAAAADy/wEAAAACAAEAAADz/wAAAAABAAAAAADz/wEAAAADAAEAAADw//T/AAAAAAAAAADw//X/AAACAAEAAADx//T/AAABAAAAAADx//X/AAADAAEAAADy//T/AAAAAAAAAADy//X/AAAEAAEAAADz//T/AAABAAAAAADz//X/AAAFAAEAAADu//T/AAAAAAAAAADu//X/AAAAAAEAAADv//T/AAABAAAAAADv//X/AAABAAEAAADw/wAAAAAAAAAAAADw/wEAAAAAAAEAAADx/wAAAAABAAAAAADx/wEAAAABAAEAAAA=")
 tile_set = ExtResource("1_j1dxg")
 
-[node name="MusicManager" parent="." instance=ExtResource("2_27rp8")]
+[node name="MusicManager" parent="." node_paths=PackedStringArray("Players") instance=ExtResource("2_27rp8")]
 unique_name_in_owner = true
+Players = []
 
 [node name="Chef" parent="." node_paths=PackedStringArray("ui") instance=ExtResource("2_awlc6")]
 position = Vector2(597, -211)
 chefTasks = Array[ExtResource("3_ju2h2")]([ExtResource("4_qqey4"), ExtResource("5_d8esa"), ExtResource("6_48kib")])
 ui = NodePath("../ChefUI")
-
-[node name="AIBot" parent="." instance=ExtResource("2_ldng6")]
-position = Vector2(27, -32)
-AndroidBase = ExtResource("3_v44gh")
 
 [node name="VegetableStation" parent="." instance=ExtResource("5_yak5b")]
 z_index = -5

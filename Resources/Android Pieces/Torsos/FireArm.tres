@@ -1,0 +1,82 @@
+[gd_resource type="Resource" script_class="GrabberArm" load_steps=13 format=3 uid="uid://cpwybcgewefnb"]
+
+[ext_resource type="Texture2D" uid="uid://d2d226x8nh80h" path="res://Sprites/UI/Options/Options3.png" id="1_pdegh"]
+[ext_resource type="Texture2D" uid="uid://f64e7gy3uh18" path="res://Sprites/Robot/Arms-Grabber.png" id="2_ikalw"]
+[ext_resource type="Texture2D" uid="uid://cc4avs32825j5" path="res://Sprites/Robot/Arm-Burner.png" id="3_bho18"]
+[ext_resource type="Script" path="res://Scripts/Resources/Androids/Arms/GrabberArm.cs" id="3_xs04u"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vlvca"]
+atlas = ExtResource("2_ikalw")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ri6y8"]
+atlas = ExtResource("2_ikalw")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ytbki"]
+atlas = ExtResource("2_ikalw")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3yk0e"]
+atlas = ExtResource("2_ikalw")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fy3kh"]
+atlas = ExtResource("2_ikalw")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5cwgx"]
+atlas = ExtResource("2_ikalw")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sr5lh"]
+atlas = ExtResource("3_bho18")
+region = Rect2(0, 0, 32, 12)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7wkqa"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vlvca")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ri6y8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ytbki")
+}],
+"loop": false,
+"name": &"Close",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3yk0e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fy3kh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5cwgx")
+}],
+"loop": false,
+"name": &"Open",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sr5lh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("3_xs04u")
+GrabTexture = ExtResource("1_pdegh")
+InteractionDetectorPath = "res://Nodes/LevelPieces/Ai/Androids/Pieces/Torso/InteractionBase.tscn"
+PickupLocation = Vector2(13, -11)
+SpriteTexture = SubResource("SpriteFrames_7wkqa")
+WeightSpeedReductionAmount = 1.0
+Strength = 0.5

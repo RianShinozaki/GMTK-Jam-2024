@@ -1,8 +1,22 @@
-[gd_resource type="Resource" script_class="AndroidTorso" load_steps=2 format=3 uid="uid://cea30nh8dwaj0"]
+[gd_resource type="Resource" script_class="AndroidTorso" load_steps=4 format=3 uid="uid://cea30nh8dwaj0"]
 
+[ext_resource type="Texture2D" uid="uid://dlv7xixg23mlk" path="res://Sprites/Robot/RoboBody.png" id="1_fv821"]
 [ext_resource type="Script" path="res://Scripts/Resources/Androids/AndroidTorso.cs" id="1_xapa4"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fqp8j"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_fv821")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [resource]
 script = ExtResource("1_xapa4")
-Weight = 1.0
+SpriteTexture = SubResource("SpriteFrames_fqp8j")
+SpriteFrames = 0
+WeightSpeedReductionAmount = 1.0
 Strength = 0.5

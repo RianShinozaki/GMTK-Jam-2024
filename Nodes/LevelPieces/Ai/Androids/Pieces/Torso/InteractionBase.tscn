@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://c72o6r0bvi5w"]
+
+[ext_resource type="Script" path="res://Scripts/Androids/Interaction/AndroidInteractionBase.cs" id="1_koj6p"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_b1y7c"]
+radius = 22.0227
+
+[node name="AndroidInteractionBase" type="Area2D"]
+collision_layer = 256
+collision_mask = 256
+script = ExtResource("1_koj6p")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_b1y7c")
