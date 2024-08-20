@@ -86,9 +86,6 @@ func _physics_process(delta):
 		if currentChefStatus == ChefStatus.Move and progressTimer < 0:
 			var actualTarget = ladderTarget if currentLadderLevel != targetLocation.ladderLevel else targetLocation
 			
-			if droppedItem:
-				actualTarget = 
-			
 			velocity.x = currentChefSpeed * sign(actualTarget.position.x - position.x)
 			chefSprite.flip_h = 0 > sign(actualTarget.position.x - position.x)
 			holdItemDisplace.scale.x = sign(actualTarget.position.x - position.x)
@@ -322,6 +319,8 @@ func _on_ground_body_entered(body):
 		currentLadderLevel = 0
 	if currentChefStatus == ChefStatus.Stun and progressTimer < 0:
 		#print("touch")
+		
+		
 		CameraEffects._screen_shake(Vector2(0,10), 15)
 		progressTimer = 3
 		currentChefStatus = ChefStatus.Aggro
