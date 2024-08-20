@@ -3,13 +3,10 @@ using System;
 
 [GlobalClass]
 public partial class Android : Resource {
-	[Export]
-	public float BaseMovementSpeed;
-
-	public float GetStrength() {
-		//Get Average of strengths
-		float str = Head.Strength + Arms.Strength + Legs.Strength;
-		str /= 3f;
+    public float GetStrength() {
+        //Get Average of strengths
+        float str = Head.Strength + Arms.Strength + Legs.Strength;
+        str /= 3f;
 
 		//Do magic math I figured out
 		str = Mathf.Log(str)+2.3f;

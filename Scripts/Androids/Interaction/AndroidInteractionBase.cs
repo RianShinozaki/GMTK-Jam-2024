@@ -15,13 +15,20 @@ public partial class AndroidInteractionBase : TriggerDetector {
     }
 
 	Array interacts = new Array();
-	Variant[] highlightCache;
+	Array highlightCache;
 
 	[Signal]
 	public delegate void OnOptionClickedEventHandler(Node context, bool success);
 
     public virtual void InteractExitRange(Area2D area) {
         if (area is AndroidInteractableArea interactable) {
+			if (highlightCache != null) {
+				ClickDetector click = interactable.GetNode<ClickDetector>("ClickDetector");
+				click.OnClick -= InteractableClicked;
+				click.InputPickable = false;
+				highlightCache.Remove(interactable);
+			}
+
 			interacts.Remove(interactable);
 		}
     }
@@ -32,18 +39,23 @@ public partial class AndroidInteractionBase : TriggerDetector {
 			interacts.Add(interactable);
 
 			if (highlightCache != null) {
-				highlightCache = highlightCache.Append(interactable).ToArray();
+				highlightCache.Add(interactable);
 				((Node2D)interactable.GetParent()).Modulate = InteractionColor;
-				interactable.GetNode<ClickDetector>("ClickDetector").OnClick += InteractableClicked;
+				ClickDetector click = interactable.GetNode<ClickDetector>("ClickDetector");
+				click.OnClick += InteractableClicked;
+				click.InputPickable = true;
 			}
 		}
     }
 
 	public void HighlightInteracts() {
-		highlightCache = new Variant[interacts.Count];
-		interacts.CopyTo(highlightCache, 0);
+		highlightCache = new Array();
+		
+		for (int i = 0; i < interacts.Count; i++) {
+			highlightCache.Add(interacts[i]);
+		}
 
-		for (int i = 0; i < highlightCache.Length; i++) {
+		for (int i = 0; i < highlightCache.Count; i++) {
 			Node2D node = (Node2D)highlightCache[i].As<Node>().GetParent();
 			node.Modulate = InteractionColor;
 		}
@@ -52,14 +64,16 @@ public partial class AndroidInteractionBase : TriggerDetector {
 	public void StartInteract() {
 		HighlightInteracts();
 
-		for (int i = 0; i < highlightCache.Length; i++) {
+		for (int i = 0; i < highlightCache.Count; i++) {
 			AndroidInteractableArea interactable = (AndroidInteractableArea)highlightCache[i].As<Node2D>();
-			interactable.GetNode<ClickDetector>("ClickDetector").OnClick += InteractableClicked;
+			ClickDetector click = interactable.GetNode<ClickDetector>("ClickDetector");
+			click.OnClick += InteractableClicked;
+			click.InputPickable = true;
 		}
 	}
 
 	public void EndHighlight() {
-		for (int i = 0; i < highlightCache.Length; i++) {
+		for (int i = 0; i < highlightCache.Count; i++) {
 			((Node2D)highlightCache[i].As<Node>().GetParent()).Modulate = Colors.White;
 		}
 
@@ -70,8 +84,10 @@ public partial class AndroidInteractionBase : TriggerDetector {
 		if (context is AndroidInteractableArea interaction) {
 			interaction.Interact();
 
-			for (int i = 0; i < highlightCache.Length; i++) {
-				highlightCache[i].As<Node2D>().GetNode<ClickDetector>("ClickDetector").OnClick -= InteractableClicked;
+			for (int i = 0; i < highlightCache.Count; i++) {
+				ClickDetector click = highlightCache[i].As<Node2D>().GetNode<ClickDetector>("ClickDetector");
+				click.OnClick -= InteractableClicked;
+				click.InputPickable = false;
 			}
 		}
 

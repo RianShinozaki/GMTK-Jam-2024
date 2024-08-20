@@ -3,6 +3,8 @@ using Godot.Collections;
 
 [GlobalClass]
 public partial class AndroidLegs : AndroidPiece {
+    [Export]
+    public float BaseMovementSpeed = 16f;
 	[Export]
 	public Texture2D TurnIcon, StopIcon;
 	

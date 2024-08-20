@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://dr26tj0otkkma"]
+
+[ext_resource type="PackedScene" uid="uid://wvropxmqy6py" path="res://Nodes/LevelPieces/PickupBase.tscn" id="1_w00iq"]
+
+[node name="Block" instance=ExtResource("1_w00iq")]
+UseGravity = false
+PickUpable = false
+
+[node name="AndroidInteractableArea" parent="." index="2"]
+collision_layer = 512
+collision_mask = 0
