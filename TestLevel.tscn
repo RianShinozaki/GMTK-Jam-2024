@@ -368,7 +368,6 @@ unique_name_in_owner = true
 position = Vector2(597, -211)
 chefTasks = Array[ExtResource("3_ju2h2")]([ExtResource("4_qqey4"), ExtResource("5_d8esa"), ExtResource("6_48kib")])
 chefItemSprites = ExtResource("16_7xr5m")
-currentLadderLevel = null
 ui = NodePath("../ChefUI")
 
 [node name="VegetableStation" parent="." instance=ExtResource("5_yak5b")]

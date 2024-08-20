@@ -2,6 +2,8 @@ extends CharacterBody2D
 
 @export var chefItemDictionary : ChefItemDictionary
 
+var ladderLevel : int
+
 @onready var sprite : Sprite2D = $ItemSprite
 @onready var trigger = $TriggerShape
 
