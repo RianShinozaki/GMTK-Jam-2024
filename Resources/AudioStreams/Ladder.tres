@@ -1,4 +1,4 @@
-[gd_resource type="AudioStreamRandomizer" load_steps=3 format=3 uid="uid://b1wllmhklydmk"]
+[gd_resource type="AudioStreamRandomizer" load_steps=3 format=3 uid="uid://bct4m1yflnlfl"]
 
 [ext_resource type="AudioStream" uid="uid://bdr82s07mj7be" path="res://Audio/SFX/Chef/ChefLadder/ChefLadder-01.wav" id="1_gex3p"]
 [ext_resource type="AudioStream" uid="uid://dusjww214lovk" path="res://Audio/SFX/Chef/ChefLadder/ChefLadder-02.wav" id="2_1pjkb"]

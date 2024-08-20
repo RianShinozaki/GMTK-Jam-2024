@@ -71,6 +71,7 @@ var savedLevel : int
 @export var currentChefSpeed : float
 
 @onready var music = %MusicManager
+@onready var sfx = %SFXManager
 @export var ui : ChefUI
 
 var moveTween : Tween
@@ -136,12 +137,14 @@ func _chef_status_state_tree():
 	match currentChefStatus:
 		ChefStatus.Idle:
 			currentChefStatus = ChefStatus.Move
+			sfx.PlayChefWalking()
 			chefAnimation.play("walk_hold" if chefItemSprites.dictionary.has(currentHeldItem) else "walk")
 		ChefStatus.Move:
 			if startTask:
 				currentChefStatus = ChefStatus.ActiveTask
 				targetLocation._chef_use_station(self, chefTasks[phase].taskList[chefProgress].itemName)
 				holdingItemSprite.visible = false
+				sfx.StopChefSFX()
 				chefAnimation.play("hold_idle" if chefItemSprites.dictionary.has(currentHeldItem) else "idle")
 		ChefStatus.ActiveTask:
 			print(goalObject)
@@ -277,7 +280,7 @@ func _climb_ladder(level : int, snap : Vector2 ,goal : Vector2, duration : float
 	moveTween.tween_property(self, "global_position", snap, .05)
 	canClimb = false
 	holdingItemSprite.visible = false
-	
+	sfx.PlayChefLadder()
 	await moveTween.finished
 	moveTween.kill()
 	moveTween = create_tween().set_trans(Tween.TRANS_LINEAR)
@@ -288,6 +291,7 @@ func _climb_ladder(level : int, snap : Vector2 ,goal : Vector2, duration : float
 	holdingItemSprite.visible = true
 	currentLadderLevel = level
 	canClimb = true
+	sfx.PlayChefWalking()
 	chefAnimation.play("walk_hold" if chefItemSprites.dictionary.has(currentHeldItem) else "walk")
 
 func _on_hurt_box_on_damage_recieved(statusEffects): #Put hurt Chef
@@ -369,11 +373,12 @@ func _on_ground_body_entered(body):
 		#print("touch")
 		if global_position.y > -100:
 			currentLadderLevel = 0
-		if drop and currentLadderLevel != drop.ladderLevel:
+		if droppedItem and drop and currentLadderLevel != drop.ladderLevel:
 			droppedItem = false
 			drop.queue_free()
 			drop._destroy()
 			drop = null
+			chefProgress -= 1
 		
 		CameraEffects._screen_shake(Vector2(0,10), 15)
 		progressTimer = 3

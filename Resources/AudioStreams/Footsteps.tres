@@ -1,4 +1,4 @@
-[gd_resource type="AudioStreamRandomizer" load_steps=8 format=3 uid="uid://did3dx6e8rxpq"]
+[gd_resource type="AudioStreamRandomizer" load_steps=8 format=3 uid="uid://bqysg3m3u425d"]
 
 [ext_resource type="AudioStream" uid="uid://cnx6labo5mth" path="res://Audio/SFX/Chef/ChefWalking/ChefWalkSFX-01.wav" id="1_10n2e"]
 [ext_resource type="AudioStream" uid="uid://tlv14ehqq8cm" path="res://Audio/SFX/Chef/ChefWalking/ChefWalkSFX-02.wav" id="2_t2mfh"]

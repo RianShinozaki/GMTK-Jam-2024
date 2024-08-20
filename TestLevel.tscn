@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=4 uid="uid://b0awh3x2ks73o"]
+[gd_scene load_steps=47 format=4 uid="uid://b0awh3x2ks73o"]
 
 [ext_resource type="TileSet" uid="uid://ccdwy6d4c43ax" path="res://Resources/TileSets/Kitchen.tres" id="1_j1dxg"]
 [ext_resource type="Texture2D" uid="uid://uu7ql843qy7d" path="res://Sprites/UI/PresetSpot.png" id="1_v3dp5"]
@@ -21,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://f64e7gy3uh18" path="res://Sprites/Robot/Arms-Grabber.png" id="8_bxqtu"]
 [ext_resource type="Texture2D" uid="uid://dumpqcc7o2v5o" path="res://Sprites/LevelObjects/CuttingBoard.png" id="9_58whs"]
 [ext_resource type="Resource" uid="uid://bgj6kc1njh4q0" path="res://Resources/Chef/ChefStationActions/ChopStationOnion.tres" id="9_s0mr8"]
+[ext_resource type="PackedScene" path="res://SFXManager.tscn" id="11_um26d"]
 [ext_resource type="Resource" uid="uid://bvyq6vb1vcnsj" path="res://Resources/Chef/ChefStationActions/VegetableStationCarrot.tres" id="13_k32pv"]
 [ext_resource type="FontFile" uid="uid://btrtbvy1pgnea" path="res://Mario-Kart-DS.ttf" id="13_qqjgr"]
 [ext_resource type="Resource" uid="uid://bgwuu5kw6dvlo" path="res://Resources/Chef/ChefStationActions/VegetableStationOnion.tres" id="14_s41as"]
@@ -388,6 +389,9 @@ texture = ExtResource("8_bxqtu")
 expand_mode = 1
 stretch_mode = 2
 
+[node name="SFXManager" parent="." instance=ExtResource("11_um26d")]
+unique_name_in_owner = true
+
 [node name="MusicManager" parent="." instance=ExtResource("2_27rp8")]
 unique_name_in_owner = true
 
@@ -421,9 +425,9 @@ text = "phase 1"
 
 [node name="PhaseDescriptionLabel" type="Label" parent="LevelObjects/ChefUI/NormalLabel"]
 layout_mode = 0
-offset_top = 20.0
-offset_right = 133.0
-offset_bottom = 43.0
+offset_top = 23.0
+offset_right = 144.0
+offset_bottom = 46.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("13_qqjgr")
 text = "Sauté Vegetables
@@ -449,9 +453,9 @@ text = "Phase 1"
 [node name="PhaseDescriptionLabel" type="Label" parent="LevelObjects/ChefUI/BigLabel"]
 texture_filter = 1
 layout_mode = 0
-offset_top = 40.0
-offset_right = 331.0
-offset_bottom = 95.0
+offset_top = 51.0
+offset_right = 360.0
+offset_bottom = 106.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("13_qqjgr")
 theme_override_font_sizes/font_size = 40
