@@ -8,7 +8,7 @@
 script = ExtResource("3_chj3r")
 InteractColor = Color(0, 1, 0, 1)
 ScrewTexture = ExtResource("1_0wwhm")
-Layer = 512
+Layer = 1024
 InteractionDetectorPath = "res://Nodes/LevelPieces/Ai/Androids/Pieces/Torso/InteractionBase.tscn"
 SpriteTexture = ExtResource("2_tj0tb")
 WeightSpeedReductionAmount = 1.0

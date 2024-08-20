@@ -1,8 +1,22 @@
-[gd_scene load_steps=5 format=3 uid="uid://bdnlpq6j5ckhb"]
+[gd_scene load_steps=7 format=3 uid="uid://bdnlpq6j5ckhb"]
 
 [ext_resource type="Script" path="res://Nodes/MainMenuController.cs" id="1_2g2lp"]
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_m2hpf"]
+[sub_resource type="Gradient" id="Gradient_ylrdd"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.0933333, 0.253333, 0.306667, 0.586667, 0.644444)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_p614s"]
+fractal_octaves = 1
+domain_warp_enabled = true
+domain_warp_amplitude = 296.1
+domain_warp_frequency = 0.004
+domain_warp_fractal_octaves = 1
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_flyoi"]
+color_ramp = SubResource("Gradient_ylrdd")
+noise = SubResource("FastNoiseLite_p614s")
 
 [sub_resource type="Gradient" id="Gradient_e5ioh"]
 
@@ -32,7 +46,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("PlaceholderTexture2D_m2hpf")
+texture = SubResource("NoiseTexture2D_flyoi")
 
 [node name="Main Menu" type="Control" parent="."]
 layout_mode = 1
@@ -127,6 +141,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Graphics" type="Label" parent="Settings Menu/Panel"]
+layout_mode = 0
 offset_left = 24.0
 offset_top = 22.0
 offset_right = 198.0
@@ -135,6 +150,7 @@ theme_override_font_sizes/font_size = 41
 text = "Graphics"
 
 [node name="Fullscreen" type="Label" parent="Settings Menu/Panel/Graphics"]
+layout_mode = 0
 offset_top = 80.0
 offset_right = 83.0
 offset_bottom = 103.0
@@ -148,17 +164,20 @@ offset_right = 112.0
 offset_bottom = 24.0
 
 [node name="V-Sync" type="Label" parent="Settings Menu/Panel/Graphics"]
+layout_mode = 0
 offset_top = 112.0
 offset_right = 83.0
 offset_bottom = 135.0
 text = "V-Sync"
 
 [node name="CheckBox" type="CheckBox" parent="Settings Menu/Panel/Graphics/V-Sync"]
+layout_mode = 0
 offset_left = 64.0
 offset_right = 88.0
 offset_bottom = 24.0
 
 [node name="Volume" type="Label" parent="Settings Menu/Panel"]
+layout_mode = 0
 offset_left = 368.0
 offset_top = 22.0
 offset_right = 519.0
@@ -168,6 +187,7 @@ text = "Volume
 "
 
 [node name="Master" type="Label" parent="Settings Menu/Panel/Volume"]
+layout_mode = 0
 offset_top = 80.0
 offset_right = 83.0
 offset_bottom = 103.0
@@ -182,6 +202,7 @@ offset_right = 232.0
 offset_bottom = 21.0
 
 [node name="Music" type="Label" parent="Settings Menu/Panel/Volume"]
+layout_mode = 0
 offset_top = 112.0
 offset_right = 83.0
 offset_bottom = 135.0
@@ -189,6 +210,7 @@ text = "Music
 "
 
 [node name="HSlider" type="HSlider" parent="Settings Menu/Panel/Volume/Music"]
+layout_mode = 0
 offset_left = 70.0
 offset_top = 5.0
 offset_right = 232.0
@@ -196,6 +218,7 @@ offset_bottom = 21.0
 step = 0.01
 
 [node name="SFX" type="Label" parent="Settings Menu/Panel/Volume"]
+layout_mode = 0
 offset_top = 144.0
 offset_right = 83.0
 offset_bottom = 167.0
@@ -203,6 +226,7 @@ text = "SFX
 "
 
 [node name="HSlider" type="HSlider" parent="Settings Menu/Panel/Volume/SFX"]
+layout_mode = 0
 offset_left = 70.0
 offset_top = 5.0
 offset_right = 232.0
