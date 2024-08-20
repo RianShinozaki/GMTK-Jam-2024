@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ChefPhase" load_steps=5 format=3 uid="uid://dhe463av4vwny"]
+
+[ext_resource type="Script" path="res://Scripts/Resources/Chef/ChefPhase.gd" id="1_d2sgv"]
+[ext_resource type="Script" path="res://Scripts/Resources/Chef/ChefTasks.gd" id="2_3uksp"]
+[ext_resource type="Resource" uid="uid://dgq6vl5rdvfr" path="res://Resources/Chef/ChefTasks/GetPot.tres" id="3_ohoce"]
+[ext_resource type="Resource" uid="uid://badjy1obbkns7" path="res://Resources/Chef/ChefTasks/Serve.tres" id="4_k7iwd"]
+
+[resource]
+script = ExtResource("1_d2sgv")
+phaseName = "SERVE"
+phaseDescription = "time to serve the food"
+trackType = 0
+trackPart = 0
+trackVolume = 0.0
+phaseLength = 0.0
+taskList = Array[ExtResource("2_3uksp")]([ExtResource("3_ohoce"), ExtResource("4_k7iwd")])

@@ -4,6 +4,6 @@
 
 [resource]
 script = ExtResource("1_v2yqg")
-itemName = "Serve"
+itemName = "Pot"
 station = 8
 baseTask = false

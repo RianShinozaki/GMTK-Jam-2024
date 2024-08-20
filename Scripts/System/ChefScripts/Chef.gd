@@ -22,6 +22,8 @@ enum ChefStatus
 	ActiveTask #Currently doing the task
 }
 
+signal chef_finished()
+
 @onready var chefSprite : Sprite2D = $CharacterSprite
 @onready var chefAnimation : AnimationPlayer = $CharacterSprite/AnimationPlayer
 @onready var displayAction : Sprite2D = $WantedAction
@@ -118,6 +120,9 @@ func _process(delta):
 			phase += 1
 			_start_first_task()
 	
+	if chefProgress >= chefTasks[phase].taskList.size():
+		return
+	
 	if progressTimer < 0:
 		_chef_status_state_tree()
 	
@@ -139,7 +144,13 @@ func _chef_status_state_tree():
 				holdingItemSprite.visible = false
 				chefAnimation.play("hold_idle" if chefItemSprites.dictionary.has(currentHeldItem) else "idle")
 		ChefStatus.ActiveTask:
-			if goalObject == "AddPot":
+			print(goalObject)
+			if goalObject == "Serve":
+				chefSprite.visible = false
+				position.y += 10000
+				isActive = false
+				emit_signal("chef_finished")
+			elif goalObject == "AddPot":
 				potInventory.append(currentHeldItem)
 				currentHeldItem = ""
 				if !phaseActive:
@@ -165,16 +176,17 @@ func _chef_status_state_tree():
 			holdingItemSprite.visible = true
 
 func _display_current_action():
-	match currentChefStatus:
-		ChefStatus.Stun:
-			debugLabel.text = "Ouch!"
-		ChefStatus.Aggro:
-			debugLabel.text = "I want to destroy the robtotjh"
-		_:
-			if chefProgress >= chefTasks[phase].taskList.size():
-				debugLabel.text = "Im done"
-			else:
-				debugLabel.text = "I want to " + str(chefTasks[phase].taskList[chefProgress].itemName)
+	pass
+#	match currentChefStatus:
+#		ChefStatus.Stun:
+#			debugLabel.text = "Ouch!"
+#		ChefStatus.Aggro:
+#			debugLabel.text = "I want to destroy the robtotjh"
+#		_:
+#			if chefProgress >= chefTasks[phase].taskList.size():
+#				debugLabel.text = "Im done"
+#			else:
+#				debugLabel.text = "I want to " + str(chefTasks[phase].taskList[chefProgress].itemName)
 
 func _start_first_task():
 	isActive = true
@@ -206,6 +218,8 @@ func _get_target():
 	if chefProgress >= chefTasks[phase].taskList.size():
 		if phaseActive and phaseTimer < 0:
 			phase += 1
+			if phase >= chefTasks.size():
+				return
 			_start_first_task()
 		
 		print("Done with tasks")
@@ -214,9 +228,6 @@ func _get_target():
 	match chefTasks[phase].taskList[chefProgress].station:
 		ChefStates.Rest:
 			pass
-		ChefStates.GetPot:
-			targetLocation = ChefManager.potLocation
-			findTaskString = "Pot"
 		ChefStates.GetAlcohol:
 			targetLocation = ChefManager.alcoholLocation
 			findTaskString = "Alcohol"
@@ -246,6 +257,7 @@ func _start_active_task(timeRequired : float, stationType : ChefStation.ChefStat
 	progressTimer = timeRequired
 	
 	goalObject = goal
+	print(goalObject)
 	
 	#add animation here
 	match stationType:
@@ -359,6 +371,9 @@ func _on_ground_body_entered(body):
 			currentLadderLevel = 0
 		if drop and currentLadderLevel != drop.ladderLevel:
 			droppedItem = false
+			drop.queue_free()
+			drop._destroy()
+			drop = null
 		
 		CameraEffects._screen_shake(Vector2(0,10), 15)
 		progressTimer = 3
@@ -377,3 +392,8 @@ func _on_ground_body_entered(body):
 			if currentChefStatus == ChefStatus.Stun:
 				return
 			chefSprite.flip_h = !chefSprite.flip_h
+
+
+func _on_chef_finished():
+	print("Im finished")
+	pass # Replace with function body.
