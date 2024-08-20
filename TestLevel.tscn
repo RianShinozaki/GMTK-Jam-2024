@@ -2,7 +2,7 @@
 
 [ext_resource type="TileSet" uid="uid://ccdwy6d4c43ax" path="res://Resources/TileSets/Kitchen.tres" id="1_j1dxg"]
 [ext_resource type="Texture2D" uid="uid://uu7ql843qy7d" path="res://Sprites/UI/PresetSpot.png" id="1_v3dp5"]
-[ext_resource type="PackedScene" path="res://MusicManager.tscn" id="2_27rp8"]
+[ext_resource type="PackedScene" uid="uid://bhcs8kumsn1ob" path="res://MusicManager.tscn" id="2_27rp8"]
 [ext_resource type="PackedScene" uid="uid://coy3cod54bme0" path="res://Nodes/LevelPieces/Ai/Chef/chef.tscn" id="2_awlc6"]
 [ext_resource type="Script" path="res://Scripts/UI/PresetSpot.cs" id="2_e2won"]
 [ext_resource type="Script" path="res://Scenes/RobotViewer.cs" id="3_i75fd"]

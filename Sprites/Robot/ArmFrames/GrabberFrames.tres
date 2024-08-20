@@ -1,33 +1,24 @@
-[gd_resource type="SpriteFrames" load_steps=9 format=3 uid="uid://b7ofti5c5wjit"]
-
-[ext_resource type="Texture2D" uid="uid://f64e7gy3uh18" path="res://Sprites/Robot/Arms-Grabber.png" id="1_mb407"]
+[gd_resource type="SpriteFrames" load_steps=8 format=3 uid="uid://b7ofti5c5wjit"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vlvca"]
-atlas = ExtResource("1_mb407")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ri6y8"]
-atlas = ExtResource("1_mb407")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ytbki"]
-atlas = ExtResource("1_mb407")
 region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rhjpa"]
-atlas = ExtResource("1_mb407")
 region = Rect2(0, 0, 32, 12)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dl4jp"]
-atlas = ExtResource("1_mb407")
 region = Rect2(32, 0, 32, 12)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lsx4y"]
-atlas = ExtResource("1_mb407")
 region = Rect2(64, 0, 32, 12)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3iam4"]
-atlas = ExtResource("1_mb407")
 region = Rect2(0, 0, 32, 12)
 
 [resource]

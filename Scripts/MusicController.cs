@@ -6,77 +6,82 @@ using System;
 
 public partial class MusicController : AudioStreamPlayer
 {
-	[Export]
-	public AudioStreamPlayer[] Players;
+		[Export]
+		public AudioStreamPlayer[] Players;
 	
-	[Export]
-	public float MinVolume;
+		[Export]
+		public float MinVolume;
 
-	[Export]
-	public float MaxVolume;
+		[Export]
+		public float MaxVolume;
 
-	public static MusicController Instance { get; private set; }
+		public static MusicController Instance { get; private set; }
 
-	public override void _Ready()
-	{
-		if (Instance != null) 
+		public override void _Ready()
 		{
-			QueueFree();
-			return;
+			if (Instance != null) 
+			{
+				QueueFree();
+				return;
+			}
+			Instance = this;
 		}
-		Instance = this;
-	}
 
-	public void PlayTrack(TrackPart track) 
-	{
-		foreach (var player in Players) 
+		public void PlayTrack(TrackPart track) 
 		{
-			player.Play();
-			(player.GetStreamPlayback() as AudioStreamPlaybackInteractive).SwitchToClip((int)track);
+			foreach (var player in Players) 
+			{
+				player.Play();
+				(player.GetStreamPlayback() as AudioStreamPlaybackInteractive).SwitchToClip((int)track);
+			}
+		}
+		public void SetMasterVolume(float volume) 
+		{
+			float NormalizedVolume = volume * (MaxVolume - MinVolume) + MinVolume;
+			AudioServer.SetBusVolumeDb(AudioServer.GetBusIndex("Music (Master)"), NormalizedVolume);
+		}
+		public MusicController SetTrack(TrackType type, TrackPart part) 
+		{
+			(Players[(int)type].GetStreamPlayback() as AudioStreamPlaybackInteractive).SwitchToClip((int)part);
+			return this;
+		}
+		public MusicController SetVolume(TrackType type, float volume) 
+		{
+			float NormalizedVolume = volume * (MaxVolume - MinVolume) + MinVolume;
+			AudioServer.SetBusVolumeDb(AudioServer.GetBusIndex(Players[(int)type].Bus), NormalizedVolume);
+			return this;
+		}
+		public MusicController Resume() 
+		{
+			foreach (var player in Players)
+			{
+				player.Play();
+			}
+			return this;
+		}
+		public MusicController Pause()
+		{
+			foreach (var player in Players)
+			{
+				player.Stop();
+			}
+			return this;
 		}
 	}
-	public MusicController SetTrack(TrackType type, TrackPart part) 
+	public enum TrackType 
 	{
-		(Players[(int)type].GetStreamPlayback() as AudioStreamPlaybackInteractive).SwitchToClip((int)part);
-		return this;
+		Base = 0,
+		Melody = 1,
+		Percussion = 2,
 	}
-	public MusicController SetVolume(TrackType type, float volume) 
+	public enum TrackPart
 	{
-		float NormalizedVolume = volume * (MaxVolume - MinVolume) + MinVolume;
-		AudioServer.SetBusVolumeDb(AudioServer.GetBusIndex(Players[(int)type].Bus), NormalizedVolume);
-		return this;
+		Intro,
+		LoopA,
+		LoopB,
+		Chorus,
+		Workshop,
+		LoopB2,
 	}
-	public MusicController Resume() 
-	{
-		foreach (var player in Players)
-		{
-			player.Play();
-		}
-		return this;
-	}
-	public MusicController Pause()
-	{
-		foreach (var player in Players)
-		{
-			player.Stop();
-		}
-		return this;
-	}
-}
-public enum TrackType 
-{
-	Base = 0,
-	Melody = 1,
-	Percussion = 2,
-}
-public enum TrackPart
-{
-	Intro,
-	LoopA,
-	LoopB,
-	Chorus,
-	Workshop,
-	LoopB2,
-}
 
 }
