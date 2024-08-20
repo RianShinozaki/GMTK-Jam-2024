@@ -73,7 +73,15 @@ public partial class AndroidInteractionBase : TriggerDetector {
 	}
 
 	public void EndHighlight() {
+		if (highlightCache == null) {
+			return;
+		}
+
 		for (int i = 0; i < highlightCache.Count; i++) {
+			ClickDetector click = highlightCache[i].As<Node2D>().GetNode<ClickDetector>("ClickDetector");
+			click.OnClick -= InteractableClicked;
+			click.InputPickable = false;
+
 			((Node2D)highlightCache[i].As<Node>().GetParent()).Modulate = Colors.White;
 		}
 
@@ -83,12 +91,6 @@ public partial class AndroidInteractionBase : TriggerDetector {
 	void InteractableClicked(Node context) {
 		if (context is AndroidInteractableArea interaction) {
 			interaction.Interact();
-
-			for (int i = 0; i < highlightCache.Count; i++) {
-				ClickDetector click = highlightCache[i].As<Node2D>().GetNode<ClickDetector>("ClickDetector");
-				click.OnClick -= InteractableClicked;
-				click.InputPickable = false;
-			}
 		}
 
 		EndHighlight();
@@ -98,11 +100,14 @@ public partial class AndroidInteractionBase : TriggerDetector {
 	//Right click to cancel menu
     public override void _Input(InputEvent @event)
     {
+		if (highlightCache == null) {
+			return;
+		}
+
         if(@event is InputEventMouseButton mouseEv) {
             if (mouseEv.ButtonIndex == MouseButton.Right) {
                 EndHighlight();
-				EmitSignal(SignalName.OnOptionClicked, -1, false);
-
+				EmitSignal(SignalName.OnOptionClicked, this, false);
             }
         }
         base._Input(@event);

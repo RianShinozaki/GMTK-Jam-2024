@@ -2,11 +2,11 @@
 
 [ext_resource type="PackedScene" uid="uid://bgfbrmcv1xvrc" path="res://Nodes/LevelPieces/PickupBase.tscn" id="1_w00iq"]
 
-[node name="Block2" instance=ExtResource("1_w00iq")]
+[node name="FireBase" instance=ExtResource("1_w00iq")]
 UseGravity = false
 PickUpable = false
 InteractionDisables = []
 
 [node name="AndroidInteractableArea" parent="." index="2"]
 collision_layer = 512
-collision_mask = 0
+collision_mask = 512
