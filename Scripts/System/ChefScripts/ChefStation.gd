@@ -32,6 +32,8 @@ func _ready():
 			ChefManager.chopLocation = get_node(".")
 		Chef.ChefStates.Stove:
 			ChefManager.stoveLocation = get_node(".")
+		Chef.ChefStates.Serve:
+			ChefManager.serveLocation = get_node(".")
 	
 	pass # Replace with function body.
 

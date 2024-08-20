@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ChefTask" load_steps=2 format=3 uid="uid://ces3x15cecnh6"]
+
+[ext_resource type="Script" path="res://Scripts/Resources/Chef/ChefTasks.gd" id="1_py7n5"]
+
+[resource]
+script = ExtResource("1_py7n5")
+itemName = "Meat"
+station = 6
+baseTask = false

@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://cjs71pgp6dnve"]
+[gd_scene load_steps=13 format=3 uid="uid://cjs71pgp6dnve"]
 
-[ext_resource type="Script" path="res://Scripts/System/BasicPhysicsObject.cs" id="1_h5smj"]
+[ext_resource type="Script" path="res://Scripts/System/BasicPhysicsObject.cs" id="1_hy5lo"]
 [ext_resource type="Texture2D" uid="uid://cwgngd6pul78r" path="res://Sprites/Peel.png" id="2_7qlxo"]
+[ext_resource type="Script" path="res://ChefRemove.gd" id="2_phuu1"]
 [ext_resource type="Script" path="res://Scripts/Androids/Interaction/AndroidInteractableArea.cs" id="3_d8sgi"]
 [ext_resource type="Script" path="res://Scripts/System/Clickables/ClickDetector.cs" id="4_4yra8"]
 [ext_resource type="Script" path="res://Scripts/System/Hitbox/TriggerShape.cs" id="5_8nlhs"]
@@ -31,17 +32,17 @@ size = Vector2(16, 16)
 size = Vector2(16, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gyaoj"]
-size = Vector2(48, 28)
+size = Vector2(48, 36)
 
-[node name="Banana" type="CharacterBody2D" node_paths=PackedStringArray("InteractionArea")]
+[node name="Banana" type="CharacterBody2D"]
 texture_filter = 1
 position = Vector2(-104, -8)
-script = ExtResource("1_h5smj")
-InteractionArea = NodePath("AndroidInteractableArea")
+script = ExtResource("1_hy5lo")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -4)
 sprite_frames = SubResource("SpriteFrames_tivk8")
+script = ExtResource("2_phuu1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_v4gyi")
@@ -66,9 +67,12 @@ shape = SubResource("RectangleShape2D_obkde")
 script = ExtResource("5_8nlhs")
 StatusEffects = {
 "Hurt": 1.0,
-"Power": Vector2(150, 300)
+"Power": Vector2(150, 300),
+"Remove": NodePath("..")
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TriggerShape"]
-position = Vector2(0, -6)
+position = Vector2(0, -10)
 shape = SubResource("RectangleShape2D_gyaoj")
+
+[connection signal="area_entered" from="TriggerShape" to="AnimatedSprite2D" method="_on_trigger_shape_area_entered"]

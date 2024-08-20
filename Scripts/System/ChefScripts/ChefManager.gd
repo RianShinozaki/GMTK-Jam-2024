@@ -9,6 +9,9 @@ var stoveLocation : ChefStation
 var chopLocation : ChefStation
 var serveLocation : ChefStation
 
+var chefRemove : Node
+var chefCanRemove : bool
+
 var ladderLocations : Array[Ladder] = [null,null,null]
 
 var panicLevel : int
