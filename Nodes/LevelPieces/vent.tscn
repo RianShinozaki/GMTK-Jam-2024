@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://cbvc52g6efk25"]
+
+[ext_resource type="Texture2D" uid="uid://dnxk25urw02ya" path="res://Sprites/LevelObjects/Vent.png" id="1_s1vfc"]
+[ext_resource type="Script" path="res://Scripts/LevelObjects/Vent.cs" id="2_aa2q6"]
+[ext_resource type="Script" path="res://Scripts/System/Clickables/ClickDetector.cs" id="3_v5ytm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b8pqy"]
+size = Vector2(40, 26)
+
+[node name="Vent" type="Sprite2D"]
+texture_filter = 1
+position = Vector2(-64, -415)
+texture = ExtResource("1_s1vfc")
+hframes = 2
+script = ExtResource("2_aa2q6")
+
+[node name="ClickDetector" type="Area2D" parent="." node_paths=PackedStringArray("ContextNode")]
+script = ExtResource("3_v5ytm")
+ContextNode = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ClickDetector"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_b8pqy")
+
+[connection signal="OnClick" from="ClickDetector" to="." method="_on_click_detector_on_click"]
