@@ -3,23 +3,23 @@ using System;
 
 [GlobalClass]
 public partial class ClickDetector : Area2D {
-    [Export]
-    public Node ContextNode;
+	[Export]
+	public Node ContextNode;
 
-    [Signal]
-    public delegate void OnClickEventHandler(Node context);
+	[Signal]
+	public delegate void OnClickEventHandler(Node context);
 
-    public override void _Ready() {
-        base._Ready();
+	public override void _Ready() {
+		base._Ready();
 
-        InputEvent += OnInputEvent;
-    }
+		InputEvent += OnInputEvent;
+	}
 
-    void OnInputEvent(Node viewport, InputEvent @event, long shapeID) {
-        base._Input(@event);
+	void OnInputEvent(Node viewport, InputEvent @event, long shapeID) {
+		base._Input(@event);
 
-        if (@event is InputEventMouseButton button && @event.IsPressed() && button.ButtonIndex == MouseButton.Left) {
-            EmitSignal(SignalName.OnClick, ContextNode);
-        }
-    }
+		if (@event is InputEventMouseButton button && @event.IsPressed() && button.ButtonIndex == MouseButton.Left) {
+			EmitSignal(SignalName.OnClick, ContextNode);
+		}
+	}
 }

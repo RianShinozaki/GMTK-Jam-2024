@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://pjxsgodyiqqi"
-path="res://.godot/imported/StoveTop.png-1545cfa9adc21f92f8276b642a7d4973.ctex"
+uid="uid://nhouumsx326g"
+path="res://.godot/imported/Flour.png-6beb5bf2b6dae9a149def80d77cec4bc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/StoveTop.png"
-dest_files=["res://.godot/imported/StoveTop.png-1545cfa9adc21f92f8276b642a7d4973.ctex"]
+source_file="res://Sprites/Food/Flour.png"
+dest_files=["res://.godot/imported/Flour.png-6beb5bf2b6dae9a149def80d77cec4bc.ctex"]
 
 [params]
 

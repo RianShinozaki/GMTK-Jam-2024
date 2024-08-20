@@ -50,8 +50,13 @@ var startTask : bool
 var currentChefStatus : ChefStatus
 var progressTimer : float
 
-@export var chefItemSprites : Dictionary
+@export var chefItemSprites : ChefItemDictionary
 var currentHeldItem : String
+
+var droppedItem : bool
+@onready var droppedItemPrefab = preload("res://ChefDroppedItem.tscn")
+var drop
+@onready var chefParent = %ChefParent
 
 var goalObject : String
 
@@ -85,7 +90,7 @@ func _physics_process(delta):
 			chefSprite.flip_h = 0 > sign(actualTarget.position.x - position.x)
 			holdItemDisplace.scale.x = sign(actualTarget.position.x - position.x)
 			
-			if progressTimer < 0 and fmod(abs(progressTimer),.8) < .4 and abs(actualTarget.position.x - position.x) < 10:
+			if progressTimer < 0 and fmod(abs(progressTimer),1.) < .5 and abs(actualTarget.position.x - position.x) < 15:
 				velocity.x *= -1
 			
 		elif currentChefStatus == ChefStatus.Aggro:
@@ -123,13 +128,13 @@ func _chef_status_state_tree():
 	match currentChefStatus:
 		ChefStatus.Idle:
 			currentChefStatus = ChefStatus.Move
-			chefAnimation.play("walk_hold" if chefItemSprites.has(currentHeldItem) else "walk")
+			chefAnimation.play("walk_hold" if chefItemSprites.dictionary.has(currentHeldItem) else "walk")
 		ChefStatus.Move:
 			if startTask:
 				currentChefStatus = ChefStatus.ActiveTask
 				targetLocation._chef_use_station(self, chefTasks[phase].taskList[chefProgress].itemName)
 				holdingItemSprite.visible = false
-				chefAnimation.play("hold_idle" if chefItemSprites.has(currentHeldItem) else "idle")
+				chefAnimation.play("hold_idle" if chefItemSprites.dictionary.has(currentHeldItem) else "idle")
 		ChefStatus.ActiveTask:
 			if goalObject == "AddPot":
 				potInventory.append(currentHeldItem)
@@ -141,19 +146,20 @@ func _chef_status_state_tree():
 				currentHeldItem = goalObject
 			
 			holdingItemSprite.visible = true
-			if chefItemSprites.has(currentHeldItem):
-				holdingItemSprite.texture = load(chefItemSprites[currentHeldItem])
+			if chefItemSprites.dictionary.has(currentHeldItem):
+				holdingItemSprite.texture = load(chefItemSprites.dictionary[currentHeldItem])
 			else:
 				holdingItemSprite.texture = null
 			
 			_next_task()
-			chefAnimation.play("hold_idle" if chefItemSprites.has(currentHeldItem) else "idle")
+			chefAnimation.play("hold_idle" if chefItemSprites.dictionary.has(currentHeldItem) else "idle")
 		ChefStatus.Stun:
 			pass
 			#currentChefStatus = ChefStatus.Aggro
 			#progressTimer = 5
 		ChefStatus.Aggro:
 			currentChefStatus = ChefStatus.Idle
+			holdingItemSprite.visible = true
 
 func _display_current_action():
 	match currentChefStatus:
@@ -267,7 +273,7 @@ func _climb_ladder(level : int, snap : Vector2 ,goal : Vector2, duration : float
 	holdingItemSprite.visible = true
 	currentLadderLevel = level
 	canClimb = true
-	chefAnimation.play("walk")
+	chefAnimation.play("walk_hold" if chefItemSprites.dictionary.has(currentHeldItem) else "walk")
 
 func _on_hurt_box_on_damage_recieved(statusEffects): #Put hurt Chef
 	
@@ -280,6 +286,16 @@ func _on_hurt_box_on_damage_recieved(statusEffects): #Put hurt Chef
 			ChefManager.ladderLocations[statusEffects["Ladder"]]._request_climb_ladder(self, statusEffects["Level"])
 	
 	if statusEffects.has("Hurt"):
+		drop = droppedItemPrefab.instantiate()
+		
+		if chefItemSprites.dictionary.has(currentHeldItem):
+			chefParent.add_child(drop)
+			drop._drop_item(currentHeldItem)
+			droppedItem = true
+			drop.global_position = global_position
+			currentHeldItem = ""
+		
+		holdingItemSprite.visible = false
 		chefAnimation.play("hurt")
 		currentChefStatus = ChefStatus.Stun
 		progressTimer = .5
@@ -299,9 +315,26 @@ func _on_hurt_box_on_damage_recieved(statusEffects): #Put hurt Chef
 	pass # Replace with function body.
 
 func _on_ground_body_entered(body):
+	if global_position.y > -100:
+		currentLadderLevel = 0
 	if currentChefStatus == ChefStatus.Stun and progressTimer < 0:
-		print("touch")
+		#print("touch")
+		
+		
+		CameraEffects._screen_shake(Vector2(0,10), 15)
 		progressTimer = 3
 		currentChefStatus = ChefStatus.Aggro
+		chefAnimation.play("hurt_hit")
 		await get_tree().create_timer(1).timeout
+		if currentChefStatus == ChefStatus.Stun:
+			return
 		chefAnimation.play("hurt_get_up")
+		await get_tree().create_timer(.8).timeout
+		if currentChefStatus == ChefStatus.Stun:
+			return
+		chefSprite.flip_h = !chefSprite.flip_h
+		for i in range(3):
+			await get_tree().create_timer(.2).timeout
+			if currentChefStatus == ChefStatus.Stun:
+				return
+			chefSprite.flip_h = !chefSprite.flip_h

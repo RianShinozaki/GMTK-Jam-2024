@@ -58,7 +58,7 @@ public partial class AiBotBase : CharacterBody2D {
 		HeadSprite.SpriteFrames = AndroidBase.Head.SpriteTexture;
 		ArmsSprite.SpriteFrames = AndroidBase.Arms.SpriteTexture;
 		LegsSprite.SpriteFrames = AndroidBase.Legs.SpriteTexture;
-    }
+	}
 
 	public override void _Process(double delta) {
 		base._Process(delta);
@@ -73,7 +73,7 @@ public partial class AiBotBase : CharacterBody2D {
 
 	//Movement and Physics
 	//InputDirection is part of autonomous control
-    public override void _PhysicsProcess(double delta) {
+	public override void _PhysicsProcess(double delta) {
 		Vector2 velocity = Velocity;
 
 		if (!IsOnFloor()) {

@@ -22,15 +22,15 @@ public partial class BasicPhysicsObject : CharacterBody2D {
 	[Export]
 	Array InteractionDisables;
 
-    public override void _Ready() {
-        base._Ready();
+	public override void _Ready() {
+		base._Ready();
 
 		if (Interactable) {
 			InteractionArea.OnInteract += OnInteract;
 		}
-    }
+	}
 
-    public override void _PhysicsProcess(double delta) {
+	public override void _PhysicsProcess(double delta) {
 		Vector2 velocity = Velocity;
 
 		if (!IsOnFloor() && UseGravity) {

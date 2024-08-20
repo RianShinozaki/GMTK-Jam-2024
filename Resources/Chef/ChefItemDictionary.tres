@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ChefItemDictionary" load_steps=2 format=3 uid="uid://dsl86j8kqu53g"]
+
+[ext_resource type="Script" path="res://Scripts/Resources/Chef/ChefItemDictionary.gd" id="1_r6ler"]
+
+[resource]
+script = ExtResource("1_r6ler")
+dictionary = {
+"Carrot": "res://Sprites/Food/Carrot.png",
+"ChopCarrot": "res://Sprites/Food/CarrotSliced.png",
+"ChopOnion": "res://Sprites/Food/OnionSliced.png",
+"Onion": "res://Sprites/Food/Onion.png",
+"Pot": "res://Sprites/Food/Pot.png"
+}
