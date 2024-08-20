@@ -1,24 +1,19 @@
-[gd_resource type="Resource" script_class="AndroidLegs" load_steps=10 format=3 uid="uid://3l7a2growjfx"]
+[gd_resource type="Resource" load_steps=9 format=3 uid="uid://3l7a2growjfx"]
 
-[ext_resource type="Texture2D" uid="uid://dksqc2tum5j1g" path="res://Sprites/Robot/Legs-Wheel.png" id="1_fvtvq"]
 [ext_resource type="Texture2D" uid="uid://6ne7k37eapvy" path="res://Sprites/UI/Options/Options2.png" id="1_o8lc5"]
 [ext_resource type="Texture2D" uid="uid://d2d226x8nh80h" path="res://Sprites/UI/Options/Options3.png" id="2_igckn"]
 [ext_resource type="Script" path="res://Scripts/Resources/Androids/Legs/AndroidLegs.cs" id="4_jny5r"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n7qcb"]
-atlas = ExtResource("1_fvtvq")
 region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jtftl"]
-atlas = ExtResource("1_fvtvq")
 region = Rect2(16, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gcdqm"]
-atlas = ExtResource("1_fvtvq")
 region = Rect2(32, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qpsfl"]
-atlas = ExtResource("1_fvtvq")
 region = Rect2(48, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_p3hvt"]
