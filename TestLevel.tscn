@@ -32,7 +32,7 @@
 [ext_resource type="Resource" uid="uid://xwph84hdtcjb" path="res://Resources/Chef/ChefStationActions/AlcoholStation.tres" id="19_lm4y6"]
 [ext_resource type="Script" path="res://Scripts/System/ChefScripts/ChefUI.gd" id="24_drcbe"]
 [ext_resource type="PackedScene" uid="uid://ccqic04rprw8h" path="res://Nodes/LevelPieces/LevelObjects/banana.tscn" id="32_3fsgh"]
-[ext_resource type="PackedScene" uid="uid://cbvc52g6efk25" path="res://Nodes/LevelPieces/vent.tscn" id="33_nvw3c"]
+[ext_resource type="PackedScene" path="res://Nodes/LevelPieces/vent.tscn" id="33_nvw3c"]
 [ext_resource type="Script" path="res://Scripts/UI/RobotSpawner.cs" id="36_p5xpw"]
 
 [node name="TestLevel" type="Node2D"]

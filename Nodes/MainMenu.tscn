@@ -1,0 +1,251 @@
+[gd_scene load_steps=5 format=3 uid="uid://bdnlpq6j5ckhb"]
+
+[ext_resource type="Script" path="res://Nodes/MainMenuController.cs" id="1_2g2lp"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_m2hpf"]
+
+[sub_resource type="Gradient" id="Gradient_e5ioh"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_tv2nx"]
+gradient = SubResource("Gradient_e5ioh")
+
+[node name="Control" type="Control" node_paths=PackedStringArray("MainMenu", "SettingsMenu", "Fullscreen", "VSync", "Master", "Music", "SFX")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2g2lp")
+MainMenu = NodePath("Main Menu")
+SettingsMenu = NodePath("Settings Menu")
+Fullscreen = NodePath("Settings Menu/Panel/Graphics/Fullscreen/CheckBox")
+VSync = NodePath("Settings Menu/Panel/Graphics/V-Sync/CheckBox")
+Master = NodePath("Settings Menu/Panel/Volume/Master/HSlider")
+Music = NodePath("Settings Menu/Panel/Volume/Music/HSlider")
+SFX = NodePath("Settings Menu/Panel/Volume/SFX/HSlider")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("PlaceholderTexture2D_m2hpf")
+
+[node name="Main Menu" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Logo" type="TextureRect" parent="Main Menu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -172.5
+offset_top = -188.0
+offset_right = 172.5
+offset_bottom = -77.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture1D_tv2nx")
+
+[node name="Button" type="Button" parent="Main Menu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -91.5
+offset_top = 84.0
+offset_right = 91.5
+offset_bottom = 129.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Play"
+
+[node name="Button2" type="Button" parent="Main Menu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -91.5
+offset_top = 142.5
+offset_right = 91.5
+offset_bottom = 187.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Settings"
+
+[node name="Button3" type="Button" parent="Main Menu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -91.5
+offset_top = 201.0
+offset_right = 91.5
+offset_bottom = 246.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Exit
+"
+
+[node name="Settings Menu" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="Settings Menu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -344.0
+offset_top = -218.0
+offset_right = 344.0
+offset_bottom = 218.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Graphics" type="Label" parent="Settings Menu/Panel"]
+offset_left = 24.0
+offset_top = 22.0
+offset_right = 198.0
+offset_bottom = 79.0
+theme_override_font_sizes/font_size = 41
+text = "Graphics"
+
+[node name="Fullscreen" type="Label" parent="Settings Menu/Panel/Graphics"]
+offset_top = 80.0
+offset_right = 83.0
+offset_bottom = 103.0
+text = "Fullscreen
+"
+
+[node name="CheckBox" type="CheckBox" parent="Settings Menu/Panel/Graphics/Fullscreen"]
+layout_mode = 0
+offset_left = 88.0
+offset_right = 112.0
+offset_bottom = 24.0
+
+[node name="V-Sync" type="Label" parent="Settings Menu/Panel/Graphics"]
+offset_top = 112.0
+offset_right = 83.0
+offset_bottom = 135.0
+text = "V-Sync"
+
+[node name="CheckBox" type="CheckBox" parent="Settings Menu/Panel/Graphics/V-Sync"]
+offset_left = 64.0
+offset_right = 88.0
+offset_bottom = 24.0
+
+[node name="Volume" type="Label" parent="Settings Menu/Panel"]
+offset_left = 368.0
+offset_top = 22.0
+offset_right = 519.0
+offset_bottom = 79.0
+theme_override_font_sizes/font_size = 41
+text = "Volume
+"
+
+[node name="Master" type="Label" parent="Settings Menu/Panel/Volume"]
+offset_top = 80.0
+offset_right = 83.0
+offset_bottom = 103.0
+text = "Master
+"
+
+[node name="HSlider" type="HSlider" parent="Settings Menu/Panel/Volume/Master"]
+layout_mode = 0
+offset_left = 70.0
+offset_top = 5.0
+offset_right = 232.0
+offset_bottom = 21.0
+max_value = 1.0
+step = 0.01
+
+[node name="Music" type="Label" parent="Settings Menu/Panel/Volume"]
+offset_top = 112.0
+offset_right = 83.0
+offset_bottom = 135.0
+text = "Music
+"
+
+[node name="HSlider" type="HSlider" parent="Settings Menu/Panel/Volume/Music"]
+offset_left = 70.0
+offset_top = 5.0
+offset_right = 232.0
+offset_bottom = 21.0
+max_value = 1.0
+step = 0.01
+
+[node name="SFX" type="Label" parent="Settings Menu/Panel/Volume"]
+offset_top = 144.0
+offset_right = 83.0
+offset_bottom = 167.0
+text = "SFX
+"
+
+[node name="HSlider" type="HSlider" parent="Settings Menu/Panel/Volume/SFX"]
+offset_left = 70.0
+offset_top = 5.0
+offset_right = 232.0
+offset_bottom = 21.0
+max_value = 1.0
+step = 0.01
+
+[node name="Back" type="Button" parent="Settings Menu/Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -144.0
+offset_top = -94.0
+offset_right = -16.0
+offset_bottom = -56.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Back"
+
+[node name="Apply" type="Button" parent="Settings Menu/Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = -94.0
+offset_right = 144.0
+offset_bottom = -56.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Apply
+"
+
+[connection signal="pressed" from="Main Menu/Button" to="." method="PlayGame"]
+[connection signal="pressed" from="Main Menu/Button2" to="." method="ShowSettingsMenu"]
+[connection signal="pressed" from="Main Menu/Button3" to="." method="ExitGame"]
+[connection signal="pressed" from="Settings Menu/Panel/Back" to="." method="ShowMainMenu"]
+[connection signal="pressed" from="Settings Menu/Panel/Apply" to="." method="ApplySettings"]
