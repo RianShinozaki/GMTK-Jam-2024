@@ -2,12 +2,9 @@ using Godot;
 using Godot.Collections;
 
 [GlobalClass]
-public partial class AndroidPropellerLegs : AndroidPiece {
+public partial class AndroidPropellerLegs : AndroidLegs {
     const uint SOLIDONLY = 1u;
 	const uint SOLIDANDROPE = 3u;
-
-    [Export]
-    public Texture2D TurnIcon, StopIcon;
     
     float inputCache = -1f;
 
@@ -28,13 +25,13 @@ public partial class AndroidPropellerLegs : AndroidPiece {
     }
 
     void Turn(Node context) {
-        if (context is AiBotBase character && character.IsOnFloor()) {
+        if (context is AiBotBase character) {
             character.InputDirection *= -1f;
         }
     }
     
     void Stop(Node context) {
-        if (context is AiBotBase character && character.IsOnFloor()) {
+        if (context is AiBotBase character) {
             if (character.InputSpeed != 0f) {
                 inputCache = character.InputSpeed;
                 character.InputSpeed = 0f;
@@ -49,8 +46,10 @@ public partial class AndroidPropellerLegs : AndroidPiece {
         Vector2 velocity = bot.Velocity;
 
 		if (!bot.IsOnFloor() && bot.InputSpeed == 0f) {
-			velocity += bot.GetGravity() * delta;
-		}
+			velocity += bot.GetGravity() * delta * 0.01f;
+		}else if (velocity.Y >= 0f && bot.InputSpeed != 0f) {
+            velocity -= bot.GetGravity() * delta * 0.3f;
+        }
 
 		float desiredDirection = Mathf.Clamp(bot.InputSpeed, 0f, 1f) * Mathf.Sign(bot.InputDirection);
 		desiredDirection *= bot.AndroidBase.Legs.BaseMovementSpeed;

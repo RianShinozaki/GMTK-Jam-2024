@@ -78,6 +78,7 @@ animations = [{
 }]
 
 [resource]
+resource_local_to_scene = true
 script = ExtResource("4_jk4ke")
 pogoWaitTime = 1.0
 jumpForce = 300.0

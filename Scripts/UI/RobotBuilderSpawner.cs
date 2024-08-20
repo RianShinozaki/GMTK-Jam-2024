@@ -14,7 +14,7 @@ public partial class RobotBuilderSpawner : Node2D
     }
     public void CreateRobot(int preset) {
 		if(currentBot != null) {
-			currentBot.QueueFree();
+			//currentBot.QueueFree();
 		}
 		currentBot = (AiBotBase)GD.Load<PackedScene>(AIBotPath).Instantiate();
 		currentBot.AndroidBase = RobotStorage.Instance.robots[preset];

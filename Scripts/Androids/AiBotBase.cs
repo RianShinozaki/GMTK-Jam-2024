@@ -38,7 +38,7 @@ public partial class AiBotBase : CharacterBody2D {
 	public delegate void BotProcessEventHandler(float delta);
 
 	public void Init() {
-
+		AndroidBase = (Android)AndroidBase.Duplicate(true);
 		Array<Array> headData = AndroidBase.Head.GetOptions;
 		Array<Array> armsData = AndroidBase.Arms.GetOptions;
 		Array<Array> legsData = AndroidBase.Legs.GetOptions;

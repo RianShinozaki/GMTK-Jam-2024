@@ -42,7 +42,9 @@ animations = [{
 }]
 
 [resource]
+resource_local_to_scene = true
 script = ExtResource("2_cnisb")
+BaseMovementSpeed = 16.0
 TurnIcon = ExtResource("3_0xdyy")
 StopIcon = ExtResource("2_5gjjb")
 SpriteTexture = SubResource("SpriteFrames_tjvdb")
