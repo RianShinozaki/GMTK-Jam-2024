@@ -5,4 +5,4 @@
 
 [node name="RobotStorage" type="Node"]
 script = ExtResource("1_ptnp1")
-robots = Array[Object]([ExtResource("2_me45h"), null, null, null, null])
+robots = Array[Object]([ExtResource("2_me45h"), ExtResource("2_me45h"), ExtResource("2_me45h"), ExtResource("2_me45h"), ExtResource("2_me45h")])

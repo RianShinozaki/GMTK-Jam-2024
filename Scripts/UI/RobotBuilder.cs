@@ -12,7 +12,10 @@ public partial class RobotBuilder : Node2D
 	public RobotViewer viewer;
 	[Export] public Android currentAndroid;
 	public static RobotBuilder Instance;
-	[Export] Godot.Collections.Array<PartsGroup> partsGroup;
+	[Export] Godot.Collections.Array<Control> partsGroup;
+	public int currentPreset;
+	[Export] public Control PresetList;
+	public bool firstTime = true;
 
     public override void _Ready()
     {
@@ -38,9 +41,18 @@ public partial class RobotBuilder : Node2D
 				break;
 		}
 		viewer.UpdateTextures(currentAndroid);
+		RobotStorage.Instance.robots[currentPreset] = currentAndroid;
+		PresetList.GetChild<PresetSpot>(currentPreset).UpdateTextures();
+		RobotBuilderSpawner.Instance.CreateRobot(currentPreset);
+	}
+	public void ChangeWhole(Android android) {
+		currentAndroid = android;
+		viewer.UpdateTextures(currentAndroid);
+		RobotBuilderSpawner.Instance.CreateRobot(currentPreset);
+
 	}
 	public void HidePartsGroups() {
-		foreach(PartsGroup group in partsGroup) {
+		foreach(Control group in partsGroup) {
 			group.Visible = false;
 		}
 	}

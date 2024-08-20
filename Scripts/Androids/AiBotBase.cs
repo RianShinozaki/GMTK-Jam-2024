@@ -29,8 +29,7 @@ public partial class AiBotBase : CharacterBody2D {
 	double systemTime;
 	double lastTurnAround;
 
-	public override void _Ready() {
-		base._Ready();
+	public void Init() {
 
 		Array<Array> headData = AndroidBase.Head.GetOptions;
 		Array<Array> armsData = AndroidBase.Arms.GetOptions;
