@@ -1,7 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://bbndvkgy5htbg"]
+[gd_scene load_steps=17 format=3 uid="uid://bbndvkgy5htbg"]
 
 [ext_resource type="Script" path="res://Scripts/Androids/AiBotBase.cs" id="1_3rpdd"]
 [ext_resource type="Script" path="res://Scripts/System/QuickButtonContextMenu.cs" id="2_mk51w"]
+[ext_resource type="Resource" uid="uid://bytct4cj5amek" path="res://Resources/RobotPresets/BasicRobot.tres" id="2_ykvmb"]
 [ext_resource type="Texture2D" uid="uid://bsporryywr2b3" path="res://Sprites/Robot/Head-Normal.png" id="3_7omf5"]
 [ext_resource type="Texture2D" uid="uid://dlv7xixg23mlk" path="res://Sprites/Robot/RoboBody.png" id="4_5ah70"]
 [ext_resource type="Script" path="res://Scripts/System/Clickables/ClickableContextMenu.cs" id="4_xeveg"]
@@ -65,6 +66,7 @@ size = Vector2(16, 22)
 texture_filter = 1
 collision_layer = 0
 script = ExtResource("1_3rpdd")
+AndroidBase = ExtResource("2_ykvmb")
 HeadContextMenu = NodePath("ButtonHandlers/HeadButtonHandler")
 ArmsContextMenu = NodePath("ButtonHandlers/ArmsButtonHandler")
 LegsContextMenu = NodePath("ButtonHandlers/LegsButtonHandler")

@@ -32,6 +32,11 @@ public partial class AiBotBase : CharacterBody2D {
 	double systemTime;
 	double lastTurnAround;
 
+	public System.Action<AiBotBase, float> UpdateOverride;
+
+	[Signal]
+	public delegate void BotProcessEventHandler(float delta);
+
 	public void Init() {
 
 		Array<Array> headData = AndroidBase.Head.GetOptions;
@@ -44,7 +49,10 @@ public partial class AiBotBase : CharacterBody2D {
 		}
 
 		for (int i = 0; i < armsData.Count; i++) {
-			ArmsContextMenu.AddOption(armsData[i][0].As<Texture2D>(), "ArmsOption"+i, armsData[i][1].As<Callable>());
+			Texture2D tex = armsData[i][0].As<Texture2D>();
+			string name = "ArmsOption"+i;
+			Callable call = armsData[i][1].As<Callable>();
+			ArmsContextMenu.AddOption(tex, name, call);
 		}
 
 		for (int i = 0; i < legsData.Count; i++) {
@@ -58,7 +66,11 @@ public partial class AiBotBase : CharacterBody2D {
 		HeadSprite.SpriteFrames = AndroidBase.Head.SpriteTexture;
 		ArmsSprite.SpriteFrames = AndroidBase.Arms.SpriteTexture;
 		LegsSprite.SpriteFrames = AndroidBase.Legs.SpriteTexture;
-	}
+
+		AndroidBase.Head.InitPiece(this);
+		AndroidBase.Arms.InitPiece(this);
+		AndroidBase.Legs.InitPiece(this);
+    }
 
 	public override void _Process(double delta) {
 		base._Process(delta);
@@ -73,25 +85,42 @@ public partial class AiBotBase : CharacterBody2D {
 
 	//Movement and Physics
 	//InputDirection is part of autonomous control
-	public override void _PhysicsProcess(double delta) {
-		Vector2 velocity = Velocity;
-
-		if (!IsOnFloor()) {
-			velocity += GetGravity() * (float)delta;
-		}
-
-		float desiredDirection = Mathf.Clamp(InputSpeed, 0f, 1f) * Mathf.Sign(InputDirection);
-		desiredDirection *= AndroidBase.BaseMovementSpeed;
-		desiredDirection *= AndroidBase.GetWeightSpeedReduction();
-
-		//Accel to max speed
-		velocity.X = Mathf.MoveToward(velocity.X, desiredDirection, (float)delta * AndroidBase.BaseMovementSpeed);
-
+    public override void _PhysicsProcess(double delta) {
 		//Turn around on walls
 		if (IsOnWall() && systemTime - lastTurnAround >= 0.5f) {
 			InputDirection *= -1f;
 			lastTurnAround = systemTime;
 		}
+
+		if (UpdateOverride != null) {
+			UpdateOverride.Invoke(this, (float)delta);
+			return;
+		}
+
+		DefaultUpdate((float)delta);
+	}
+
+
+	//Hide menu options when clicked
+	void OnContextOptionClicked() {
+		HeadContextMenu.HideOptions();
+		ArmsContextMenu.HideOptions();
+		LegsContextMenu.HideOptions();
+	}
+
+	void DefaultUpdate(float delta) {
+		Vector2 velocity = Velocity;
+
+		if (!IsOnFloor()) {
+			velocity += GetGravity() * delta;
+		}
+
+		float desiredDirection = Mathf.Clamp(InputSpeed, 0f, 1f) * Mathf.Sign(InputDirection);
+		desiredDirection *= AndroidBase.Legs.BaseMovementSpeed;
+		desiredDirection *= AndroidBase.GetWeightSpeedReduction();
+
+		//Accel to max speed
+		velocity.X = Mathf.MoveToward(velocity.X, desiredDirection, (float)delta * AndroidBase.Legs.BaseMovementSpeed);
 
 		//Push all velocity changes to CharacterController Velocity vec
 		Velocity = velocity;
@@ -101,12 +130,5 @@ public partial class AiBotBase : CharacterBody2D {
 			CollisionMask = SOLIDONLY;
 		else
 			CollisionMask = SOLIDANDROPE;
-	}
-
-	//Hide menu options when clicked
-	void OnContextOptionClicked() {
-		HeadContextMenu.HideOptions();
-		ArmsContextMenu.HideOptions();
-		LegsContextMenu.HideOptions();
 	}
 }

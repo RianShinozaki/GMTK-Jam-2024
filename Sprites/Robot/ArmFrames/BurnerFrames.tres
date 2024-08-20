@@ -59,7 +59,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Fire-Loop",
-"speed": 5.0
+"speed": 30.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -79,7 +79,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"Fire-Start",
-"speed": 5.0
+"speed": 30.0
 }, {
 "frames": [{
 "duration": 1.0,
