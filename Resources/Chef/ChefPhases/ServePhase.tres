@@ -11,6 +11,6 @@ phaseName = "SERVE"
 phaseDescription = "time to serve the food"
 trackType = 0
 trackPart = 0
-trackVolume = 0.0
+trackVolume = 0.5
 phaseLength = 0.0
 taskList = Array[ExtResource("2_3uksp")]([ExtResource("3_ohoce"), ExtResource("4_k7iwd")])

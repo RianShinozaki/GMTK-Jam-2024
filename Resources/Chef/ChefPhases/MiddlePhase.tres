@@ -11,8 +11,8 @@
 script = ExtResource("1_fmg07")
 phaseName = "MIDDLE PHASE"
 phaseDescription = "beef and wine"
-trackType = 1
-trackPart = 1
-trackVolume = 0.0
+trackType = 0
+trackPart = 3
+trackVolume = 0.8
 phaseLength = 10.0
 taskList = Array[ExtResource("2_6ks0f")]([ExtResource("3_2hk0k"), ExtResource("4_gnb1p"), ExtResource("4_qp4h4"), ExtResource("5_6b3vq"), ExtResource("4_qp4h4")])
