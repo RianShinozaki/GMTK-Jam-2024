@@ -202,6 +202,7 @@ libraries = {
 [node name="WantedAction" type="Sprite2D" parent="."]
 
 [node name="HurtBox" type="Area2D" parent="."]
+collision_mask = 65537
 script = ExtResource("3_idned")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]

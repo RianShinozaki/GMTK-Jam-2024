@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://wvropxmqy6py"]
+[gd_scene load_steps=10 format=3 uid="uid://bgfbrmcv1xvrc"]
 
 [ext_resource type="Script" path="res://Scripts/System/BasicPhysicsObject.cs" id="1_etbgn"]
 [ext_resource type="Texture2D" uid="uid://ceastexghij83" path="res://Sprites/Tileset.png" id="2_783xi"]
@@ -44,6 +44,7 @@ shape = SubResource("RectangleShape2D_v4gyi")
 collision_layer = 256
 collision_mask = 256
 script = ExtResource("3_gk06a")
+StatusEffects = {}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AndroidInteractableArea"]
 shape = SubResource("RectangleShape2D_oqn1f")

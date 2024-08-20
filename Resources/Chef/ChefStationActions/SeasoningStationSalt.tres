@@ -4,6 +4,6 @@
 
 [resource]
 script = ExtResource("1_tkj0b")
-itemIn = "Seasoning"
-itemOut = "Seasoning"
+itemIn = "Salt"
+itemOut = "Salt"
 actionTime = 3.0

@@ -6,3 +6,4 @@
 script = ExtResource("1_02l05")
 itemName = "Dumplings"
 station = 5
+baseTask = true

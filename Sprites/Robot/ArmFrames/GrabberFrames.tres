@@ -1,4 +1,6 @@
-[gd_resource type="SpriteFrames" load_steps=8 format=3 uid="uid://b7ofti5c5wjit"]
+[gd_resource type="SpriteFrames" load_steps=9 format=3 uid="uid://b7ofti5c5wjit"]
+
+[ext_resource type="Texture2D" uid="uid://f64e7gy3uh18" path="res://Sprites/Robot/Arms-Grabber.png" id="1_florj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vlvca"]
 region = Rect2(0, 0, 32, 32)
@@ -18,7 +20,8 @@ region = Rect2(32, 0, 32, 12)
 [sub_resource type="AtlasTexture" id="AtlasTexture_lsx4y"]
 region = Rect2(64, 0, 32, 12)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3iam4"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_vryjy"]
+atlas = ExtResource("1_florj")
 region = Rect2(0, 0, 32, 12)
 
 [resource]
@@ -53,7 +56,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_3iam4")
+"texture": SubResource("AtlasTexture_vryjy")
 }],
 "loop": true,
 "name": &"default",

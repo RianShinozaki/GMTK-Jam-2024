@@ -6,3 +6,4 @@
 script = ExtResource("1_nmbfe")
 itemName = "Meat"
 station = 5
+baseTask = true

@@ -1,4 +1,6 @@
-class_name ChefStation extends Node2D
+class_name ChefStation extends Sprite2D
+
+signal station_destroyed()
 
 #for anim
 enum ChefStationType{
@@ -9,6 +11,7 @@ enum ChefStationType{
 }
 
 @export var stationType : ChefStationType
+@export var destroyed_sprite : Texture
 
 @export var actions : Array[ChefStationActions]
 @export var chefState : Chef.ChefStates
@@ -32,8 +35,15 @@ func _ready():
 			ChefManager.chopLocation = get_node(".")
 		Chef.ChefStates.Stove:
 			ChefManager.stoveLocation = get_node(".")
+		Chef.ChefStates.Serve:
+			ChefManager.serveLocation = get_node(".")
 	
 	pass # Replace with function body.
+
+func _destroy_station():
+	
+	texture = destroyed_sprite
+	emit_signal("station_destroyed")
 
 func _chef_use_station(chef : Chef, taskName : String):
 	for a in actions:

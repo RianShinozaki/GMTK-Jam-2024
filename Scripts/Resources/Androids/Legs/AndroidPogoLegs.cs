@@ -61,13 +61,15 @@ public partial class AndroidPogoLegs : AndroidLegs {
 			velocity += bot.GetGravity() * delta;
 		}
 
-		switch(state) {
-            case 0:
-            MoveState_WaitForPogo(bot, ref velocity);
-            break;
-            case 1:
-            MoveState_WaitForGround(bot, ref velocity);
-            break;
+		if (bot.InputSpeed != 0f) {
+            switch(state) {
+                case 0:
+                MoveState_WaitForPogo(bot, ref velocity);
+                break;
+                case 1:
+                MoveState_WaitForGround(bot, ref velocity);
+                break;
+            }
         }
 
 		//Push all velocity changes to CharacterController Velocity vec

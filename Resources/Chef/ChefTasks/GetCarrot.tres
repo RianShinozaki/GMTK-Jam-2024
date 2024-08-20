@@ -6,3 +6,4 @@
 script = ExtResource("1_1p27j")
 itemName = "Carrot"
 station = 4
+baseTask = true

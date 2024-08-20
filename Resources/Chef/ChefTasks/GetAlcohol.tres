@@ -6,3 +6,4 @@
 script = ExtResource("1_1hfgf")
 itemName = "Alcohol"
 station = 2
+baseTask = true

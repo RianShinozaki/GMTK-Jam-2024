@@ -1,44 +1,52 @@
-[gd_resource type="Resource" script_class="AndroidLegs" load_steps=9 format=3 uid="uid://u3o7gwa0ekdq"]
+[gd_resource type="Resource" script_class="AndroidPropellerLegs" load_steps=10 format=3 uid="uid://u3o7gwa0ekdq"]
 
 [ext_resource type="Texture2D" uid="uid://bgg17gnjgtwrw" path="res://Sprites/Robot/Legs-Propeller.png" id="1_w8h43"]
 [ext_resource type="Texture2D" uid="uid://6ne7k37eapvy" path="res://Sprites/UI/Options/Options2.png" id="2_5gjjb"]
+[ext_resource type="Script" path="res://Scripts/Resources/Androids/Legs/AndroidPropellerLegs.cs" id="2_cnisb"]
 [ext_resource type="Texture2D" uid="uid://d2d226x8nh80h" path="res://Sprites/UI/Options/Options3.png" id="3_0xdyy"]
-[ext_resource type="Script" path="res://Scripts/Resources/Androids/Legs/AndroidLegs.cs" id="4_js6sq"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_k4rf8"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_7dxuj"]
 atlas = ExtResource("1_w8h43")
 region = Rect2(0, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_keikc"]
-atlas = ExtResource("1_w8h43")
-region = Rect2(16, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_60vhd"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_1xudd"]
 atlas = ExtResource("1_w8h43")
 region = Rect2(32, 0, 16, 16)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_p3hvt"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ubds"]
+atlas = ExtResource("1_w8h43")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bscca"]
+atlas = ExtResource("1_w8h43")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tjvdb"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_k4rf8")
+"texture": SubResource("AtlasTexture_7dxuj")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_keikc")
+"texture": SubResource("AtlasTexture_1xudd")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_60vhd")
+"texture": SubResource("AtlasTexture_3ubds")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bscca")
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 10.0
 }]
 
 [resource]
-script = ExtResource("4_js6sq")
+resource_local_to_scene = true
+script = ExtResource("2_cnisb")
 BaseMovementSpeed = 16.0
 TurnIcon = ExtResource("3_0xdyy")
 StopIcon = ExtResource("2_5gjjb")
-SpriteTexture = SubResource("SpriteFrames_p3hvt")
+SpriteTexture = SubResource("SpriteFrames_tjvdb")
 WeightSpeedReductionAmount = 1.0
 Strength = 0.5

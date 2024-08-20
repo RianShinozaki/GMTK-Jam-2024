@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ChefTask" load_steps=2 format=3 uid="uid://dgq6vl5rdvfr"]
+
+[ext_resource type="Script" path="res://Scripts/Resources/Chef/ChefTasks.gd" id="1_tgciw"]
+
+[resource]
+script = ExtResource("1_tgciw")
+itemName = "Pot"
+station = 7
+baseTask = true
