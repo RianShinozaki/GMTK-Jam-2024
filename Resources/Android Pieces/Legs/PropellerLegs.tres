@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="AndroidPropellerLegs" load_steps=10 format=3 uid="uid://u3o7gwa0ekdq"]
+[gd_resource type="Resource" script_class="AndroidPropellerLegs" load_steps=10 format=3 uid="uid://2e3vctvxbblh"]
 
 [ext_resource type="Texture2D" uid="uid://bgg17gnjgtwrw" path="res://Sprites/Robot/Legs-Propeller.png" id="1_w8h43"]
 [ext_resource type="Texture2D" uid="uid://6ne7k37eapvy" path="res://Sprites/UI/Options/Options2.png" id="2_5gjjb"]
@@ -44,7 +44,6 @@ animations = [{
 [resource]
 resource_local_to_scene = true
 script = ExtResource("2_cnisb")
-BaseMovementSpeed = 16.0
 TurnIcon = ExtResource("3_0xdyy")
 StopIcon = ExtResource("2_5gjjb")
 SpriteTexture = SubResource("SpriteFrames_tjvdb")

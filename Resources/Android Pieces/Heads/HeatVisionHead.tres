@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="AndroidHead" load_steps=4 format=3 uid="uid://bkrk6mjcgvtbr"]
+[gd_resource type="Resource" script_class="AndroidHead" load_steps=4 format=3 uid="uid://cv4sa5u0n0dyu"]
 
 [ext_resource type="Texture2D" uid="uid://5ulruq5dxoe8" path="res://Sprites/Robot/Head-Thermo.png" id="1_l1fx5"]
 [ext_resource type="Script" path="res://Scripts/Resources/Androids/Heads/AndroidHead.cs" id="2_ca8q8"]

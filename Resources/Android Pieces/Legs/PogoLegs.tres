@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="AndroidPogoLegs" load_steps=13 format=3 uid="uid://b8x6cihaamcen"]
+[gd_resource type="Resource" script_class="AndroidPogoLegs" load_steps=13 format=3 uid="uid://c70uhfpd7a6r0"]
 
 [ext_resource type="Texture2D" uid="uid://c8dyks1iutkld" path="res://Sprites/Robot/Legs-Pogo.png" id="1_fjiyw"]
 [ext_resource type="Texture2D" uid="uid://6ne7k37eapvy" path="res://Sprites/UI/Options/Options2.png" id="2_ll1bu"]
