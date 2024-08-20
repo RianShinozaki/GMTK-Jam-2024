@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=4 uid="uid://b0awh3x2ks73o"]
+[gd_scene load_steps=53 format=4 uid="uid://b0awh3x2ks73o"]
 
 [ext_resource type="TileSet" uid="uid://ccdwy6d4c43ax" path="res://Resources/TileSets/Kitchen.tres" id="1_j1dxg"]
 [ext_resource type="Texture2D" uid="uid://uu7ql843qy7d" path="res://Sprites/UI/PresetSpot.png" id="1_v3dp5"]
@@ -21,11 +21,11 @@
 [ext_resource type="Texture2D" uid="uid://f64e7gy3uh18" path="res://Sprites/Robot/Arms-Grabber.png" id="8_bxqtu"]
 [ext_resource type="Texture2D" uid="uid://dumpqcc7o2v5o" path="res://Sprites/LevelObjects/CuttingBoard.png" id="9_58whs"]
 [ext_resource type="Resource" uid="uid://bgj6kc1njh4q0" path="res://Resources/Chef/ChefStationActions/ChopStationOnion.tres" id="9_s0mr8"]
-[ext_resource type="PackedScene" path="res://SFXManager.tscn" id="11_um26d"]
+[ext_resource type="PackedScene" uid="uid://bxrf7c8o6662w" path="res://SFXManager.tscn" id="11_um26d"]
 [ext_resource type="Resource" uid="uid://bvyq6vb1vcnsj" path="res://Resources/Chef/ChefStationActions/VegetableStationCarrot.tres" id="13_k32pv"]
 [ext_resource type="FontFile" uid="uid://btrtbvy1pgnea" path="res://Mario-Kart-DS.ttf" id="13_qqjgr"]
 [ext_resource type="Resource" uid="uid://bgwuu5kw6dvlo" path="res://Resources/Chef/ChefStationActions/VegetableStationOnion.tres" id="14_s41as"]
-[ext_resource type="Resource" uid="uid://67rm2wqctag1" path="res://Resources/Chef/ChefStationActions/SeasoningStationSalt.tres" id="16_1jq2f"]
+[ext_resource type="Resource" path="res://Resources/Chef/ChefStationActions/SeasoningStationSalt.tres" id="16_1jq2f"]
 [ext_resource type="Resource" uid="uid://dsl86j8kqu53g" path="res://Resources/Chef/ChefItemDictionary.tres" id="16_7xr5m"]
 [ext_resource type="Resource" uid="uid://c3wsst57sdgl5" path="res://Resources/Chef/ChefStationActions/MeatStationMeat.tres" id="17_qyiwc"]
 [ext_resource type="Texture2D" uid="uid://b23ud75hef7ky" path="res://Sprites/LevelObjects/Pantry.png" id="18_0prin"]
@@ -34,18 +34,24 @@
 [ext_resource type="Resource" uid="uid://do8vupgeftv2s" path="res://Resources/Chef/ChefStationActions/StoveStationAddIngrediant.tres" id="19_g3ldx"]
 [ext_resource type="PackedScene" uid="uid://dli4xnwutswyt" path="res://Nodes/LevelPieces/Locations/ladder.tscn" id="19_hxdcd"]
 [ext_resource type="Resource" uid="uid://xwph84hdtcjb" path="res://Resources/Chef/ChefStationActions/AlcoholStation.tres" id="19_lm4y6"]
-[ext_resource type="Resource" uid="uid://dhe463av4vwny" path="res://Resources/Chef/ChefPhases/ServePhase.tres" id="19_pqc32"]
+[ext_resource type="Resource" path="res://Resources/Chef/ChefPhases/ServePhase.tres" id="19_pqc32"]
 [ext_resource type="Texture2D" uid="uid://dyij7uuc7tu0u" path="res://Sprites/LevelObjects/SpiceAndFlourIGuessIDontKnowAnymore.png" id="22_qmlh7"]
 [ext_resource type="Script" path="res://Scripts/System/ChefScripts/ChefUI.gd" id="24_drcbe"]
-[ext_resource type="Resource" uid="uid://ci3foevrflfyo" path="res://Resources/Chef/ChefStationActions/SeasoningStationFlour.tres" id="24_ypa2j"]
+[ext_resource type="Texture2D" uid="uid://cv6jojr3oy836" path="res://Sprites/LevelObjects/PantryDestroyed.png" id="24_k3tg2"]
+[ext_resource type="Resource" uid="uid://enxgy7hfy6mf" path="res://Resources/Chef/ChefStationActions/SeasoningStationFlour.tres" id="24_ypa2j"]
 [ext_resource type="Texture2D" uid="uid://djby332st7pml" path="res://Sprites/LevelObjects/WineShelf.png" id="26_mywio"]
-[ext_resource type="Resource" uid="uid://cyt0f4m6ug1kx" path="res://Resources/Chef/ChefStationActions/ChopStationMeat.tres" id="32_8nkq8"]
+[ext_resource type="Texture2D" uid="uid://bqm561m5d4p08" path="res://Sprites/LevelObjects/SpiceAndFlourDestroyed.png" id="29_xr5y0"]
+[ext_resource type="Resource" path="res://Resources/Chef/ChefStationActions/ChopStationMeat.tres" id="32_8nkq8"]
 [ext_resource type="PackedScene" uid="uid://cjs71pgp6dnve" path="res://banana.tscn" id="34_ucb0v"]
 [ext_resource type="Texture2D" uid="uid://dypfcxdunutoc" path="res://Sprites/LevelObjects/Door.png" id="36_e5nlg"]
+[ext_resource type="Texture2D" uid="uid://dh6a7y5ia26gr" path="res://Sprites/LevelObjects/WineShelf-Destroyed.png" id="36_xgtss"]
 [ext_resource type="Resource" uid="uid://3hpcc5iu1f2r" path="res://Resources/Chef/ChefStationActions/StoveStationPot.tres" id="40_m7qmy"]
-[ext_resource type="PackedScene" path="res://Nodes/LevelPieces/vent.tscn" id="40_nngj3"]
-[ext_resource type="Resource" uid="uid://q6lidfm5ij16" path="res://Resources/Chef/ChefStationActions/SERVESTATION.tres" id="40_pa5lq"]
+[ext_resource type="PackedScene" uid="uid://cbvc52g6efk25" path="res://Nodes/LevelPieces/vent.tscn" id="40_nngj3"]
+[ext_resource type="Resource" path="res://Resources/Chef/ChefStationActions/SERVESTATION.tres" id="40_pa5lq"]
 [ext_resource type="Script" path="res://Scripts/UI/RobotSpawner.cs" id="41_2y03x"]
+[ext_resource type="Texture2D" uid="uid://dyscotch5cxhv" path="res://Sprites/LevelObjects/StoveTop-Destroyed.png" id="43_2egwa"]
+[ext_resource type="PackedScene" uid="uid://bkksk1etktwxi" path="res://Nodes/LevelPieces/FireBase.tscn" id="46_q43ha"]
+[ext_resource type="Script" path="res://Nodes/LevelPieces/DestroyableStation.cs" id="47_am0yj"]
 
 [node name="TestLevel" type="Node2D"]
 texture_filter = 1
@@ -487,6 +493,7 @@ z_index = -5
 texture_filter = 1
 position = Vector2(-192, -232)
 texture = ExtResource("18_0prin")
+destroyed_sprite = ExtResource("24_k3tg2")
 actions = Array[ExtResource("7_gebwm")]([ExtResource("13_k32pv"), ExtResource("14_s41as")])
 chefState = 4
 ladderLevel = 1
@@ -506,6 +513,7 @@ z_index = -5
 texture_filter = 1
 position = Vector2(528, -208)
 texture = ExtResource("22_qmlh7")
+destroyed_sprite = ExtResource("29_xr5y0")
 actions = Array[ExtResource("7_gebwm")]([ExtResource("16_1jq2f"), ExtResource("24_ypa2j")])
 chefState = 3
 ladderLevel = 2
@@ -543,6 +551,7 @@ z_index = -5
 texture_filter = 1
 position = Vector2(672, -6)
 texture = ExtResource("26_mywio")
+destroyed_sprite = ExtResource("36_xgtss")
 actions = Array[ExtResource("7_gebwm")]([ExtResource("19_lm4y6")])
 chefState = 2
 
@@ -575,9 +584,10 @@ StatusEffects = {
 
 [node name="StoveStation" parent="LevelObjects" instance=ExtResource("5_yak5b")]
 z_index = -5
-position = Vector2(384, -88)
+position = Vector2(-16, -376)
 texture = ExtResource("18_nfeac")
 stationType = 2
+destroyed_sprite = ExtResource("43_2egwa")
 actions = Array[ExtResource("7_gebwm")]([ExtResource("19_g3ldx"), ExtResource("40_m7qmy")])
 chefState = 7
 
@@ -591,6 +601,19 @@ text = "Stove
 StatusEffects = {
 "Stove": 0.2
 }
+
+[node name="Block" parent="LevelObjects/StoveStation" instance=ExtResource("46_q43ha")]
+position = Vector2(1, 40)
+script = ExtResource("47_am0yj")
+shouldBeBurned = true
+shouldBeScrewed = false
+InteractionDisables = null
+
+[node name="CollisionShape2D" parent="LevelObjects/StoveStation/Block" index="1"]
+disabled = true
+
+[node name="AndroidInteractableArea" parent="LevelObjects/StoveStation/Block" index="2"]
+collision_mask = 512
 
 [node name="Doors" parent="LevelObjects" instance=ExtResource("5_yak5b")]
 z_index = -5
@@ -660,6 +683,7 @@ AIBotPath = "res://Nodes/LevelPieces/Ai/Androids/AIBotBase.tscn"
 [editable path="LevelObjects/AlcoholStation"]
 [editable path="LevelObjects/ChopStation"]
 [editable path="LevelObjects/StoveStation"]
+[editable path="LevelObjects/StoveStation/Block"]
 [editable path="LevelObjects/Doors"]
 [editable path="LevelObjects/Ladder1"]
 [editable path="LevelObjects/Ladder2"]
