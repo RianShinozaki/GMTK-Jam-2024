@@ -26,6 +26,9 @@ public partial class AiBotBase : CharacterBody2D {
 	[Export]
 	AnimatedSprite2D ArmsSprite;
 
+	const uint SOLIDONLY = 1u;
+	const uint SOLIDANDROPE = 3u;
+
 	double systemTime;
 	double lastTurnAround;
 
@@ -93,6 +96,11 @@ public partial class AiBotBase : CharacterBody2D {
 		//Push all velocity changes to CharacterController Velocity vec
 		Velocity = velocity;
 		MoveAndSlide();
+
+		if(Velocity.X == 0) 
+			CollisionMask = SOLIDONLY;
+		else
+			CollisionMask = SOLIDANDROPE;
 	}
 
 	//Hide menu options when clicked

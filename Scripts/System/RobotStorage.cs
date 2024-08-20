@@ -5,6 +5,7 @@ public partial class RobotStorage : Node
 {
 	[Export]
 	public Godot.Collections.Array<Android> robots;
+	public int currentSelectedPreset = 0;
 
 	public static RobotStorage Instance;
 	public override void _Ready() {
