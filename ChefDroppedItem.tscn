@@ -17,7 +17,7 @@ size = Vector2(16, 16)
 size = Vector2(16, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gyaoj"]
-size = Vector2(48, 28)
+size = Vector2(18, 19)
 
 [node name="DroppedChefItem" type="CharacterBody2D"]
 texture_filter = 1
@@ -55,5 +55,5 @@ StatusEffects = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TriggerShape"]
-position = Vector2(0, -6)
+position = Vector2(0, -1.5)
 shape = SubResource("RectangleShape2D_gyaoj")

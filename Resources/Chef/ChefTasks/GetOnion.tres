@@ -6,3 +6,4 @@
 script = ExtResource("1_oqf6q")
 itemName = "Onion"
 station = 4
+baseTask = true

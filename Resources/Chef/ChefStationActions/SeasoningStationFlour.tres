@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ChefStationActions" load_steps=2 format=3 uid="uid://ci3foevrflfyo"]
+
+[ext_resource type="Script" path="res://Scripts/Resources/Chef/ChefStationActions.gd" id="1_r7bvx"]
+
+[resource]
+script = ExtResource("1_r7bvx")
+itemIn = "Flour"
+itemOut = "Flour"
+actionTime = 3.0

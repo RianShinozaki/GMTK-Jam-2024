@@ -85,13 +85,16 @@ func _physics_process(delta):
 	if currentChefStatus != ChefStatus.Stun:
 		if currentChefStatus == ChefStatus.Move and progressTimer < 0:
 			var actualTarget = ladderTarget if currentLadderLevel != targetLocation.ladderLevel else targetLocation
+			if droppedItem:
+				actualTarget = drop
 			
-			velocity.x = currentChefSpeed * sign(actualTarget.position.x - position.x)
-			chefSprite.flip_h = 0 > sign(actualTarget.position.x - position.x)
-			holdItemDisplace.scale.x = sign(actualTarget.position.x - position.x)
+			velocity.x = currentChefSpeed * sign(actualTarget.global_position.x - global_position.x)
+			chefSprite.flip_h = 0 > sign(actualTarget.global_position.x - global_position.x)
+			holdItemDisplace.scale.x = sign(actualTarget.global_position.x - global_position.x)
 			
-			if progressTimer < 0 and fmod(abs(progressTimer),1.) < .5 and abs(actualTarget.position.x - position.x) < 15:
+			if progressTimer < 0 and fmod(abs(progressTimer),1.) < .5 and abs(actualTarget.global_position.x - global_position.x) < 15:
 				velocity.x *= -1
+			
 			
 		elif currentChefStatus == ChefStatus.Aggro:
 			velocity.x *= .9
@@ -286,40 +289,76 @@ func _on_hurt_box_on_damage_recieved(statusEffects): #Put hurt Chef
 			ChefManager.ladderLocations[statusEffects["Ladder"]]._request_climb_ladder(self, statusEffects["Level"])
 	
 	if statusEffects.has("Hurt"):
-		drop = droppedItemPrefab.instantiate()
+		
 		
 		if chefItemSprites.dictionary.has(currentHeldItem):
+			drop = droppedItemPrefab.instantiate()
+			#drop = d
 			chefParent.add_child(drop)
-			drop._drop_item(currentHeldItem)
+			
+			print(drop)
+			drop._drop_item(self, currentHeldItem, currentLadderLevel)
 			droppedItem = true
+			
+			holdingItemSprite.texture = null
+			
 			drop.global_position = global_position
+			findTaskString = currentHeldItem
 			currentHeldItem = ""
+			
 		
 		holdingItemSprite.visible = false
 		chefAnimation.play("hurt")
 		currentChefStatus = ChefStatus.Stun
 		progressTimer = .5
 		startTask = false
-		velocity = statusEffects["Power"] * Vector2(sign(velocity.x),-1)
+		velocity = statusEffects["Power"] * Vector2(sign(targetLocation.global_position.x - global_position.x),-1)
 	
 	#print(statusEffects)
 	#print(findTaskString)
 	
 	if statusEffects.has(findTaskString) and currentChefStatus != ChefStatus.Stun and currentChefStatus != ChefStatus.Aggro:
-		startTask = true
 		
-		progressTimer = statusEffects[findTaskString] #Time to actually start the task
+		if statusEffects.has("Dropped"):
+			print("pick up")
+			currentHeldItem = goalObject
+			droppedItem = false
+			
+			drop.queue_free()
+			drop._destroy()
+			drop = null
+			_get_target()
+			
+			chefAnimation.play("walk_hold")
+			holdingItemSprite.visible = true
+			if chefItemSprites.dictionary.has(currentHeldItem):
+				holdingItemSprite.texture = load(chefItemSprites.dictionary[currentHeldItem])
+			else:
+				holdingItemSprite.texture = null
+		elif !droppedItem:
+			startTask = true
+			
+			progressTimer = statusEffects[findTaskString] #Time to actually start the task
 		
 	
 	
-	pass # Replace with function body.
+	if statusEffects.has("Remove") and ChefManager.chefCanRemove:
+		ChefManager.chefRemove.queue_free()
+		ChefManager.chefCanRemove = false
+
+func _reset_progress():
+	for i in range(chefProgress):
+		if chefTasks[phase].taskList[chefProgress-1]:
+			pass
 
 func _on_ground_body_entered(body):
-	if global_position.y > -100:
-		currentLadderLevel = 0
+	
 	if currentChefStatus == ChefStatus.Stun and progressTimer < 0:
 		#print("touch")
-		
+		if global_position.y > -100:
+			currentLadderLevel = 0
+		if drop and currentLadderLevel != drop.ladderLevel:
+			droppedItem = false
 		
 		CameraEffects._screen_shake(Vector2(0,10), 15)
 		progressTimer = 3

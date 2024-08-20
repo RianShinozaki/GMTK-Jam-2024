@@ -7,9 +7,16 @@ var ladderLevel : int
 @onready var sprite : Sprite2D = $ItemSprite
 @onready var trigger = $TriggerShape
 
-func _drop_item(food : String):
+func _drop_item(chef : Chef, food : String, level:int):
 	sprite.texture = load(chefItemDictionary.dictionary[food])
 	trigger.StatusEffects[food] = .2
+	ladderLevel = level
+	
+	chef.drop = self
+
+func _destroy():
+	position.y += 100000000
+	queue_free()
 
 func _physics_process(delta):
 	# Add the gravity.
