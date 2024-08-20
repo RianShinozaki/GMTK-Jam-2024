@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://b0awh3x2ks73o"]
+[gd_scene load_steps=29 format=4 uid="uid://b0awh3x2ks73o"]
 
 [ext_resource type="TileSet" uid="uid://ccdwy6d4c43ax" path="res://Resources/TileSets/Kitchen.tres" id="1_j1dxg"]
 [ext_resource type="PackedScene" path="res://MusicManager.tscn" id="2_27rp8"]
@@ -25,6 +25,10 @@
 [ext_resource type="PackedScene" uid="uid://dli4xnwutswyt" path="res://Nodes/LevelPieces/Locations/ladder.tscn" id="19_hxdcd"]
 [ext_resource type="Resource" uid="uid://xwph84hdtcjb" path="res://Resources/Chef/ChefStationActions/AlcoholStation.tres" id="19_lm4y6"]
 [ext_resource type="Script" path="res://Scripts/System/ChefScripts/ChefUI.gd" id="24_drcbe"]
+[ext_resource type="Script" path="res://Scripts/System/Hitbox/TriggerShape.cs" id="26_5mknd"]
+[ext_resource type="Texture2D" uid="uid://cwgngd6pul78r" path="res://Sprites/Peel.png" id="27_smbf7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_647qd"]
 
 [node name="TestLevel" type="Node2D"]
 texture_filter = 1
@@ -45,7 +49,6 @@ Players = []
 [node name="Chef" parent="." node_paths=PackedStringArray("ui") instance=ExtResource("2_awlc6")]
 position = Vector2(597, -211)
 chefTasks = Array[ExtResource("3_ju2h2")]([ExtResource("4_qqey4"), ExtResource("5_d8esa"), ExtResource("6_48kib")])
-currentChefSpeed = 500.0
 ui = NodePath("../ChefUI")
 
 [node name="AIBot" parent="." instance=ExtResource("2_ldng6")]
@@ -238,6 +241,33 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 40
 text = "Sauté Vegetables
 "
+
+[node name="Recipe" type="Control" parent="ChefUI"]
+anchors_preset = 0
+offset_left = -16.0
+offset_top = -394.0
+offset_right = 24.0
+offset_bottom = -354.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ChefUI/Recipe"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Banana" type="Area2D" parent="."]
+position = Vector2(120, -12)
+script = ExtResource("26_5mknd")
+StatusEffects = {
+"Hurt": 1.0,
+"Power": Vector2(100, 300)
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Banana"]
+shape = SubResource("RectangleShape2D_647qd")
+
+[node name="Sprite" type="Sprite2D" parent="Banana"]
+texture_filter = 1
+texture = ExtResource("27_smbf7")
 
 [editable path="Chef"]
 [editable path="VegetableStation"]

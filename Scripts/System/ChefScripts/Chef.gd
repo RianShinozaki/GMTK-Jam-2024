@@ -27,7 +27,8 @@ enum ChefStatus
 @onready var displayAction : Sprite2D = $WantedAction
 @onready var debugLabel : Label = $Label
 
-@onready var holdingItemSprite : Sprite2D = $HeldItem
+@onready var holdItemDisplace : Node = $Displace
+@onready var holdingItemSprite : Sprite2D = $Displace/HeldItem
 
 @export var chefTasks : Array[ChefPhase]
 
@@ -56,6 +57,10 @@ var goalObject : String
 
 @export var currentLadderLevel : int
 
+var hasSavedLadder : bool
+var savedLadder : int
+var savedLevel : int
+
 @export var currentChefSpeed : float
 
 @onready var music = %MusicManager
@@ -72,13 +77,22 @@ func _ready():
 
 func _physics_process(delta):
 	velocity += get_gravity() * delta
-	if currentChefStatus == ChefStatus.Move and progressTimer < 0:
-		var actualTarget = ladderTarget if currentLadderLevel != targetLocation.ladderLevel else targetLocation
+	if currentChefStatus != ChefStatus.Stun:
+		if currentChefStatus == ChefStatus.Move and progressTimer < 0:
+			var actualTarget = ladderTarget if currentLadderLevel != targetLocation.ladderLevel else targetLocation
+			
+			velocity.x = currentChefSpeed * sign(actualTarget.position.x - position.x)
+			chefSprite.flip_h = 0 > sign(actualTarget.position.x - position.x)
+			holdItemDisplace.scale.x = sign(actualTarget.position.x - position.x)
+			
+			if progressTimer < 0 and fmod(abs(progressTimer),.8) < .4 and abs(actualTarget.position.x - position.x) < 10:
+				velocity.x *= -1
+			
+		elif currentChefStatus == ChefStatus.Aggro:
+			velocity.x *= .9
+		else:
+			velocity.x = 0
 		
-		velocity.x = currentChefSpeed * sign(actualTarget.position.x - position.x)
-		chefSprite.flip_h = 0 > sign(actualTarget.position.x - position.x)
-	else:
-		velocity.x = 0
 	
 	#if !moveTween or !moveTween.is_running():
 	move_and_slide()
@@ -109,13 +123,13 @@ func _chef_status_state_tree():
 	match currentChefStatus:
 		ChefStatus.Idle:
 			currentChefStatus = ChefStatus.Move
-			chefAnimation.play("walk")
+			chefAnimation.play("walk_hold" if chefItemSprites.has(currentHeldItem) else "walk")
 		ChefStatus.Move:
 			if startTask:
 				currentChefStatus = ChefStatus.ActiveTask
 				targetLocation._chef_use_station(self, chefTasks[phase].taskList[chefProgress].itemName)
 				holdingItemSprite.visible = false
-				chefAnimation.play("idle")
+				chefAnimation.play("hold_idle" if chefItemSprites.has(currentHeldItem) else "idle")
 		ChefStatus.ActiveTask:
 			if goalObject == "AddPot":
 				potInventory.append(currentHeldItem)
@@ -133,10 +147,11 @@ func _chef_status_state_tree():
 				holdingItemSprite.texture = null
 			
 			_next_task()
-			chefAnimation.play("idle")
+			chefAnimation.play("hold_idle" if chefItemSprites.has(currentHeldItem) else "idle")
 		ChefStatus.Stun:
-			currentChefStatus = ChefStatus.Aggro
-			progressTimer = 5
+			pass
+			#currentChefStatus = ChefStatus.Aggro
+			#progressTimer = 5
 		ChefStatus.Aggro:
 			currentChefStatus = ChefStatus.Idle
 
@@ -240,32 +255,41 @@ func _climb_ladder(level : int, snap : Vector2 ,goal : Vector2, duration : float
 	moveTween = create_tween().set_trans(Tween.TRANS_LINEAR)
 	moveTween.tween_property(self, "global_position", snap, .05)
 	canClimb = false
+	holdingItemSprite.visible = false
+	
 	await moveTween.finished
 	moveTween.kill()
 	moveTween = create_tween().set_trans(Tween.TRANS_LINEAR)
 	moveTween.tween_property(self, "global_position", goal, duration)
+	
 	chefAnimation.play("climb")
 	await moveTween.finished
+	holdingItemSprite.visible = true
 	currentLadderLevel = level
 	canClimb = true
 	chefAnimation.play("walk")
 
 func _on_hurt_box_on_damage_recieved(statusEffects): #Put hurt Chef
 	
-	if statusEffects.has("Ladder"):
+	if statusEffects.has("Ladder") and currentChefStatus != ChefStatus.Stun and currentChefStatus != ChefStatus.Aggro:
+		if currentLadderLevel == statusEffects["Level"]:
+			currentLadderLevel = 0
+		
 		if targetLocation.ladderLevel == statusEffects["Level"] or (statusEffects["Level"] == 0 and targetLocation.ladderLevel != currentLadderLevel and canClimb):
-			print("Climbing!")
+			#print("Climbing!")
 			ChefManager.ladderLocations[statusEffects["Ladder"]]._request_climb_ladder(self, statusEffects["Level"])
 	
 	if statusEffects.has("Hurt"):
+		chefAnimation.play("hurt")
 		currentChefStatus = ChefStatus.Stun
-		progressTimer = statusEffects["Hurt"]
+		progressTimer = .5
 		startTask = false
+		velocity = statusEffects["Power"] * Vector2(sign(velocity.x),-1)
 	
-	print(statusEffects)
-	print(findTaskString)
+	#print(statusEffects)
+	#print(findTaskString)
 	
-	if statusEffects.has(findTaskString):
+	if statusEffects.has(findTaskString) and currentChefStatus != ChefStatus.Stun and currentChefStatus != ChefStatus.Aggro:
 		startTask = true
 		
 		progressTimer = statusEffects[findTaskString] #Time to actually start the task
@@ -273,3 +297,11 @@ func _on_hurt_box_on_damage_recieved(statusEffects): #Put hurt Chef
 	
 	
 	pass # Replace with function body.
+
+func _on_ground_body_entered(body):
+	if currentChefStatus == ChefStatus.Stun and progressTimer < 0:
+		print("touch")
+		progressTimer = 3
+		currentChefStatus = ChefStatus.Aggro
+		await get_tree().create_timer(1).timeout
+		chefAnimation.play("hurt_get_up")

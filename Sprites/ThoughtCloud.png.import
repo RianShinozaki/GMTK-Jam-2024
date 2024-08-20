@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cwgngd6pul78r"
-path="res://.godot/imported/Peel.png-751a2ad4241362cb4e325be5654d13f0.ctex"
+uid="uid://kd0tpjiur5ty"
+path="res://.godot/imported/ThoughtCloud.png-cc7fd65c525ac1594f8d1ceb18af8b89.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Peel.png"
-dest_files=["res://.godot/imported/Peel.png-751a2ad4241362cb4e325be5654d13f0.ctex"]
+source_file="res://Sprites/ThoughtCloud.png"
+dest_files=["res://.godot/imported/ThoughtCloud.png-cc7fd65c525ac1594f8d1ceb18af8b89.ctex"]
 
 [params]
 
