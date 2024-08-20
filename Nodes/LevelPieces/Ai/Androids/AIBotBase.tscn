@@ -61,17 +61,13 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jae1j"]
 size = Vector2(16, 22)
 
-[node name="AIBot" type="CharacterBody2D" node_paths=PackedStringArray("HeadContextMenu", "ArmsContextMenu", "LegsContextMenu", "Sprite", "HeadSprite", "LegsSprite", "ArmsSprite")]
+[node name="AIBot" type="CharacterBody2D" node_paths=PackedStringArray("HeadContextMenu", "LegsContextMenu", "Sprite")]
 texture_filter = 1
 collision_layer = 0
 script = ExtResource("1_3rpdd")
 HeadContextMenu = NodePath("ButtonHandlers/HeadButtonHandler")
-ArmsContextMenu = NodePath("ButtonHandlers/ArmsButtonHandler")
 LegsContextMenu = NodePath("ButtonHandlers/LegsButtonHandler")
 Sprite = NodePath("Robot")
-HeadSprite = NodePath("Robot/HeadSprite")
-LegsSprite = NodePath("Robot/LegsSprite")
-ArmsSprite = NodePath("Robot/ArmSprite")
 
 [node name="ButtonHandlers" type="Node" parent="."]
 

@@ -32,7 +32,13 @@ public partial class AiBotBase : CharacterBody2D {
 	double systemTime;
 	double lastTurnAround;
 
-	public void Init() {
+	public System.Action<AiBotBase, float> UpdateOverride;
+
+	[Signal]
+	public delegate void BotProcessEventHandler(float delta);
+
+	public override void _Ready() {
+		base._Ready();
 
 		Array<Array> headData = AndroidBase.Head.GetOptions;
 		Array<Array> armsData = AndroidBase.Arms.GetOptions;
@@ -73,11 +79,34 @@ public partial class AiBotBase : CharacterBody2D {
 
 	//Movement and Physics
 	//InputDirection is part of autonomous control
-	public override void _PhysicsProcess(double delta) {
+    public override void _PhysicsProcess(double delta) {
+		//Turn around on walls
+		if (IsOnWall() && systemTime - lastTurnAround >= 0.5f) {
+			InputDirection *= -1f;
+			lastTurnAround = systemTime;
+		}
+
+		if (UpdateOverride != null) {
+			UpdateOverride.Invoke(this, (float)delta);
+			return;
+		}
+
+		DefaultUpdate((float)delta);
+	}
+
+
+	//Hide menu options when clicked
+	void OnContextOptionClicked() {
+		HeadContextMenu.HideOptions();
+		ArmsContextMenu.HideOptions();
+		LegsContextMenu.HideOptions();
+	}
+
+	void DefaultUpdate(float delta) {
 		Vector2 velocity = Velocity;
 
 		if (!IsOnFloor()) {
-			velocity += GetGravity() * (float)delta;
+			velocity += GetGravity() * delta;
 		}
 
 		float desiredDirection = Mathf.Clamp(InputSpeed, 0f, 1f) * Mathf.Sign(InputDirection);
@@ -87,12 +116,6 @@ public partial class AiBotBase : CharacterBody2D {
 		//Accel to max speed
 		velocity.X = Mathf.MoveToward(velocity.X, desiredDirection, (float)delta * AndroidBase.BaseMovementSpeed);
 
-		//Turn around on walls
-		if (IsOnWall() && systemTime - lastTurnAround >= 0.5f) {
-			InputDirection *= -1f;
-			lastTurnAround = systemTime;
-		}
-
 		//Push all velocity changes to CharacterController Velocity vec
 		Velocity = velocity;
 		MoveAndSlide();
@@ -101,12 +124,5 @@ public partial class AiBotBase : CharacterBody2D {
 			CollisionMask = SOLIDONLY;
 		else
 			CollisionMask = SOLIDANDROPE;
-	}
-
-	//Hide menu options when clicked
-	void OnContextOptionClicked() {
-		HeadContextMenu.HideOptions();
-		ArmsContextMenu.HideOptions();
-		LegsContextMenu.HideOptions();
 	}
 }
