@@ -42,6 +42,7 @@ animations = [{
 }]
 
 [resource]
+resource_local_to_scene = true
 script = ExtResource("4_jny5r")
 BaseMovementSpeed = 16.0
 TurnIcon = ExtResource("2_igckn")
