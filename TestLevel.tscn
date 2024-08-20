@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=4 uid="uid://b0awh3x2ks73o"]
+[gd_scene load_steps=27 format=4 uid="uid://b0awh3x2ks73o"]
 
 [ext_resource type="TileSet" uid="uid://ccdwy6d4c43ax" path="res://Resources/TileSets/Kitchen.tres" id="1_j1dxg"]
 [ext_resource type="PackedScene" uid="uid://bhcs8kumsn1ob" path="res://MusicManager.tscn" id="2_27rp8"]
@@ -25,10 +25,7 @@
 [ext_resource type="PackedScene" uid="uid://dli4xnwutswyt" path="res://Nodes/LevelPieces/Locations/ladder.tscn" id="19_hxdcd"]
 [ext_resource type="Resource" uid="uid://xwph84hdtcjb" path="res://Resources/Chef/ChefStationActions/AlcoholStation.tres" id="19_lm4y6"]
 [ext_resource type="Script" path="res://Scripts/System/ChefScripts/ChefUI.gd" id="24_drcbe"]
-[ext_resource type="Script" path="res://Scripts/System/Hitbox/TriggerShape.cs" id="26_5mknd"]
-[ext_resource type="Texture2D" uid="uid://cwgngd6pul78r" path="res://Sprites/Peel.png" id="27_smbf7"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_647qd"]
+[ext_resource type="PackedScene" uid="uid://bojcb5hdu26om" path="res://Nodes/LevelPieces/banana.tscn" id="26_gb0jx"]
 
 [node name="TestLevel" type="Node2D"]
 texture_filter = 1
@@ -253,20 +250,17 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Banana" type="Area2D" parent="."]
-position = Vector2(120, -12)
-script = ExtResource("26_5mknd")
-StatusEffects = {
-"Hurt": 1.0,
-"Power": Vector2(100, 300)
-}
+[node name="Banana" parent="." instance=ExtResource("26_gb0jx")]
+position = Vector2(130, -12)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Banana"]
-shape = SubResource("RectangleShape2D_647qd")
+[node name="Banana2" parent="." instance=ExtResource("26_gb0jx")]
+position = Vector2(337, -44)
 
-[node name="Sprite" type="Sprite2D" parent="Banana"]
-texture_filter = 1
-texture = ExtResource("27_smbf7")
+[node name="Banana4" parent="." instance=ExtResource("26_gb0jx")]
+position = Vector2(240, -12)
+
+[node name="Banana3" parent="." instance=ExtResource("26_gb0jx")]
+position = Vector2(479, -172)
 
 [editable path="Chef"]
 [editable path="VegetableStation"]

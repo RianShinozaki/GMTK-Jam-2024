@@ -154,6 +154,7 @@ func _chef_status_state_tree():
 			#progressTimer = 5
 		ChefStatus.Aggro:
 			currentChefStatus = ChefStatus.Idle
+			holdingItemSprite.visible = true
 
 func _display_current_action():
 	match currentChefStatus:
@@ -267,7 +268,7 @@ func _climb_ladder(level : int, snap : Vector2 ,goal : Vector2, duration : float
 	holdingItemSprite.visible = true
 	currentLadderLevel = level
 	canClimb = true
-	chefAnimation.play("walk")
+	chefAnimation.play("walk_hold" if chefItemSprites.has(currentHeldItem) else "walk")
 
 func _on_hurt_box_on_damage_recieved(statusEffects): #Put hurt Chef
 	
@@ -280,6 +281,7 @@ func _on_hurt_box_on_damage_recieved(statusEffects): #Put hurt Chef
 			ChefManager.ladderLocations[statusEffects["Ladder"]]._request_climb_ladder(self, statusEffects["Level"])
 	
 	if statusEffects.has("Hurt"):
+		holdingItemSprite.visible = false
 		chefAnimation.play("hurt")
 		currentChefStatus = ChefStatus.Stun
 		progressTimer = .5
@@ -303,5 +305,17 @@ func _on_ground_body_entered(body):
 		print("touch")
 		progressTimer = 3
 		currentChefStatus = ChefStatus.Aggro
+		chefAnimation.play("hurt_hit")
 		await get_tree().create_timer(1).timeout
+		if currentChefStatus == ChefStatus.Stun:
+			return
 		chefAnimation.play("hurt_get_up")
+		await get_tree().create_timer(.8).timeout
+		if currentChefStatus == ChefStatus.Stun:
+			return
+		chefSprite.flip_h = !chefSprite.flip_h
+		for i in range(3):
+			await get_tree().create_timer(.2).timeout
+			if currentChefStatus == ChefStatus.Stun:
+				return
+			chefSprite.flip_h = !chefSprite.flip_h
