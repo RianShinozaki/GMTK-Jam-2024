@@ -181,7 +181,6 @@ size = Vector2(14, 20)
 
 [node name="Chef" type="CharacterBody2D"]
 position = Vector2(62, -88)
-collision_mask = 1025
 script = ExtResource("1_ytnf7")
 currentChefSpeed = 50.0
 
