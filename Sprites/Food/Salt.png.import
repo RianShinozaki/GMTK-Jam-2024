@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c8prpm85c8qf6"
-path="res://.godot/imported/MeatFridge.png-b86e7c965e9e8bb4bc00d43db9206058.ctex"
+uid="uid://bn5a0i3ty3vqu"
+path="res://.godot/imported/Salt.png-ce40a0b530474046b60307651b480e57.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/MeatFridge.png"
-dest_files=["res://.godot/imported/MeatFridge.png-b86e7c965e9e8bb4bc00d43db9206058.ctex"]
+source_file="res://Sprites/Food/Salt.png"
+dest_files=["res://.godot/imported/Salt.png-ce40a0b530474046b60307651b480e57.ctex"]
 
 [params]
 

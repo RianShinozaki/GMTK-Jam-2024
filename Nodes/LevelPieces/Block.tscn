@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://wvropxmqy6py"]
 
 [ext_resource type="Script" path="res://Scripts/System/BasicPhysicsObject.cs" id="1_etbgn"]
-[ext_resource type="Texture2D" uid="uid://c6ib03q4xvs1b" path="res://Tileset.png" id="2_783xi"]
+[ext_resource type="Texture2D" uid="uid://ceastexghij83" path="res://Sprites/Tileset.png" id="2_783xi"]
 [ext_resource type="Script" path="res://Scripts/Androids/Interaction/AndroidInteractableArea.cs" id="3_gk06a"]
 [ext_resource type="Script" path="res://Scripts/System/Clickables/ClickDetector.cs" id="4_y5w8g"]
 

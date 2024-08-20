@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dumpqcc7o2v5o"
-path="res://.godot/imported/CuttingBoard.png-40adb4213af62f030b91a2b11ce4fc7a.ctex"
+uid="uid://ciniqqkk3ym34"
+path="res://.godot/imported/Wine.png-4a8129204e10f558776fa3702f5e546f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/CuttingBoard.png"
-dest_files=["res://.godot/imported/CuttingBoard.png-40adb4213af62f030b91a2b11ce4fc7a.ctex"]
+source_file="res://Sprites/Food/Wine.png"
+dest_files=["res://.godot/imported/Wine.png-4a8129204e10f558776fa3702f5e546f.ctex"]
 
 [params]
 

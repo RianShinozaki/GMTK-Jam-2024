@@ -1,0 +1,59 @@
+[gd_scene load_steps=11 format=3 uid="uid://cgwqeqbg5iuf0"]
+
+[ext_resource type="Script" path="res://ChefDroppeditem.gd" id="1_vpw5y"]
+[ext_resource type="Resource" uid="uid://dsl86j8kqu53g" path="res://Resources/Chef/ChefItemDictionary.tres" id="2_bbcv8"]
+[ext_resource type="Texture2D" uid="uid://dgpjg2k3bv777" path="res://Sprites/Food/Carrot.png" id="3_ink7f"]
+[ext_resource type="Script" path="res://Scripts/Androids/Interaction/AndroidInteractableArea.cs" id="4_2i3g6"]
+[ext_resource type="Script" path="res://Scripts/System/Clickables/ClickDetector.cs" id="5_a3r5q"]
+[ext_resource type="Script" path="res://Scripts/System/Hitbox/TriggerShape.cs" id="6_f1oen"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v4gyi"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oqn1f"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_obkde"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gyaoj"]
+size = Vector2(48, 28)
+
+[node name="DroppedChefItem" type="CharacterBody2D"]
+texture_filter = 1
+position = Vector2(326, -133)
+script = ExtResource("1_vpw5y")
+chefItemDictionary = ExtResource("2_bbcv8")
+
+[node name="ItemSprite" type="Sprite2D" parent="."]
+position = Vector2(0, -8)
+texture = ExtResource("3_ink7f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_v4gyi")
+
+[node name="AndroidInteractableArea" type="Area2D" parent="."]
+collision_layer = 256
+collision_mask = 256
+script = ExtResource("4_2i3g6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AndroidInteractableArea"]
+shape = SubResource("RectangleShape2D_oqn1f")
+debug_color = Color(0.0747703, 0.649367, 0, 0.42)
+
+[node name="ClickDetector" type="Area2D" parent="AndroidInteractableArea" node_paths=PackedStringArray("ContextNode")]
+script = ExtResource("5_a3r5q")
+ContextNode = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AndroidInteractableArea/ClickDetector"]
+shape = SubResource("RectangleShape2D_obkde")
+
+[node name="TriggerShape" type="Area2D" parent="."]
+script = ExtResource("6_f1oen")
+StatusEffects = {
+"Dropped": 0.0
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TriggerShape"]
+position = Vector2(0, -6)
+shape = SubResource("RectangleShape2D_gyaoj")

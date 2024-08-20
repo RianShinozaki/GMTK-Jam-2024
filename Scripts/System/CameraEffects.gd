@@ -20,7 +20,7 @@ func _ready():
 
 func _physics_process(delta):
 	if timer > 0:
-		camera.position = Vector2(randf_range(-screenShakePower.x,screenShakePower.x),randf_range(-screenShakePower.y,screenShakePower.y))*(float(timer)/maxTimer)
+		camera.offset = Vector2(randf_range(-screenShakePower.x,screenShakePower.x),randf_range(-screenShakePower.y,screenShakePower.y))*(float(timer)/maxTimer)
 		timer -= 1
 		
 
