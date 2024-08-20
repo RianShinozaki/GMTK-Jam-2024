@@ -181,6 +181,7 @@ size = Vector2(14, 20)
 
 [node name="Chef" type="CharacterBody2D"]
 position = Vector2(62, -88)
+collision_mask = 1025
 script = ExtResource("1_ytnf7")
 currentChefSpeed = 50.0
 
@@ -202,6 +203,7 @@ libraries = {
 [node name="WantedAction" type="Sprite2D" parent="."]
 
 [node name="HurtBox" type="Area2D" parent="."]
+collision_mask = 1025
 script = ExtResource("3_idned")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]

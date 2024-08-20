@@ -1,10 +1,7 @@
-[gd_resource type="Resource" script_class="ChefPhase" load_steps=6 format=3 uid="uid://b8srsoc2wetgl"]
+[gd_resource type="Resource" script_class="ChefPhase" load_steps=3 format=3 uid="uid://b8srsoc2wetgl"]
 
 [ext_resource type="Script" path="res://Scripts/Resources/Chef/ChefPhase.gd" id="1_xs77f"]
 [ext_resource type="Script" path="res://Scripts/Resources/Chef/ChefTasks.gd" id="2_wfkg8"]
-[ext_resource type="Resource" uid="uid://ceor1afrckamc" path="res://Resources/Chef/ChefTasks/GetFlour.tres" id="3_d1bhm"]
-[ext_resource type="Resource" uid="uid://bhlp3gm6g8nwc" path="res://Resources/Chef/ChefTasks/AddStove.tres" id="4_0fuf8"]
-[ext_resource type="Resource" uid="uid://c4hcr3sigda6w" path="res://Resources/Chef/ChefTasks/GetSalt.tres" id="5_b6hsh"]
 
 [resource]
 script = ExtResource("1_xs77f")
@@ -14,4 +11,4 @@ trackType = 0
 trackPart = 0
 trackVolume = 0.0
 phaseLength = 10.0
-taskList = Array[ExtResource("2_wfkg8")]([ExtResource("3_d1bhm"), ExtResource("4_0fuf8"), ExtResource("5_b6hsh"), ExtResource("4_0fuf8")])
+taskList = Array[ExtResource("2_wfkg8")]([])

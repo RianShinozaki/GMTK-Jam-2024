@@ -7,7 +7,6 @@
 
 [resource]
 script = ExtResource("4_mapp7")
-BaseMovementSpeed = 16.0
 Head = ExtResource("2_272ro")
 Arms = ExtResource("1_yycp7")
 Legs = ExtResource("3_st050")

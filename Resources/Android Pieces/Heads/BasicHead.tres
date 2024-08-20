@@ -1,12 +1,13 @@
-[gd_resource type="Resource" script_class="AndroidHead" load_steps=3 format=3 uid="uid://i4nvpihq2fdq"]
+[gd_resource type="Resource" script_class="AndroidHead" load_steps=4 format=3 uid="uid://i4nvpihq2fdq"]
 
 [ext_resource type="Script" path="res://Scripts/Resources/Androids/Heads/AndroidHead.cs" id="1_k7nfk"]
+[ext_resource type="Texture2D" uid="uid://bsporryywr2b3" path="res://Sprites/Robot/Head-Normal.png" id="1_phdtu"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ei0qj"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": null
+"texture": ExtResource("1_phdtu")
 }],
 "loop": true,
 "name": &"default",
