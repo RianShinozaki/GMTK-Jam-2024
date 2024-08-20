@@ -4,11 +4,11 @@
 [ext_resource type="Texture2D" uid="uid://uu7ql843qy7d" path="res://Sprites/UI/PresetSpot.png" id="1_v3dp5"]
 [ext_resource type="PackedScene" uid="uid://bhcs8kumsn1ob" path="res://MusicManager.tscn" id="2_27rp8"]
 [ext_resource type="PackedScene" uid="uid://coy3cod54bme0" path="res://Nodes/LevelPieces/Ai/Chef/chef.tscn" id="2_awlc6"]
-[ext_resource type="Script" path="res://Scripts/UI/PresetSpot.cs" id="2_e2won"]
 [ext_resource type="Script" path="res://Scenes/RobotViewer.cs" id="3_i75fd"]
 [ext_resource type="Script" path="res://Scripts/Resources/Chef/ChefPhase.gd" id="3_ju2h2"]
 [ext_resource type="Resource" uid="uid://bytct4cj5amek" path="res://Resources/RobotPresets/BasicRobot.tres" id="4_5hgkg"]
 [ext_resource type="Resource" uid="uid://d1cpy461v4qye" path="res://Resources/Chef/ChefPhases/FirstPhase.tres" id="4_qqey4"]
+[ext_resource type="Script" path="res://Scripts/UI/PresetSpotGame.cs" id="4_yej1u"]
 [ext_resource type="Resource" uid="uid://bge5gkab2tcp1" path="res://Resources/Chef/ChefPhases/MiddlePhase.tres" id="5_d8esa"]
 [ext_resource type="Texture2D" uid="uid://bsporryywr2b3" path="res://Sprites/Robot/Head-Normal.png" id="5_gqltk"]
 [ext_resource type="PackedScene" uid="uid://ifmp6m75arhl" path="res://Nodes/LevelPieces/Locations/chef_station.tscn" id="5_yak5b"]
@@ -34,7 +34,7 @@
 [ext_resource type="Resource" uid="uid://xwph84hdtcjb" path="res://Resources/Chef/ChefStationActions/AlcoholStation.tres" id="19_lm4y6"]
 [ext_resource type="Texture2D" uid="uid://dyij7uuc7tu0u" path="res://Sprites/LevelObjects/SpiceAndFlourIGuessIDontKnowAnymore.png" id="22_qmlh7"]
 [ext_resource type="Script" path="res://Scripts/System/ChefScripts/ChefUI.gd" id="24_drcbe"]
-[ext_resource type="Resource" path="res://Resources/Chef/ChefStationActions/SeasoningStationFlour.tres" id="24_ypa2j"]
+[ext_resource type="Resource" uid="uid://enxgy7hfy6mf" path="res://Resources/Chef/ChefStationActions/SeasoningStationFlour.tres" id="24_ypa2j"]
 [ext_resource type="Texture2D" uid="uid://djby332st7pml" path="res://Sprites/LevelObjects/WineShelf.png" id="26_mywio"]
 [ext_resource type="Resource" path="res://Resources/Chef/ChefStationActions/ChopStationMeat.tres" id="32_8nkq8"]
 [ext_resource type="PackedScene" uid="uid://cjs71pgp6dnve" path="res://banana.tscn" id="34_ucb0v"]
@@ -95,7 +95,7 @@ texture_filter = 1
 layout_mode = 2
 texture = ExtResource("1_v3dp5")
 stretch_mode = 2
-script = ExtResource("2_e2won")
+script = ExtResource("4_yej1u")
 
 [node name="RobotViewer" type="Control" parent="Camera2D/UI/HBoxContainer/PresetSpot"]
 texture_filter = 1
@@ -153,7 +153,7 @@ texture_filter = 1
 layout_mode = 2
 texture = ExtResource("1_v3dp5")
 stretch_mode = 2
-script = ExtResource("2_e2won")
+script = ExtResource("4_yej1u")
 myIndex = 1
 
 [node name="RobotViewer" type="Control" parent="Camera2D/UI/HBoxContainer/PresetSpot2"]
@@ -212,7 +212,7 @@ texture_filter = 1
 layout_mode = 2
 texture = ExtResource("1_v3dp5")
 stretch_mode = 2
-script = ExtResource("2_e2won")
+script = ExtResource("4_yej1u")
 myIndex = 2
 
 [node name="RobotViewer" type="Control" parent="Camera2D/UI/HBoxContainer/PresetSpot3"]
@@ -271,7 +271,7 @@ texture_filter = 1
 layout_mode = 2
 texture = ExtResource("1_v3dp5")
 stretch_mode = 2
-script = ExtResource("2_e2won")
+script = ExtResource("4_yej1u")
 myIndex = 3
 
 [node name="RobotViewer" type="Control" parent="Camera2D/UI/HBoxContainer/PresetSpot4"]
@@ -330,7 +330,7 @@ texture_filter = 1
 layout_mode = 2
 texture = ExtResource("1_v3dp5")
 stretch_mode = 2
-script = ExtResource("2_e2won")
+script = ExtResource("4_yej1u")
 myIndex = 4
 
 [node name="RobotViewer" type="Control" parent="Camera2D/UI/HBoxContainer/PresetSpot5"]

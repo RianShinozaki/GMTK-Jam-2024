@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ChefStationActions" load_steps=2 format=3 uid="uid://ci3foevrflfyo"]
+[gd_resource type="Resource" script_class="ChefStationActions" load_steps=2 format=3 uid="uid://enxgy7hfy6mf"]
 
 [ext_resource type="Script" path="res://Scripts/Resources/Chef/ChefStationActions.gd" id="1_r7bvx"]
 
