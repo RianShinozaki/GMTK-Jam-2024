@@ -475,8 +475,7 @@ offset_bottom = 106.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("13_qqjgr")
 theme_override_font_sizes/font_size = 40
-text = "Sauté Vegetables
-"
+text = "PRESS ENTER TO START"
 
 [node name="Recipe" type="Control" parent="LevelObjects/ChefUI"]
 anchors_preset = 0
