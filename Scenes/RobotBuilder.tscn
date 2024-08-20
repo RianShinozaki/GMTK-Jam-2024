@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=4 uid="uid://dqmcaoa65hvgp"]
+[gd_scene load_steps=29 format=4 uid="uid://dqmcaoa65hvgp"]
 
 [ext_resource type="Texture2D" uid="uid://blmil85c7icbn" path="res://Sprites/UI/Builder/Blueprint.png" id="1_i1xwo"]
 [ext_resource type="Script" path="res://Scripts/UI/RobotBuilder.cs" id="1_x4wbw"]
@@ -10,7 +10,6 @@
 [ext_resource type="Script" path="res://Scripts/UI/PieceOption.cs" id="4_myq8t"]
 [ext_resource type="Texture2D" uid="uid://bsporryywr2b3" path="res://Sprites/Robot/Head-Normal.png" id="4_qbwq0"]
 [ext_resource type="Script" path="res://Scripts/UI/RobotBuilderSpawner.cs" id="4_taeta"]
-[ext_resource type="PackedScene" uid="uid://wvropxmqy6py" path="res://Nodes/LevelPieces/PickupBase.tscn" id="5_6m8e2"]
 [ext_resource type="Script" path="res://Scripts/UI/UIButton.cs" id="5_r4qh8"]
 [ext_resource type="Resource" uid="uid://bmeq0p3ejf3q6" path="res://Resources/Android Pieces/Heads/TrumpetHead.tres" id="5_svfmu"]
 [ext_resource type="Texture2D" uid="uid://dlv7xixg23mlk" path="res://Sprites/Robot/RoboBody.png" id="5_wfcb6"]
@@ -180,9 +179,6 @@ tile_set = SubResource("TileSet_sdtx3")
 position = Vector2(385, 149)
 script = ExtResource("4_taeta")
 AIBotPath = "res://Nodes/LevelPieces/Ai/Androids/AIBotBase.tscn"
-
-[node name="Block" parent="TestRoom" instance=ExtResource("5_6m8e2")]
-position = Vector2(321, 177)
 
 [node name="TextureRect" type="TextureRect" parent="."]
 texture_filter = 1
