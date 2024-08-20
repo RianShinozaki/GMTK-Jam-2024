@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=4 uid="uid://b0awh3x2ks73o"]
+[gd_scene load_steps=46 format=4 uid="uid://b0awh3x2ks73o"]
 
 [ext_resource type="TileSet" uid="uid://ccdwy6d4c43ax" path="res://Resources/TileSets/Kitchen.tres" id="1_j1dxg"]
 [ext_resource type="Texture2D" uid="uid://uu7ql843qy7d" path="res://Sprites/UI/PresetSpot.png" id="1_v3dp5"]
@@ -22,8 +22,9 @@
 [ext_resource type="Texture2D" uid="uid://dumpqcc7o2v5o" path="res://Sprites/LevelObjects/CuttingBoard.png" id="9_58whs"]
 [ext_resource type="Resource" uid="uid://bgj6kc1njh4q0" path="res://Resources/Chef/ChefStationActions/ChopStationOnion.tres" id="9_s0mr8"]
 [ext_resource type="Resource" uid="uid://bvyq6vb1vcnsj" path="res://Resources/Chef/ChefStationActions/VegetableStationCarrot.tres" id="13_k32pv"]
+[ext_resource type="FontFile" uid="uid://btrtbvy1pgnea" path="res://Mario-Kart-DS.ttf" id="13_qqjgr"]
 [ext_resource type="Resource" uid="uid://bgwuu5kw6dvlo" path="res://Resources/Chef/ChefStationActions/VegetableStationOnion.tres" id="14_s41as"]
-[ext_resource type="Resource" path="res://Resources/Chef/ChefStationActions/SeasoningStationSalt.tres" id="16_1jq2f"]
+[ext_resource type="Resource" uid="uid://67rm2wqctag1" path="res://Resources/Chef/ChefStationActions/SeasoningStationSalt.tres" id="16_1jq2f"]
 [ext_resource type="Resource" uid="uid://dsl86j8kqu53g" path="res://Resources/Chef/ChefItemDictionary.tres" id="16_7xr5m"]
 [ext_resource type="Resource" uid="uid://c3wsst57sdgl5" path="res://Resources/Chef/ChefStationActions/MeatStationMeat.tres" id="17_qyiwc"]
 [ext_resource type="Texture2D" uid="uid://b23ud75hef7ky" path="res://Sprites/LevelObjects/Pantry.png" id="18_0prin"]
@@ -32,14 +33,17 @@
 [ext_resource type="Resource" uid="uid://do8vupgeftv2s" path="res://Resources/Chef/ChefStationActions/StoveStationAddIngrediant.tres" id="19_g3ldx"]
 [ext_resource type="PackedScene" uid="uid://dli4xnwutswyt" path="res://Nodes/LevelPieces/Locations/ladder.tscn" id="19_hxdcd"]
 [ext_resource type="Resource" uid="uid://xwph84hdtcjb" path="res://Resources/Chef/ChefStationActions/AlcoholStation.tres" id="19_lm4y6"]
+[ext_resource type="Resource" uid="uid://dhe463av4vwny" path="res://Resources/Chef/ChefPhases/ServePhase.tres" id="19_pqc32"]
 [ext_resource type="Texture2D" uid="uid://dyij7uuc7tu0u" path="res://Sprites/LevelObjects/SpiceAndFlourIGuessIDontKnowAnymore.png" id="22_qmlh7"]
 [ext_resource type="Script" path="res://Scripts/System/ChefScripts/ChefUI.gd" id="24_drcbe"]
-[ext_resource type="Resource" uid="uid://enxgy7hfy6mf" path="res://Resources/Chef/ChefStationActions/SeasoningStationFlour.tres" id="24_ypa2j"]
+[ext_resource type="Resource" uid="uid://ci3foevrflfyo" path="res://Resources/Chef/ChefStationActions/SeasoningStationFlour.tres" id="24_ypa2j"]
 [ext_resource type="Texture2D" uid="uid://djby332st7pml" path="res://Sprites/LevelObjects/WineShelf.png" id="26_mywio"]
-[ext_resource type="Resource" path="res://Resources/Chef/ChefStationActions/ChopStationMeat.tres" id="32_8nkq8"]
+[ext_resource type="Resource" uid="uid://cyt0f4m6ug1kx" path="res://Resources/Chef/ChefStationActions/ChopStationMeat.tres" id="32_8nkq8"]
 [ext_resource type="PackedScene" uid="uid://cjs71pgp6dnve" path="res://banana.tscn" id="34_ucb0v"]
 [ext_resource type="Texture2D" uid="uid://dypfcxdunutoc" path="res://Sprites/LevelObjects/Door.png" id="36_e5nlg"]
-[ext_resource type="PackedScene" uid="uid://cbvc52g6efk25" path="res://Nodes/LevelPieces/vent.tscn" id="40_nngj3"]
+[ext_resource type="Resource" uid="uid://3hpcc5iu1f2r" path="res://Resources/Chef/ChefStationActions/StoveStationPot.tres" id="40_m7qmy"]
+[ext_resource type="PackedScene" path="res://Nodes/LevelPieces/vent.tscn" id="40_nngj3"]
+[ext_resource type="Resource" uid="uid://q6lidfm5ij16" path="res://Resources/Chef/ChefStationActions/SERVESTATION.tres" id="40_pa5lq"]
 [ext_resource type="Script" path="res://Scripts/UI/RobotSpawner.cs" id="41_2y03x"]
 
 [node name="TestLevel" type="Node2D"]
@@ -392,10 +396,84 @@ unique_name_in_owner = true
 [node name="ChefParent" type="Node2D" parent="LevelObjects"]
 unique_name_in_owner = true
 
+[node name="ChefUI" type="Control" parent="LevelObjects"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("24_drcbe")
+
+[node name="NormalLabel" type="Control" parent="LevelObjects/ChefUI"]
+anchors_preset = 0
+offset_left = -285.0
+offset_top = -448.0
+offset_right = -245.0
+offset_bottom = -408.0
+
+[node name="PhaseLabel" type="Label" parent="LevelObjects/ChefUI/NormalLabel"]
+layout_mode = 0
+offset_right = 60.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("13_qqjgr")
+theme_override_font_sizes/font_size = 30
+text = "phase 1"
+
+[node name="PhaseDescriptionLabel" type="Label" parent="LevelObjects/ChefUI/NormalLabel"]
+layout_mode = 0
+offset_top = 20.0
+offset_right = 133.0
+offset_bottom = 43.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("13_qqjgr")
+text = "Sauté Vegetables
+"
+
+[node name="BigLabel" type="Control" parent="LevelObjects/ChefUI"]
+anchors_preset = 0
+offset_left = 72.0
+offset_top = -290.0
+offset_right = 112.0
+offset_bottom = -250.0
+
+[node name="PhaseLabel" type="Label" parent="LevelObjects/ChefUI/BigLabel"]
+texture_filter = 1
+layout_mode = 0
+offset_right = 60.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("13_qqjgr")
+theme_override_font_sizes/font_size = 60
+text = "Phase 1"
+
+[node name="PhaseDescriptionLabel" type="Label" parent="LevelObjects/ChefUI/BigLabel"]
+texture_filter = 1
+layout_mode = 0
+offset_top = 40.0
+offset_right = 331.0
+offset_bottom = 95.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("13_qqjgr")
+theme_override_font_sizes/font_size = 40
+text = "Sauté Vegetables
+"
+
+[node name="Recipe" type="Control" parent="LevelObjects/ChefUI"]
+anchors_preset = 0
+offset_left = -16.0
+offset_top = -394.0
+offset_right = 24.0
+offset_bottom = -354.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="LevelObjects/ChefUI/Recipe"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
 [node name="Chef" parent="LevelObjects" node_paths=PackedStringArray("ui") instance=ExtResource("2_awlc6")]
 unique_name_in_owner = true
 position = Vector2(597, -211)
-chefTasks = Array[ExtResource("3_ju2h2")]([ExtResource("4_qqey4"), ExtResource("5_d8esa"), ExtResource("6_48kib")])
+chefTasks = Array[ExtResource("3_ju2h2")]([ExtResource("4_qqey4"), ExtResource("5_d8esa"), ExtResource("6_48kib"), ExtResource("19_pqc32")])
 chefItemSprites = ExtResource("16_7xr5m")
 currentChefSpeed = 500.0
 ui = NodePath("../ChefUI")
@@ -403,7 +481,7 @@ ui = NodePath("../ChefUI")
 [node name="VegetableStation" parent="LevelObjects" instance=ExtResource("5_yak5b")]
 z_index = -5
 texture_filter = 1
-position = Vector2(-32, -199)
+position = Vector2(-192, -232)
 texture = ExtResource("18_0prin")
 actions = Array[ExtResource("7_gebwm")]([ExtResource("13_k32pv"), ExtResource("14_s41as")])
 chefState = 4
@@ -496,7 +574,7 @@ z_index = -5
 position = Vector2(384, -88)
 texture = ExtResource("18_nfeac")
 stationType = 2
-actions = Array[ExtResource("7_gebwm")]([ExtResource("19_g3ldx")])
+actions = Array[ExtResource("7_gebwm")]([ExtResource("19_g3ldx"), ExtResource("40_m7qmy")])
 chefState = 7
 
 [node name="Label" parent="LevelObjects/StoveStation" index="0"]
@@ -511,8 +589,10 @@ StatusEffects = {
 }
 
 [node name="Doors" parent="LevelObjects" instance=ExtResource("5_yak5b")]
+z_index = -5
 position = Vector2(-168, -56)
 texture = ExtResource("36_e5nlg")
+actions = Array[ExtResource("7_gebwm")]([ExtResource("40_pa5lq")])
 chefState = 8
 
 [node name="Label" parent="LevelObjects/Doors" index="0"]
@@ -520,7 +600,7 @@ visible = false
 
 [node name="HitBox" parent="LevelObjects/Doors" index="1"]
 StatusEffects = {
-"Serve": 1.0
+"Serve": 0.2
 }
 
 [node name="Ladder1" parent="LevelObjects" instance=ExtResource("19_hxdcd")]
@@ -551,74 +631,6 @@ StatusEffects = {
 "Level": 0
 }
 
-[node name="ChefUI" type="Control" parent="LevelObjects"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("24_drcbe")
-
-[node name="NormalLabel" type="Control" parent="LevelObjects/ChefUI"]
-anchors_preset = 0
-offset_left = 131.0
-offset_top = -360.0
-offset_right = 171.0
-offset_bottom = -320.0
-
-[node name="PhaseLabel" type="Label" parent="LevelObjects/ChefUI/NormalLabel"]
-layout_mode = 0
-offset_right = 60.0
-offset_bottom = 23.0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-text = "Phase 1"
-
-[node name="PhaseDescriptionLabel" type="Label" parent="LevelObjects/ChefUI/NormalLabel"]
-layout_mode = 0
-offset_top = 20.0
-offset_right = 133.0
-offset_bottom = 43.0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-text = "Sauté Vegetables
-"
-
-[node name="BigLabel" type="Control" parent="LevelObjects/ChefUI"]
-modulate = Color(1, 1, 1, 0)
-anchors_preset = 0
-offset_left = 72.0
-offset_top = -334.0
-offset_right = 112.0
-offset_bottom = -294.0
-
-[node name="PhaseLabel" type="Label" parent="LevelObjects/ChefUI/BigLabel"]
-layout_mode = 0
-offset_right = 60.0
-offset_bottom = 23.0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 40
-text = "Phase 1"
-
-[node name="PhaseDescriptionLabel" type="Label" parent="LevelObjects/ChefUI/BigLabel"]
-layout_mode = 0
-offset_top = 40.0
-offset_right = 331.0
-offset_bottom = 95.0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 40
-text = "Sauté Vegetables
-"
-
-[node name="Recipe" type="Control" parent="LevelObjects/ChefUI"]
-anchors_preset = 0
-offset_left = -16.0
-offset_top = -394.0
-offset_right = 24.0
-offset_bottom = -354.0
-
-[node name="HBoxContainer" type="HBoxContainer" parent="LevelObjects/ChefUI/Recipe"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
 [node name="Banana2" parent="LevelObjects" instance=ExtResource("34_ucb0v")]
 position = Vector2(-149, -326)
 
@@ -634,6 +646,8 @@ position = Vector2(35, -326)
 [node name="RobotSpawner" type="Node2D" parent="LevelObjects"]
 script = ExtResource("41_2y03x")
 AIBotPath = "res://Nodes/LevelPieces/Ai/Androids/AIBotBase.tscn"
+
+[connection signal="chef_finished" from="LevelObjects/Chef" to="LevelObjects/Chef" method="_on_chef_finished"]
 
 [editable path="LevelObjects/Chef"]
 [editable path="LevelObjects/VegetableStation"]

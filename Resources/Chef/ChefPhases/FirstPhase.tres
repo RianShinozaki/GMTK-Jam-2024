@@ -10,8 +10,8 @@
 
 [resource]
 script = ExtResource("1_5627w")
-phaseName = "First Phase"
-phaseDescription = "Sauté Vegetables"
+phaseName = "FIRST PHASE"
+phaseDescription = "saute vegetables"
 trackType = 0
 trackPart = 0
 trackVolume = 0.8

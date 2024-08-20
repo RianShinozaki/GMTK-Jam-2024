@@ -9,8 +9,8 @@
 
 [resource]
 script = ExtResource("1_fmg07")
-phaseName = "Middle Phase"
-phaseDescription = "Beef and Wine"
+phaseName = "MIDDLE PHASE"
+phaseDescription = "beef and wine"
 trackType = 1
 trackPart = 1
 trackVolume = 0.0
