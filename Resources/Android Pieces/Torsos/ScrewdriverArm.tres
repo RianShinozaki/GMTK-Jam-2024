@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ScrewdriverArm" load_steps=4 format=3 uid="uid://cncisp7bblwhd"]
+[gd_resource type="Resource" script_class="ScrewdriverArm" load_steps=4 format=3 uid="uid://v1gk2t58rgib"]
 
 [ext_resource type="Texture2D" uid="uid://d2d226x8nh80h" path="res://Sprites/UI/Options/Options3.png" id="1_0wwhm"]
 [ext_resource type="SpriteFrames" uid="uid://c2rxmho64l8rb" path="res://Sprites/Robot/ArmFrames/DrillFrames.tres" id="2_tj0tb"]
