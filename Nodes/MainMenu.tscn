@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://bdnlpq6j5ckhb"]
+[gd_scene load_steps=6 format=3 uid="uid://bdnlpq6j5ckhb"]
 
 [ext_resource type="Script" path="res://Nodes/MainMenuController.cs" id="1_2g2lp"]
+[ext_resource type="Texture2D" uid="uid://c34plrl8dfhyi" path="res://Sprites/UI/Sprite-0026.png" id="2_spiul"]
 
 [sub_resource type="Gradient" id="Gradient_ylrdd"]
 interpolation_mode = 1
@@ -17,11 +18,6 @@ domain_warp_fractal_octaves = 1
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_flyoi"]
 color_ramp = SubResource("Gradient_ylrdd")
 noise = SubResource("FastNoiseLite_p614s")
-
-[sub_resource type="Gradient" id="Gradient_e5ioh"]
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_tv2nx"]
-gradient = SubResource("Gradient_e5ioh")
 
 [node name="Control" type="Control" node_paths=PackedStringArray("MainMenu", "SettingsMenu", "Fullscreen", "VSync", "Master", "Music", "SFX")]
 layout_mode = 3
@@ -56,6 +52,22 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="Logo2" type="TextureRect" parent="Main Menu"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -170.645
+offset_top = -259.375
+offset_right = 182.37
+offset_bottom = 2.45999
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_spiul")
+
 [node name="Logo" type="TextureRect" parent="Main Menu"]
 layout_mode = 1
 anchors_preset = 8
@@ -69,7 +81,7 @@ offset_right = 172.5
 offset_bottom = -77.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("GradientTexture1D_tv2nx")
+texture = ExtResource("2_spiul")
 
 [node name="Button" type="Button" parent="Main Menu"]
 layout_mode = 1
