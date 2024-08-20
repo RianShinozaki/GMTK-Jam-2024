@@ -201,7 +201,7 @@ func _start_first_task():
 	
 	music.PlayTrack(chefTasks[phase].trackType)
 	music.SetTrack(chefTasks[phase].trackType, chefTasks[phase].trackPart)
-	music.SetVolume(chefTasks[phase].trackType, chefTasks[phase].trackVolume)
+	music.SetMasterVolume(chefTasks[phase].trackVolume)
 	
 	
 	chefProgress = 0
