@@ -127,9 +127,9 @@ func _process(delta):
 	if progressTimer < 0:
 		_chef_status_state_tree()
 	
-	if Input.is_action_just_pressed("ui_accept"):
+	#if Input.is_action_just_pressed("ui_accept"):
 		
-		_start_first_task()
+		#_start_first_task()
 	pass
 
 func _chef_status_state_tree():

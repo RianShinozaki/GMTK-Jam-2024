@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="AndroidHead" load_steps=5 format=3 uid="uid://bmeq0p3ejf3q6"]
+[gd_resource type="Resource" script_class="AndroidHead" load_steps=5 format=3 uid="uid://x5pwkdet60ax"]
 
 [ext_resource type="Texture2D" uid="uid://swgjw7ld35vg" path="res://Sprites/Robot/Head-Trumpet.png" id="1_72i24"]
 [ext_resource type="Script" path="res://Scripts/Resources/Androids/Heads/AndroidHead.cs" id="2_xl3oq"]

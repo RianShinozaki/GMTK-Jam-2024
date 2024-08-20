@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Android" load_steps=5 format=3 uid="uid://bytct4cj5amek"]
 
-[ext_resource type="Resource" uid="uid://b2i6lmb8qmmpt" path="res://Resources/Android Pieces/Torsos/GrabberArm.tres" id="1_yycp7"]
+[ext_resource type="Resource" path="res://Resources/Android Pieces/Torsos/GrabberArm.tres" id="1_yycp7"]
 [ext_resource type="Resource" uid="uid://i4nvpihq2fdq" path="res://Resources/Android Pieces/Heads/BasicHead.tres" id="2_272ro"]
 [ext_resource type="Resource" uid="uid://3l7a2growjfx" path="res://Resources/Android Pieces/Legs/BasicLegs.tres" id="3_st050"]
 [ext_resource type="Script" path="res://Scripts/Resources/Androids/Android.cs" id="4_mapp7"]

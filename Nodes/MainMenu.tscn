@@ -1,6 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://bdnlpq6j5ckhb"]
+[gd_scene load_steps=9 format=3 uid="uid://c8g8b0mwt2e5h"]
 
 [ext_resource type="Script" path="res://Nodes/MainMenuController.cs" id="1_2g2lp"]
+[ext_resource type="Shader" path="res://Nodes/MainMenu.gdshader" id="2_2v00f"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u67lj"]
+shader = ExtResource("2_2v00f")
 
 [sub_resource type="Gradient" id="Gradient_ylrdd"]
 interpolation_mode = 1
@@ -15,6 +19,7 @@ domain_warp_frequency = 0.004
 domain_warp_fractal_octaves = 1
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_flyoi"]
+seamless = true
 color_ramp = SubResource("Gradient_ylrdd")
 noise = SubResource("FastNoiseLite_p614s")
 
@@ -40,6 +45,9 @@ Music = NodePath("Settings Menu/Panel/Volume/Music/HSlider")
 SFX = NodePath("Settings Menu/Panel/Volume/SFX/HSlider")
 
 [node name="Background" type="TextureRect" parent="."]
+texture_filter = 1
+texture_repeat = 2
+material = SubResource("ShaderMaterial_u67lj")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -263,6 +271,9 @@ grow_horizontal = 2
 grow_vertical = 0
 text = "Apply
 "
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(576, 326)
 
 [connection signal="pressed" from="Main Menu/Button" to="." method="PlayGame"]
 [connection signal="pressed" from="Main Menu/Button2" to="." method="ShowSettingsMenu"]
