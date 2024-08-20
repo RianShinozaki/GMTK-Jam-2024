@@ -36,7 +36,6 @@ public partial class SfxManager : Node
             return;
         }
         Instance = this;
-        PlayChefWalking();
     }
     public void PlayChefWalking() 
     {
