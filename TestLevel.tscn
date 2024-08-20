@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=4 uid="uid://b0awh3x2ks73o"]
+[gd_scene load_steps=54 format=4 uid="uid://b0awh3x2ks73o"]
 
 [ext_resource type="TileSet" uid="uid://ccdwy6d4c43ax" path="res://Resources/TileSets/Kitchen.tres" id="1_j1dxg"]
 [ext_resource type="Texture2D" uid="uid://uu7ql843qy7d" path="res://Sprites/UI/PresetSpot.png" id="1_v3dp5"]
@@ -52,6 +52,7 @@
 [ext_resource type="Texture2D" uid="uid://dyscotch5cxhv" path="res://Sprites/LevelObjects/StoveTop-Destroyed.png" id="43_2egwa"]
 [ext_resource type="PackedScene" uid="uid://bkksk1etktwxi" path="res://Nodes/LevelPieces/FireBase.tscn" id="46_q43ha"]
 [ext_resource type="Script" path="res://Nodes/LevelPieces/DestroyableStation.cs" id="47_am0yj"]
+[ext_resource type="Texture2D" uid="uid://j1g24fydrap6" path="res://Sprites/Food/Pot.png" id="48_jnr5h"]
 
 [node name="TestLevel" type="Node2D"]
 texture_filter = 1
@@ -516,6 +517,18 @@ StatusEffects = {
 "Vegetable": 0.2
 }
 
+[node name="Block" parent="LevelObjects/VegetableStation" instance=ExtResource("46_q43ha")]
+position = Vector2(1, 40)
+script = ExtResource("47_am0yj")
+Burned = false
+Screwed = false
+shouldBeBurned = true
+shouldBeScrewed = false
+InteractionDisables = null
+
+[node name="CollisionShape2D" parent="LevelObjects/VegetableStation/Block" index="1"]
+disabled = true
+
 [node name="SeasoningStation" parent="LevelObjects" instance=ExtResource("5_yak5b")]
 z_index = -5
 texture_filter = 1
@@ -535,6 +548,18 @@ text = "Seas
 StatusEffects = {
 "Seasoning": 0.2
 }
+
+[node name="Block" parent="LevelObjects/SeasoningStation" instance=ExtResource("46_q43ha")]
+position = Vector2(1, 40)
+script = ExtResource("47_am0yj")
+Burned = false
+Screwed = false
+shouldBeBurned = false
+shouldBeScrewed = true
+InteractionDisables = null
+
+[node name="CollisionShape2D" parent="LevelObjects/SeasoningStation/Block" index="1"]
+disabled = true
 
 [node name="MeatStation" parent="LevelObjects" instance=ExtResource("5_yak5b")]
 z_index = -5
@@ -572,6 +597,18 @@ StatusEffects = {
 "Alcohol": 0.2
 }
 
+[node name="Block" parent="LevelObjects/AlcoholStation" instance=ExtResource("46_q43ha")]
+position = Vector2(1, 40)
+script = ExtResource("47_am0yj")
+Burned = false
+Screwed = false
+shouldBeBurned = false
+shouldBeScrewed = true
+InteractionDisables = null
+
+[node name="CollisionShape2D" parent="LevelObjects/AlcoholStation/Block" index="1"]
+disabled = true
+
 [node name="ChopStation" parent="LevelObjects" instance=ExtResource("5_yak5b")]
 z_index = -5
 position = Vector2(192, -32)
@@ -592,7 +629,7 @@ StatusEffects = {
 
 [node name="StoveStation" parent="LevelObjects" instance=ExtResource("5_yak5b")]
 z_index = -5
-position = Vector2(-16, -376)
+position = Vector2(375, -88)
 texture = ExtResource("18_nfeac")
 stationType = 2
 destroyed_sprite = ExtResource("43_2egwa")
@@ -613,6 +650,8 @@ StatusEffects = {
 [node name="Block" parent="LevelObjects/StoveStation" instance=ExtResource("46_q43ha")]
 position = Vector2(1, 40)
 script = ExtResource("47_am0yj")
+Burned = false
+Screwed = false
 shouldBeBurned = true
 shouldBeScrewed = false
 InteractionDisables = null
@@ -620,8 +659,9 @@ InteractionDisables = null
 [node name="CollisionShape2D" parent="LevelObjects/StoveStation/Block" index="1"]
 disabled = true
 
-[node name="AndroidInteractableArea" parent="LevelObjects/StoveStation/Block" index="2"]
-collision_mask = 512
+[node name="Sprite2D" type="Sprite2D" parent="LevelObjects/StoveStation"]
+position = Vector2(-16, 6)
+texture = ExtResource("48_jnr5h")
 
 [node name="Doors" parent="LevelObjects" instance=ExtResource("5_yak5b")]
 z_index = -5
@@ -687,9 +727,12 @@ AIBotPath = "res://Nodes/LevelPieces/Ai/Androids/AIBotBase.tscn"
 [editable path="SFXManager"]
 [editable path="LevelObjects/Chef"]
 [editable path="LevelObjects/VegetableStation"]
+[editable path="LevelObjects/VegetableStation/Block"]
 [editable path="LevelObjects/SeasoningStation"]
+[editable path="LevelObjects/SeasoningStation/Block"]
 [editable path="LevelObjects/MeatStation"]
 [editable path="LevelObjects/AlcoholStation"]
+[editable path="LevelObjects/AlcoholStation/Block"]
 [editable path="LevelObjects/ChopStation"]
 [editable path="LevelObjects/StoveStation"]
 [editable path="LevelObjects/StoveStation/Block"]

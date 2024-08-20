@@ -76,7 +76,7 @@ public partial class FireArm : AndroidTorso {
 
     void OnTimerDone() {
         if (objCache != null) {
-            objCache.Set("Screwed", true);
+            objCache.Set("Burned", true);
             objCache = null;
         }
 

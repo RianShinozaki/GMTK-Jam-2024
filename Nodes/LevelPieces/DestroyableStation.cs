@@ -3,8 +3,8 @@ using System;
 
 public partial class DestroyableStation : BasicPhysicsObject
 {
-	public bool Burned;
-	public bool Screwed;
+	[Export] public bool Burned;
+	[Export] public bool Screwed;
 
 	Node2D station;
 
