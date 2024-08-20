@@ -92,6 +92,11 @@ public partial class AiBotBase : CharacterBody2D {
 			lastTurnAround = systemTime;
 		}
 
+		if(Velocity.X == 0) 
+			CollisionMask = SOLIDONLY;
+		else
+			CollisionMask = SOLIDANDROPE;
+
 		if (UpdateOverride != null) {
 			UpdateOverride.Invoke(this, (float)delta);
 			return;
@@ -125,10 +130,5 @@ public partial class AiBotBase : CharacterBody2D {
 		//Push all velocity changes to CharacterController Velocity vec
 		Velocity = velocity;
 		MoveAndSlide();
-
-		if(Velocity.X == 0) 
-			CollisionMask = SOLIDONLY;
-		else
-			CollisionMask = SOLIDANDROPE;
 	}
 }
