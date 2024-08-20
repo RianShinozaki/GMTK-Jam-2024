@@ -29,7 +29,7 @@ size = Vector2(16, 16)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_obkde"]
 size = Vector2(16, 16)
 
-[node name="Block" type="CharacterBody2D" node_paths=PackedStringArray("InteractionArea")]
+[node name="Block2" type="CharacterBody2D" node_paths=PackedStringArray("InteractionArea")]
 texture_filter = 1
 script = ExtResource("1_etbgn")
 InteractionArea = NodePath("AndroidInteractableArea")

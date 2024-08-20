@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://dr26tj0otkkma"]
+[gd_scene load_steps=2 format=3 uid="uid://bkksk1etktwxi"]
 
 [ext_resource type="PackedScene" uid="uid://bgfbrmcv1xvrc" path="res://Nodes/LevelPieces/PickupBase.tscn" id="1_w00iq"]
 
