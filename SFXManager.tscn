@@ -1,8 +1,8 @@
 [gd_scene load_steps=10 format=3 uid="uid://bxrf7c8o6662w"]
 
 [ext_resource type="Script" path="res://Scripts/SfxManager.cs" id="1_ctuye"]
-[ext_resource type="AudioStream" uid="uid://did3dx6e8rxpq" path="res://Resources/AudioStreams/Footsteps.tres" id="2_hifxw"]
-[ext_resource type="AudioStream" uid="uid://b1wllmhklydmk" path="res://Resources/AudioStreams/Ladder.tres" id="3_p2iip"]
+[ext_resource type="AudioStream" uid="uid://2xnjl1x71rwq" path="res://Audio/SFX/Chef/ChefWalking/ChefWalkingLoop.wav" id="2_xcjnw"]
+[ext_resource type="AudioStream" uid="uid://oyq637rwrdc" path="res://Audio/SFX/Chef/ChefLadder/ChefLadderLoop.wav" id="3_mwjqm"]
 [ext_resource type="AudioStream" uid="uid://b1rt8263y6ity" path="res://Audio/SFX/Chef/Stirring.wav" id="4_a6qpy"]
 [ext_resource type="AudioStream" uid="uid://bn7oi4ky6wxa" path="res://Audio/SFX/Chef/Chopping.wav" id="5_dqfr5"]
 [ext_resource type="AudioStream" uid="uid://bpbs14dmkm36q" path="res://Audio/SFX/Robot/RobotWheel.wav" id="6_hwsps"]
@@ -12,7 +12,7 @@
 
 [node name="SFX Manager" type="Node" node_paths=PackedStringArray("ChefPlayer", "RobotPlayer", "GeneralPlayer")]
 script = ExtResource("1_ctuye")
-ChefStreams = Array[AudioStream]([ExtResource("2_hifxw"), ExtResource("3_p2iip"), ExtResource("4_a6qpy"), ExtResource("5_dqfr5")])
+ChefStreams = Array[AudioStream]([ExtResource("2_xcjnw"), ExtResource("3_mwjqm"), ExtResource("4_a6qpy"), ExtResource("5_dqfr5")])
 RobotStreams = Array[AudioStream]([ExtResource("6_hwsps"), ExtResource("7_uw7s1")])
 GeneralStreams = Array[AudioStream]([ExtResource("8_ybg8g"), ExtResource("9_4rmfl")])
 ChefPlayer = NodePath("ChefPlayer")
