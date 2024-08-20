@@ -37,8 +37,7 @@ public partial class AiBotBase : CharacterBody2D {
 	[Signal]
 	public delegate void BotProcessEventHandler(float delta);
 
-	public override void _Ready() {
-		base._Ready();
+	public void Init() {
 
 		Array<Array> headData = AndroidBase.Head.GetOptions;
 		Array<Array> armsData = AndroidBase.Arms.GetOptions;
@@ -50,7 +49,10 @@ public partial class AiBotBase : CharacterBody2D {
 		}
 
 		for (int i = 0; i < armsData.Count; i++) {
-			ArmsContextMenu.AddOption(armsData[i][0].As<Texture2D>(), "ArmsOption"+i, armsData[i][1].As<Callable>());
+			Texture2D tex = armsData[i][0].As<Texture2D>();
+			string name = "ArmsOption"+i;
+			Callable call = armsData[i][1].As<Callable>();
+			ArmsContextMenu.AddOption(tex, name, call);
 		}
 
 		for (int i = 0; i < legsData.Count; i++) {
@@ -64,7 +66,11 @@ public partial class AiBotBase : CharacterBody2D {
 		HeadSprite.SpriteFrames = AndroidBase.Head.SpriteTexture;
 		ArmsSprite.SpriteFrames = AndroidBase.Arms.SpriteTexture;
 		LegsSprite.SpriteFrames = AndroidBase.Legs.SpriteTexture;
-	}
+
+		AndroidBase.Head.InitPiece(this);
+		AndroidBase.Arms.InitPiece(this);
+		AndroidBase.Legs.InitPiece(this);
+    }
 
 	public override void _Process(double delta) {
 		base._Process(delta);
@@ -110,11 +116,11 @@ public partial class AiBotBase : CharacterBody2D {
 		}
 
 		float desiredDirection = Mathf.Clamp(InputSpeed, 0f, 1f) * Mathf.Sign(InputDirection);
-		desiredDirection *= AndroidBase.BaseMovementSpeed;
+		desiredDirection *= AndroidBase.Legs.BaseMovementSpeed;
 		desiredDirection *= AndroidBase.GetWeightSpeedReduction();
 
 		//Accel to max speed
-		velocity.X = Mathf.MoveToward(velocity.X, desiredDirection, (float)delta * AndroidBase.BaseMovementSpeed);
+		velocity.X = Mathf.MoveToward(velocity.X, desiredDirection, (float)delta * AndroidBase.Legs.BaseMovementSpeed);
 
 		//Push all velocity changes to CharacterController Velocity vec
 		Velocity = velocity;

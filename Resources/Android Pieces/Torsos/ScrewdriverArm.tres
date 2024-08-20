@@ -1,82 +1,14 @@
-[gd_resource type="Resource" script_class="GrabberArm" load_steps=13 format=3 uid="uid://cncisp7bblwhd"]
+[gd_resource type="Resource" script_class="ScrewdriverArm" load_steps=4 format=3 uid="uid://cncisp7bblwhd"]
 
 [ext_resource type="Texture2D" uid="uid://d2d226x8nh80h" path="res://Sprites/UI/Options/Options3.png" id="1_0wwhm"]
-[ext_resource type="Texture2D" uid="uid://f64e7gy3uh18" path="res://Sprites/Robot/Arms-Grabber.png" id="2_3xtw5"]
-[ext_resource type="Script" path="res://Scripts/Resources/Androids/Arms/GrabberArm.cs" id="3_8gwwr"]
-[ext_resource type="Texture2D" uid="uid://bkil63pep2v2s" path="res://Sprites/Robot/Arms-Screwdriver.png" id="3_r18oe"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vlvca"]
-atlas = ExtResource("2_3xtw5")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ri6y8"]
-atlas = ExtResource("2_3xtw5")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ytbki"]
-atlas = ExtResource("2_3xtw5")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3yk0e"]
-atlas = ExtResource("2_3xtw5")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fy3kh"]
-atlas = ExtResource("2_3xtw5")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5cwgx"]
-atlas = ExtResource("2_3xtw5")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3cy2s"]
-atlas = ExtResource("3_r18oe")
-region = Rect2(0, 0, 32, 12)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_ip6hh"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vlvca")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ri6y8")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ytbki")
-}],
-"loop": false,
-"name": &"Close",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3yk0e")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fy3kh")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5cwgx")
-}],
-"loop": false,
-"name": &"Open",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3cy2s")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
+[ext_resource type="SpriteFrames" uid="uid://c2rxmho64l8rb" path="res://Sprites/Robot/ArmFrames/DrillFrames.tres" id="2_tj0tb"]
+[ext_resource type="Script" path="res://Scripts/Resources/Androids/Arms/ScrewdriverArm.cs" id="3_chj3r"]
 
 [resource]
-script = ExtResource("3_8gwwr")
-GrabTexture = ExtResource("1_0wwhm")
+script = ExtResource("3_chj3r")
+InteractColor = Color(0, 1, 0, 1)
+ScrewTexture = ExtResource("1_0wwhm")
 InteractionDetectorPath = "res://Nodes/LevelPieces/Ai/Androids/Pieces/Torso/InteractionBase.tscn"
-PickupLocation = Vector2(13, -11)
-SpriteTexture = SubResource("SpriteFrames_ip6hh")
+SpriteTexture = ExtResource("2_tj0tb")
 WeightSpeedReductionAmount = 1.0
 Strength = 0.5

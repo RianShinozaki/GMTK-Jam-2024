@@ -29,7 +29,6 @@ public partial class GrabberArm : AndroidTorso {
 
     void GrabObject(Node context) {
         if (interactionBase == null) {
-            GD.Print("Loading");
             PackedScene scene = ResourceLoader.Load<PackedScene>(InteractionDetectorPath);
             interactionBase = (AndroidInteractionBase)scene.Instantiate();
             interactionBase.OnOptionClicked += OnInteractDone;

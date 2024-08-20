@@ -1,50 +1,89 @@
-[gd_resource type="Resource" script_class="AndroidLegs" load_steps=10 format=3 uid="uid://b8x6cihaamcen"]
+[gd_resource type="Resource" script_class="AndroidPogoLegs" load_steps=13 format=3 uid="uid://b8x6cihaamcen"]
 
 [ext_resource type="Texture2D" uid="uid://c8dyks1iutkld" path="res://Sprites/Robot/Legs-Pogo.png" id="1_fjiyw"]
 [ext_resource type="Texture2D" uid="uid://6ne7k37eapvy" path="res://Sprites/UI/Options/Options2.png" id="2_ll1bu"]
 [ext_resource type="Texture2D" uid="uid://d2d226x8nh80h" path="res://Sprites/UI/Options/Options3.png" id="3_5082u"]
-[ext_resource type="Script" path="res://Scripts/Resources/Androids/Legs/AndroidLegs.cs" id="4_02ugy"]
+[ext_resource type="Script" path="res://Scripts/Resources/Androids/Legs/AndroidPogoLegs.cs" id="4_jk4ke"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_8q6vo"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_t7glm"]
 atlas = ExtResource("1_fjiyw")
 region = Rect2(0, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_rpaap"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_sc72x"]
 atlas = ExtResource("1_fjiyw")
-region = Rect2(16, 0, 16, 16)
+region = Rect2(0, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_v84jy"]
-atlas = ExtResource("1_fjiyw")
-region = Rect2(32, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_o7pjl"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_mgosr"]
 atlas = ExtResource("1_fjiyw")
 region = Rect2(48, 0, 16, 16)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_p3hvt"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_tmdeh"]
+atlas = ExtResource("1_fjiyw")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h0vdn"]
+atlas = ExtResource("1_fjiyw")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hafxj"]
+atlas = ExtResource("1_fjiyw")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2vjrp"]
+atlas = ExtResource("1_fjiyw")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5db1f"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_8q6vo")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rpaap")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_v84jy")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_o7pjl")
+"texture": SubResource("AtlasTexture_t7glm")
 }],
 "loop": true,
 "name": &"default",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sc72x")
+}],
+"loop": true,
+"name": &"extend_hold",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mgosr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tmdeh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h0vdn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hafxj")
+}],
+"loop": false,
+"name": &"pogo",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2vjrp")
+}],
+"loop": true,
+"name": &"retract_hold",
+"speed": 5.0
 }]
 
 [resource]
-script = ExtResource("4_02ugy")
+script = ExtResource("4_jk4ke")
+pogoWaitTime = 1.0
+jumpForce = 300.0
+BaseMovementSpeed = 32.0
 TurnIcon = ExtResource("3_5082u")
 StopIcon = ExtResource("2_ll1bu")
-SpriteTexture = SubResource("SpriteFrames_p3hvt")
+SpriteTexture = SubResource("SpriteFrames_5db1f")
 WeightSpeedReductionAmount = 1.0
 Strength = 0.5

@@ -4,54 +4,34 @@ using Godot.Collections;
 
 [GlobalClass]
 public partial class FireArm : AndroidTorso {
-    public TriggerDetector InteractableDetector;
+    [Export]
+    Color InteractColor = Colors.Green;
 
     [Export]
-    Texture2D GrabTexture;
+    Texture2D BurnTexture;
+
+    [Export(PropertyHint.Layers2DPhysics)]
+    uint Layer = 1024u;
 
     [Export]
     string InteractionDetectorPath;
 
-    [Export]
-    Vector2 PickupLocation;
-
     float speedCache;
     AndroidInteractionBase interactionBase;
-    BasicPhysicsObject heldObject;
-
+    Timer timer;
+    AiBotBase bot;
+    BasicPhysicsObject objCache;
+    AnimatedSprite2D flamerSprite;
 
     public override Array<Array> GetOptions => new Array<Array>() {
         new Array() {
-            GrabTexture,
-            Callable.From<Node>(GrabObject)
+            BurnTexture,
+            Callable.From<Node>(BurnObject)
         }
     };
 
-    void GrabObject(Node context) {
-        if (interactionBase == null) {
-            GD.Print("Loading");
-            PackedScene scene = ResourceLoader.Load<PackedScene>(InteractionDetectorPath);
-            interactionBase = (AndroidInteractionBase)scene.Instantiate();
-            interactionBase.OnOptionClicked += OnInteractDone;
-            context.AddChild(interactionBase);
-        }
-
-        if (context == null) {
-            return;
-        }
-
-        //Make sure we're working with an AI Bot
+    void BurnObject(Node context) {
         if (context is AiBotBase bot) {
-            if (heldObject != null) {
-                heldObject.GetParent().RemoveChild(heldObject);
-                bot.GetParent().AddChild(heldObject);
-                heldObject.UseGravity = true;
-                heldObject.GetNode<CollisionShape2D>("CollisionShape2D").Disabled = false;
-                heldObject.GlobalPosition = new Vector2(PickupLocation.X * bot.InputDirection, PickupLocation.Y) + bot.GlobalPosition;
-                heldObject = null;
-                return;
-            }
-
             //Make the bot stop and wait for the pickable object to be picked
             speedCache = bot.InputSpeed;
             bot.InputSpeed = 0f;
@@ -60,23 +40,49 @@ public partial class FireArm : AndroidTorso {
         }
     }
 
+    public override void InitPiece(AiBotBase bot) {
+        base.InitPiece(bot);
+
+        PackedScene scene = ResourceLoader.Load<PackedScene>(InteractionDetectorPath);
+        interactionBase = (AndroidInteractionBase)scene.Instantiate();
+        interactionBase.OnOptionClicked += OnInteractDone;
+        interactionBase.InteractionColor = InteractColor;
+        interactionBase.CollisionLayer = Layer;
+        interactionBase.CollisionMask = Layer;
+        bot.AddChild(interactionBase);
+
+        timer = new Timer {
+            WaitTime = 3f,
+            Autostart = false
+        };
+        timer.Timeout += OnTimerDone;
+        bot.AddChild(timer);
+
+        flamerSprite = bot.GetNode<AnimatedSprite2D>("Robot/ArmSprite");
+    }
 
     void OnInteractDone(Node context, bool success) {
-         AiBotBase bot = (AiBotBase)interactionBase.GetParent();
-
-        if(success) {
-            BasicPhysicsObject pickup = (BasicPhysicsObject)context.GetParent();
-            if (pickup.PickUpable) {
-                pickup.GetParent().RemoveChild(pickup);
-                bot.AddChild(pickup);
-                pickup.Position = new Vector2(PickupLocation.X * bot.InputDirection, PickupLocation.Y);
-                heldObject = pickup;
-                pickup.Velocity = Vector2.Zero;
-                pickup.UseGravity = false;
-                pickup.GetNode<CollisionShape2D>("CollisionShape2D").Disabled = true;
-            }
+        if (!success) {
+            return;
         }
 
+        bot ??= (AiBotBase)interactionBase.GetParent();
+        objCache = (BasicPhysicsObject)context.GetParent();
+        flamerSprite.Play("Fire-Start");
+        flamerSprite.AnimationFinished += OnFlameStartDone;
+        timer.Start();
+    }
+
+    void OnTimerDone() {
+        objCache.Set("Burned", true);
+        objCache = null;
         bot.InputSpeed = speedCache;
+        flamerSprite.Play("default");
+        timer.Stop();
+    }
+
+    void OnFlameStartDone() {
+        flamerSprite.Play("Fire-Loop");
+        flamerSprite.AnimationFinished -= OnFlameStartDone;
     }
 }

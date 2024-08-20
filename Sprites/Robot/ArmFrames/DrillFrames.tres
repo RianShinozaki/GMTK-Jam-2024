@@ -1,42 +1,30 @@
-[gd_resource type="SpriteFrames" load_steps=6 format=3 uid="uid://c2rxmho64l8rb"]
+[gd_resource type="SpriteFrames" load_steps=5 format=3 uid="uid://c2rxmho64l8rb"]
 
 [ext_resource type="Texture2D" uid="uid://bkil63pep2v2s" path="res://Sprites/Robot/Arms-Screwdriver.png" id="1_vj50r"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_josdj"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_oagp4"]
 atlas = ExtResource("1_vj50r")
-region = Rect2(0, 0, 32, 32)
+region = Rect2(0, 0, 32, 12)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_gtvq3"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_b6tin"]
 atlas = ExtResource("1_vj50r")
-region = Rect2(32, 0, 32, 32)
+region = Rect2(32, 0, 32, 12)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_scnxy"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_svont"]
 atlas = ExtResource("1_vj50r")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_pxqnv"]
-atlas = ExtResource("1_vj50r")
-region = Rect2(0, 0, 32, 32)
+region = Rect2(64, 0, 32, 12)
 
 [resource]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_josdj")
+"texture": SubResource("AtlasTexture_oagp4")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_gtvq3")
+"texture": SubResource("AtlasTexture_b6tin")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_scnxy")
-}],
-"loop": true,
-"name": &"Drill",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_pxqnv")
+"texture": SubResource("AtlasTexture_svont")
 }],
 "loop": true,
 "name": &"default",
