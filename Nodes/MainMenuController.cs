@@ -30,9 +30,39 @@ public partial class MainMenuController : Control
     [Export]
     public float MaxVolume = 6f;
 
+    public override void _Ready()
+    {
+        RefreshSettings();
+    }
+    private void RefreshSettings() 
+    {
+        if (DisplayServer.WindowGetMode() == DisplayServer.WindowMode.Fullscreen)
+        {
+            Fullscreen.ButtonPressed = true;
+        }
+        else
+        {
+            Fullscreen.ButtonPressed = false;
+        }
+
+        if (DisplayServer.WindowGetVsyncMode() == DisplayServer.VSyncMode.Enabled)
+        {
+            VSync.ButtonPressed = true;
+        }
+        else
+        {
+            VSync.ButtonPressed = false;
+        }
+
+        Master.Value = MapRange(AudioServer.GetBusVolumeDb(AudioServer.GetBusIndex("Master")), -80f, 6f, 0f, 100f);
+        Music.Value = MapRange(AudioServer.GetBusVolumeDb(AudioServer.GetBusIndex("Music (Master)")), -80f, 6f, 0f, 100f);
+        SFX.Value = MapRange(AudioServer.GetBusVolumeDb(AudioServer.GetBusIndex("SFX")), -80f, 6f, 0f, 100f);
+    }
+
     public void ShowSettingsMenu() 
     {
         MainMenu.Hide();
+        RefreshSettings();
         SettingsMenu.Show();
     }
     public void ShowMainMenu() 
@@ -42,14 +72,14 @@ public partial class MainMenuController : Control
     }
     public void ApplySettings() 
     {
-        float MasterNormalizedVolume = (float)Master.Value * (MaxVolume - MinVolume) + MinVolume;
-        AudioServer.SetBusVolumeDb(AudioServer.GetBusIndex("Master"), MasterNormalizedVolume);
+        float MasterNormalizedVolume = ((float)Master.Value / 100f) * (MaxVolume - MinVolume) + MinVolume;
+        AudioServer.SetBusVolumeDb(AudioServer.GetBusIndex("Master"), MapRange((float)Master.Value, 0f, 100f, -80f, 6f));
 
-        float MusicNormalizedVolume = (float)Music.Value * (MaxVolume - MinVolume) + MinVolume;
-        AudioServer.SetBusVolumeDb(AudioServer.GetBusIndex("Music (Master)"), MusicNormalizedVolume);
+        float MusicNormalizedVolume = (float)Music.Value / 100f * (MaxVolume - MinVolume) + MinVolume;
+        AudioServer.SetBusVolumeDb(AudioServer.GetBusIndex("Music (Master)"), MapRange((float)Music.Value, 0f, 100f, -80f, 6f));
 
-        float SFXNormalizedVolume = (float)SFX.Value * (MaxVolume - MinVolume) + MinVolume;
-        AudioServer.SetBusVolumeDb(AudioServer.GetBusIndex("SFX"), SFXNormalizedVolume);
+        float SFXNormalizedVolume = (float)SFX.Value / 100f * (MaxVolume - MinVolume) + MinVolume;
+        AudioServer.SetBusVolumeDb(AudioServer.GetBusIndex("SFX"), MapRange((float)SFX.Value, 0f, 100f, -80f, 6f));
 
         if (Fullscreen.ButtonPressed)
         {
@@ -76,5 +106,9 @@ public partial class MainMenuController : Control
     public void PlayGame() 
     {
 
+    }
+    float MapRange(float oldValue, float oldMin, float oldMax, float newMin, float newMax)
+    {
+        return newMin + ((oldValue - oldMin) / (oldMax - oldMin)) * (newMax - newMin);
     }
 }

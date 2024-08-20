@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=4 uid="uid://b0awh3x2ks73o"]
+[gd_scene load_steps=38 format=4 uid="uid://b0awh3x2ks73o"]
 
 [ext_resource type="TileSet" uid="uid://ccdwy6d4c43ax" path="res://Resources/TileSets/Kitchen.tres" id="1_j1dxg"]
 [ext_resource type="Texture2D" uid="uid://uu7ql843qy7d" path="res://Sprites/UI/PresetSpot.png" id="1_v3dp5"]
@@ -24,7 +24,7 @@
 [ext_resource type="Resource" uid="uid://bvyq6vb1vcnsj" path="res://Resources/Chef/ChefStationActions/VegetableStationCarrot.tres" id="13_k32pv"]
 [ext_resource type="Resource" uid="uid://bgwuu5kw6dvlo" path="res://Resources/Chef/ChefStationActions/VegetableStationOnion.tres" id="14_s41as"]
 [ext_resource type="Resource" uid="uid://67rm2wqctag1" path="res://Resources/Chef/ChefStationActions/SeasoningStation.tres" id="16_1jq2f"]
-[ext_resource type="Resource" uid="uid://dsl86j8kqu53g" path="res://Resources/Chef/ChefItemDictionary.tres" id="16_7xr5m"]
+[ext_resource type="Resource" path="res://Resources/Chef/ChefItemDictionary.tres" id="16_7xr5m"]
 [ext_resource type="Resource" uid="uid://c3wsst57sdgl5" path="res://Resources/Chef/ChefStationActions/MeatStationMeat.tres" id="17_qyiwc"]
 [ext_resource type="Texture2D" uid="uid://b23ud75hef7ky" path="res://Sprites/LevelObjects/Pantry.png" id="18_0prin"]
 [ext_resource type="Resource" uid="uid://brienpqw0pnps" path="res://Resources/Chef/ChefStationActions/MeatStationDumplings.tres" id="18_a4qtl"]
@@ -35,8 +35,8 @@
 [ext_resource type="Texture2D" uid="uid://dyij7uuc7tu0u" path="res://Sprites/LevelObjects/SpiceAndFlourIGuessIDontKnowAnymore.png" id="22_qmlh7"]
 [ext_resource type="Script" path="res://Scripts/System/ChefScripts/ChefUI.gd" id="24_drcbe"]
 [ext_resource type="Texture2D" uid="uid://djby332st7pml" path="res://Sprites/LevelObjects/WineShelf.png" id="26_mywio"]
-[ext_resource type="PackedScene" uid="uid://cgwqeqbg5iuf0" path="res://ChefDroppedItem.tscn" id="33_er817"]
-[ext_resource type="PackedScene" uid="uid://cjs71pgp6dnve" path="res://banana.tscn" id="34_ucb0v"]
+[ext_resource type="PackedScene" path="res://ChefDroppedItem.tscn" id="33_er817"]
+[ext_resource type="PackedScene" path="res://banana.tscn" id="34_ucb0v"]
 
 [node name="TestLevel" type="Node2D"]
 texture_filter = 1
