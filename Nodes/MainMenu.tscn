@@ -127,6 +127,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Graphics" type="Label" parent="Settings Menu/Panel"]
+layout_mode = 0
 offset_left = 24.0
 offset_top = 22.0
 offset_right = 198.0
@@ -135,6 +136,7 @@ theme_override_font_sizes/font_size = 41
 text = "Graphics"
 
 [node name="Fullscreen" type="Label" parent="Settings Menu/Panel/Graphics"]
+layout_mode = 0
 offset_top = 80.0
 offset_right = 83.0
 offset_bottom = 103.0
@@ -148,17 +150,20 @@ offset_right = 112.0
 offset_bottom = 24.0
 
 [node name="V-Sync" type="Label" parent="Settings Menu/Panel/Graphics"]
+layout_mode = 0
 offset_top = 112.0
 offset_right = 83.0
 offset_bottom = 135.0
 text = "V-Sync"
 
 [node name="CheckBox" type="CheckBox" parent="Settings Menu/Panel/Graphics/V-Sync"]
+layout_mode = 0
 offset_left = 64.0
 offset_right = 88.0
 offset_bottom = 24.0
 
 [node name="Volume" type="Label" parent="Settings Menu/Panel"]
+layout_mode = 0
 offset_left = 368.0
 offset_top = 22.0
 offset_right = 519.0
@@ -168,6 +173,7 @@ text = "Volume
 "
 
 [node name="Master" type="Label" parent="Settings Menu/Panel/Volume"]
+layout_mode = 0
 offset_top = 80.0
 offset_right = 83.0
 offset_bottom = 103.0
@@ -182,6 +188,7 @@ offset_right = 232.0
 offset_bottom = 21.0
 
 [node name="Music" type="Label" parent="Settings Menu/Panel/Volume"]
+layout_mode = 0
 offset_top = 112.0
 offset_right = 83.0
 offset_bottom = 135.0
@@ -189,6 +196,7 @@ text = "Music
 "
 
 [node name="HSlider" type="HSlider" parent="Settings Menu/Panel/Volume/Music"]
+layout_mode = 0
 offset_left = 70.0
 offset_top = 5.0
 offset_right = 232.0
@@ -196,6 +204,7 @@ offset_bottom = 21.0
 step = 0.01
 
 [node name="SFX" type="Label" parent="Settings Menu/Panel/Volume"]
+layout_mode = 0
 offset_top = 144.0
 offset_right = 83.0
 offset_bottom = 167.0
@@ -203,6 +212,7 @@ text = "SFX
 "
 
 [node name="HSlider" type="HSlider" parent="Settings Menu/Panel/Volume/SFX"]
+layout_mode = 0
 offset_left = 70.0
 offset_top = 5.0
 offset_right = 232.0
