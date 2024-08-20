@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://djawxoftiy7sq"
-path="res://.godot/imported/Silence.wav-940a2410cb4b4583d3d805a7b8471bce.sample"
+path="res://.godot/imported/Silence.wav-ce2f90508b04d167a0f1d9a90302d59a.sample"
 
 [deps]
 
-source_file="res://Audio/Silence.wav"
-dest_files=["res://.godot/imported/Silence.wav-940a2410cb4b4583d3d805a7b8471bce.sample"]
+source_file="res://Audio/SFX/Silence.wav"
+dest_files=["res://.godot/imported/Silence.wav-ce2f90508b04d167a0f1d9a90302d59a.sample"]
 
 [params]
 

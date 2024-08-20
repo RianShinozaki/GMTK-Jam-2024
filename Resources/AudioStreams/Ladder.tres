@@ -1,0 +1,9 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=3 format=3 uid="uid://b1wllmhklydmk"]
+
+[ext_resource type="AudioStream" uid="uid://bdr82s07mj7be" path="res://Audio/SFX/Chef/ChefLadder/ChefLadder-01.wav" id="1_gex3p"]
+[ext_resource type="AudioStream" uid="uid://dusjww214lovk" path="res://Audio/SFX/Chef/ChefLadder/ChefLadder-02.wav" id="2_1pjkb"]
+
+[resource]
+streams_count = 2
+stream_0/stream = ExtResource("1_gex3p")
+stream_1/stream = ExtResource("2_1pjkb")

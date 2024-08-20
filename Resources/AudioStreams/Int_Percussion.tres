@@ -3,7 +3,7 @@
 [ext_resource type="AudioStream" uid="uid://dsajjprkplq7i" path="res://Audio/Music/Intro/Intro (Perc).wav" id="1_c1aly"]
 [ext_resource type="AudioStream" uid="uid://dnvvnfhwsvqed" path="res://Audio/Music/Loop (A)/Loop_A (Perc).wav" id="2_xbpi3"]
 [ext_resource type="AudioStream" uid="uid://13nu8g7iny8s" path="res://Audio/Music/Workshop/Workshop (Perc).wav" id="3_tdngb"]
-[ext_resource type="AudioStream" uid="uid://djawxoftiy7sq" path="res://Audio/Silence.wav" id="3_u84ql"]
+[ext_resource type="AudioStream" uid="uid://djawxoftiy7sq" path="res://Audio/SFX/Silence.wav" id="3_u84ql"]
 
 [resource]
 clip_count = 6

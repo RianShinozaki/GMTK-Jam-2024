@@ -1,0 +1,19 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=8 format=3 uid="uid://did3dx6e8rxpq"]
+
+[ext_resource type="AudioStream" uid="uid://cnx6labo5mth" path="res://Audio/SFX/Chef/ChefWalking/ChefWalkSFX-01.wav" id="1_10n2e"]
+[ext_resource type="AudioStream" uid="uid://tlv14ehqq8cm" path="res://Audio/SFX/Chef/ChefWalking/ChefWalkSFX-02.wav" id="2_t2mfh"]
+[ext_resource type="AudioStream" uid="uid://cck1xa4wv2k5n" path="res://Audio/SFX/Chef/ChefWalking/ChefWalkSFX-03.wav" id="3_4lw08"]
+[ext_resource type="AudioStream" uid="uid://dfvirmndkdga0" path="res://Audio/SFX/Chef/ChefWalking/ChefWalkSFX-04.wav" id="4_jom2m"]
+[ext_resource type="AudioStream" uid="uid://csqg7fhxpc55r" path="res://Audio/SFX/Chef/ChefWalking/ChefWalkSFX-05.wav" id="5_t2rea"]
+[ext_resource type="AudioStream" uid="uid://b1u4iurdkcg23" path="res://Audio/SFX/Chef/ChefWalking/ChefWalkSFX-06.wav" id="6_8g64j"]
+[ext_resource type="AudioStream" uid="uid://dlhh32gjwtdt6" path="res://Audio/SFX/Chef/ChefWalking/ChefWalkSFX-07.wav" id="7_1yju8"]
+
+[resource]
+streams_count = 7
+stream_0/stream = ExtResource("1_10n2e")
+stream_1/stream = ExtResource("2_t2mfh")
+stream_2/stream = ExtResource("3_4lw08")
+stream_3/stream = ExtResource("4_jom2m")
+stream_4/stream = ExtResource("5_t2rea")
+stream_5/stream = ExtResource("6_8g64j")
+stream_6/stream = ExtResource("7_1yju8")
